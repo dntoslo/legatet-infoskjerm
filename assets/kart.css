@@ -60,19 +60,21 @@
   grid-column: 1 / -1;
 }
 
+/* Kortene har høyde etter innholdet, så avstanden mellom radene er lik i
+   alle kort. Ledig plass i kolonnen legges mellom kortene. */
 .kolonne {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: var(--marg);
   min-height: 0;
 }
 .kolonne .kort {
-  flex: 1 1 auto;              /* flex-grow overstyres per kort av kart.js */
-  min-height: 0;
+  flex: 0 0 auto;
 }
 
 /* Litt mindre skrift enn i rutenettvisningen, siden én kolonne kan ha
-   fire kort og 16 hytter. Luften kommer fra at kortene deler ledig plass. */
+   fire kort og 16 hytter. */
 .kartflate .kort {
   padding: 1.5cqh 2.2cqh 1.3cqh;
 }
@@ -80,8 +82,8 @@
   display: flex;
   align-items: center;
   gap: 1.2cqh;
-  margin-bottom: 0.7cqh;
-  padding-bottom: 0.8cqh;
+  margin-bottom: 0.6cqh;
+  padding-bottom: 0.7cqh;
   font-size: 2.5cqh;
 }
 .kartflate .kort h2::before {
@@ -169,10 +171,10 @@
 .byer text {
   font-family: var(--font);
   font-weight: 400;
-  font-size: 28px;              /* viewBox-enheter, ca. 2,3cqh på skjermen */
+  font-size: 24px;              /* viewBox-enheter, ca. 2cqh på skjermen */
   fill: var(--sort);
   stroke: var(--hvit);
-  stroke-width: 6px;
+  stroke-width: 5px;
   stroke-linejoin: round;
   paint-order: stroke fill;
   dominant-baseline: middle;

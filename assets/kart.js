@@ -221,14 +221,11 @@
     kart.appendChild(el("p", "laster", "Henter kart …"));
 
     // Kort i samme rekkefølge som kolonnelisten, ukjente områder til høyre.
-    // Ledig plass i kolonnen fordeles etter antall hytter, så luften i
-    // kortene blir jevn.
     const plasser = (navn, kolonne) => {
       if (!omrader.includes(navn)) return;
       const hytter = data.hytter.filter(h => h.omrade === navn);
       const kort = tegnKort(navn, hytter, iDag);
       kort.classList.add(omradeKlasse(navn));
-      kort.style.flexGrow = hytter.length;
       if (FARGER[navn]) kort.style.setProperty("--farge", FARGER[navn]);
       else kort.classList.add("uten-farge");
       kolonne.appendChild(kort);
