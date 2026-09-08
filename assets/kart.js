@@ -129,6 +129,12 @@
     }
     svg.appendChild(byer);
 
+    // Grenselinja tegnes én gang til, uten fyll, så den ligger over områdene
+    // og vannet der de går helt ut til kysten eller riksgrensa.
+    const grense = svgEl("g", { class: "grense" });
+    for (const ring of kart.ringer) grense.appendChild(svgEl("path", { d: sti(projiser(proj, ring), true) }));
+    svg.appendChild(grense);
+
     // Hyttene øverst
     const prikker = svgEl("g", { class: "prikker" });
     for (const h of data.hytter) {

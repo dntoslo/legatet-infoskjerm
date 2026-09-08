@@ -131,9 +131,13 @@
 }
 
 /* Tegnet uttrykk: hvit landflate med tynn mørk strek mot den beige bakgrunnen.
-   Lagene tegnes i denne rekkefølgen: land, områder, vann, byer, hytter. */
+   Lagene tegnes i denne rekkefølgen: land, områder, vann, byer, grense, hytter. */
 .land path {
   fill: var(--hvit);
+  stroke: none;
+}
+.grense path {
+  fill: none;
   stroke: var(--graa);
   stroke-width: 2.5;
   stroke-linejoin: round;

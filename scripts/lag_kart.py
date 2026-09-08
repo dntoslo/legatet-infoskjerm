@@ -108,15 +108,19 @@ def klipp_og_forenkle(geom, toleranse):
 
 
 def land():
+    """Det forenklede omrisset av Sør-Norge som geometri. Områdene klippes
+    mot dette, så ingen av dem stikker utenfor den tegnede grensa."""
     for f in hent_ne("ne_10m_admin_0_countries"):
         p = f["properties"]
         if p.get("ADMIN") == "Norway" or p.get("ISO_A3") == "NOR":
-            return ringer_av(klipp_og_forenkle(shape(f["geometry"]), TOLERANSE_LAND), MIN_AREAL)
+            geom = klipp_og_forenkle(shape(f["geometry"]), TOLERANSE_LAND)
+            polygoner = list(geom.geoms) if isinstance(geom, MultiPolygon) else [geom]
+            return MultiPolygon([p for p in polygoner if isinstance(p, Polygon) and p.area >= MIN_AREAL])
     raise SystemExit("Fant ikke Norge i datasettet")
 
 
-def omrader(konfig):
-    """{kortnavn: [ringer]} fra DNT-områdene på ut.no."""
+def omrader(konfig, landflate):
+    """{kortnavn: [ringer]} fra DNT-områdene på ut.no, klippet mot landflaten."""
     ut = {}
     for kort, ider in konfig.get("utnoOmrader", {}).items():
         ringer = []
@@ -128,8 +132,8 @@ def omrader(konfig):
                 continue
             if a.get("areaType") != "DNT_AREA":
                 print(f"ADVARSEL: {a.get('name')} er {a.get('areaType')}, ikke DNT_AREA", file=sys.stderr)
-            geom = shape(a["geojson"]).buffer(0)
-            ringer.extend(ringer_av(klipp_og_forenkle(geom, TOLERANSE_DETALJ)))
+            geom = klipp_og_forenkle(shape(a["geojson"]).buffer(0), TOLERANSE_DETALJ)
+            ringer.extend(ringer_av(geom.intersection(landflate)))
         ut[kort] = ringer
     return ut
 
@@ -173,6 +177,7 @@ def byer():
 
 def main():
     konfig = json.loads(KONFIG.read_text(encoding="utf-8"))
+    landflate = land()
     ut = {
         "kilder": {
             "land, innsjoer, elver, byer": "Natural Earth 1:10m, public domain, " + NE,
@@ -180,8 +185,8 @@ def main():
         },
         "laget": date.today().isoformat(),
         "bbox": list(BBOX),
-        "ringer": land(),
-        "omrader": omrader(konfig),
+        "ringer": ringer_av(landflate),
+        "omrader": omrader(konfig, landflate),
         "innsjoer": innsjoer(),
         "elver": elver(),
         "byer": byer(),
