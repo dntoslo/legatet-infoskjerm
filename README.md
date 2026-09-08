@@ -10,6 +10,9 @@ Adresse: https://dntoslo.github.io/legatet-infoskjerm/
 - GitHub Action (`.github/workflows/oppdater.yml`) kjører scriptet klokka 06:30 og 12:00 norsk tid og publiserer siden til GitHub Pages. `data.json` committes til repoet bare når selve hyttedataene er endret, men den publiserte siden får alltid ferskt tidsstempel. Action kjører også ved hver push til `main`.
 - `index.html` med `assets/app.js` leser `data.json`, regner ut status for dagens dato i norsk tid og tegner ett kort per fjellområde. Tidspunktet for siste henting vises nederst til høyre. Er dataene eldre enn 36 timer, blir teksten rød.
 - Siden laster seg selv på nytt hver 30. minutt, i tillegg til at TV-en refresher.
+- Innholdet ligger i en fast 16:9-flate som sentreres i vinduet, så siden ser lik ut på TV, i et smalt vindu og i et stående vindu.
+
+Endrer du `assets/style.css` eller `assets/app.js`, bump versjonsnummeret (`?v=2`) i lenkene i `index.html`, slik at TV-en ikke fortsetter med gammel fil fra cache.
 
 Statusen regnes ut på TV-en, ikke i scriptet, slik at en hytte som åpner eller stenger ved midnatt vises riktig selv om dataene ble hentet kvelden før.
 
