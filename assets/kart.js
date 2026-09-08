@@ -14,11 +14,11 @@
   // nord øverst. Områder som ikke står her, havner nederst til høyre.
   const KOLONNER = {
     venstre: ["Breheimen", "Jotunheimen", "Hardangervidda og Skarvheimen"],
-    hoyre: ["Rondane og Dovrefjell", "Langsua og Femundsmarka", "Oslomarka og Oslofjorden"],
+    hoyre: ["Rondane og Dovrefjell", "Femundsmarka", "Langsua", "Oslomarka og Oslofjorden"],
   };
 
   // Hytter i samme område som ligger lenger fra hverandre enn dette, får hver
-  // sin flekk (Langsua og Femundsmarka).
+  // sin flekk. Streken fra kortet går til den nærmeste.
   const KLYNGE_KM = 80;
   const FLEKK_BREDDE = 40;      // i viewBox-enheter, 1 enhet er ca. 0,6 km
   const PRIKK_R = 9;
@@ -162,6 +162,60 @@
     return svg;
   }
 
+  // Strek fra hvert kort til flekken sin, tegnet i et SVG-lag over hele flaten
+  // i skjermpiksler. Må tegnes på nytt når flaten endrer størrelse.
+  function tegnStreker(flate) {
+    let lag = flate.querySelector(".streker");
+    if (!lag) {
+      lag = svgEl("svg", { class: "streker", "aria-hidden": "true" });
+      flate.appendChild(lag);
+    }
+    lag.replaceChildren();
+    const kartSvg = flate.querySelector(".kart svg");
+    if (!kartSvg) return;
+
+    const origo = flate.getBoundingClientRect();
+    const cqh = flate.closest(".skjerm").clientHeight / 100;
+    lag.setAttribute("viewBox", `0 0 ${origo.width} ${origo.height}`);
+
+    for (const kort of flate.querySelectorAll(".kort")) {
+      const klasse = [...kort.classList].find(k => k.startsWith("omrade-"));
+      if (!klasse) continue;
+      const venstre = kort.closest(".kolonne").classList.contains("venstre");
+      const kortRect = kort.getBoundingClientRect();
+      const h2Rect = kort.querySelector("h2").getBoundingClientRect();
+      const start = {
+        x: (venstre ? kortRect.right : kortRect.left) - origo.left + (venstre ? 1 : -1) * 0.6 * cqh,
+        y: h2Rect.top + h2Rect.height / 2 - origo.top,
+      };
+
+      // Nærmeste flekk med samme farge
+      let best = null;
+      for (const flekk of kartSvg.querySelectorAll(`.flekk.${klasse}`)) {
+        const r = flekk.getBoundingClientRect();
+        const m = { x: r.left + r.width / 2 - origo.left, y: r.top + r.height / 2 - origo.top, r: Math.min(r.width, r.height) / 2 };
+        const d = Math.hypot(m.x - start.x, m.y - start.y);
+        if (!best || d < best.d) best = { ...m, d };
+      }
+      if (!best) continue;
+
+      // Streken stopper ved kanten av flekken, med en liten prikk der.
+      const ux = (best.x - start.x) / best.d;
+      const uy = (best.y - start.y) / best.d;
+      const slutt = { x: best.x - ux * best.r, y: best.y - uy * best.r };
+      lag.appendChild(svgEl("line", {
+        class: "strek", x1: tall(start.x), y1: tall(start.y), x2: tall(slutt.x), y2: tall(slutt.y),
+      }));
+      lag.appendChild(svgEl("circle", { class: "strekende", cx: tall(slutt.x), cy: tall(slutt.y), r: tall(0.45 * cqh) }));
+    }
+  }
+
+  let strekTimer = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(strekTimer);
+    strekTimer = setTimeout(() => tegnStreker(document.getElementById("rutenett")), 150);
+  });
+
   window.infoskjermTegn = function (data, iDag) {
     const { status, tegnKort, el } = window.infoskjerm;
     const flate = document.getElementById("rutenett");
@@ -191,7 +245,13 @@
     flate.append(venstre, kart, hoyre);
 
     hentOmriss()
-      .then(omriss => kart.replaceChildren(tegnKart(omriss, omrader, data, iDag, status)))
+      .then(omriss => {
+        kart.replaceChildren(tegnKart(omriss, omrader, data, iDag, status));
+        // Fontene kan komme etter kartet og flytte overskriftene, så strekene
+        // tegnes én gang nå og én gang når fontene er klare.
+        tegnStreker(flate);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => tegnStreker(flate));
+      })
       .catch(e => kart.replaceChildren(el("p", "feil", `Fikk ikke lastet kartet (${e.message})`)));
   };
 })();

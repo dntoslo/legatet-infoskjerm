@@ -4,7 +4,8 @@
     "Hardangervidda og Skarvheimen",
     "Rondane og Dovrefjell",
     "Breheimen",
-    "Langsua og Femundsmarka",
+    "Langsua",
+    "Femundsmarka",
     "Oslomarka og Oslofjorden"
   ],
   "hytter": [
@@ -32,8 +33,8 @@
     { "id": 10496, "navn": "Nørdstedalseter", "omrade": "Breheimen" },
     { "id": 10490, "navn": "Sota Sæter", "omrade": "Breheimen" },
 
-    { "id": 101369, "navn": "Liomseter", "omrade": "Langsua og Femundsmarka" },
-    { "id": 10726, "navn": "Svukuriset", "omrade": "Langsua og Femundsmarka" },
+    { "id": 101369, "navn": "Liomseter", "omrade": "Langsua" },
+    { "id": 10726, "navn": "Svukuriset", "omrade": "Femundsmarka" },
 
     { "id": 10645, "navn": "Kobberhaughytta", "omrade": "Oslomarka og Oslofjorden" },
     { "id": 101380, "navn": "Sæteren Gård", "omrade": "Oslomarka og Oslofjorden" },

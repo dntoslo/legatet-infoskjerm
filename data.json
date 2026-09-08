@@ -1,12 +1,13 @@
 {
- "hentet": "2026-09-08T14:25:15+02:00",
+ "hentet": "2026-09-08T14:41:11+02:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
   "Hardangervidda og Skarvheimen",
   "Rondane og Dovrefjell",
   "Breheimen",
-  "Langsua og Femundsmarka",
+  "Langsua",
+  "Femundsmarka",
   "Oslomarka og Oslofjorden"
  ],
  "hytter": [
@@ -1373,7 +1374,7 @@
    "id": 101369,
    "navn": "Liomseter",
    "navnUtno": "Liomseter",
-   "omrade": "Langsua og Femundsmarka",
+   "omrade": "Langsua",
    "utnoUrl": "https://ut.no/hytte/101369",
    "lon": 9.5951,
    "lat": 61.2426,
@@ -1435,7 +1436,7 @@
    "id": 10726,
    "navn": "Svukuriset",
    "navnUtno": "Svukuriset",
-   "omrade": "Langsua og Femundsmarka",
+   "omrade": "Femundsmarka",
    "utnoUrl": "https://ut.no/hytte/10726",
    "lon": 12.015,
    "lat": 62.2215,
