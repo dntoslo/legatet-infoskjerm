@@ -1,0 +1,60 @@
+name: Oppdater åpningstider og publiser
+
+on:
+  schedule:
+    # Cron går i UTC og kjenner ikke sommertid. Fire linjer dekker
+    # 06:30 og 12:00 norsk tid både sommer (UTC+2) og vinter (UTC+1).
+    # De to ekstra kjøringene committer bare hvis data er endret.
+    - cron: "30 4 * * *"
+    - cron: "30 5 * * *"
+    - cron: "0 10 * * *"
+    - cron: "0 11 * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  oppdater-og-publiser:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Hent åpningstider fra ut.no
+        run: python scripts/hent_data.py
+
+      - name: Commit data.json hvis endret
+        run: |
+          if git diff --quiet -- data.json; then
+            echo "Ingen endring i data.json"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data.json
+            git commit -m "Oppdater åpningstider fra ut.no"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deploy
+        uses: actions/deploy-pages@v4

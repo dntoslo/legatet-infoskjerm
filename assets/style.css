@@ -1,0 +1,205 @@
+/* DNT-profil: farger fra DNTs visuelle identitet. Lyse, varme flater,
+   sort tekst, DNT Rød kun som aksent. Skrift skaleres med skjermhøyden
+   slik at alt fyller en 16:9-skjerm uten scrolling. */
+
+@font-face {
+  font-family: "ABC Social";
+  src: url("fonts/ABCSocial-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ABC Social";
+  src: url("fonts/ABCSocial-Light.otf") format("opentype");
+  font-weight: 300;
+  font-display: swap;
+}
+
+:root {
+  --lys-beige: #FFF7E9;
+  --moerk-beige: #F8E6C6;
+  --blaa: #C5DCEA;
+  --lys-groenn: #E9F2D9;
+  --moerk-groenn: #597E61;
+  --hvit: #FFFFFF;
+  --dnt-roed: #D82D20;
+  --gul: #FFF097;
+  --oransje: #FFB674;
+  --lys-roed: #FFC8C3;
+  --sort: #000000;
+  --graa: #5a5651;
+
+  --marg: 2.2vh;
+  --font: "ABC Social", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--lys-beige);
+  color: var(--sort);
+  font-family: var(--font);
+  font-weight: 300;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: var(--marg) calc(var(--marg) * 1.4);
+  gap: var(--marg);
+}
+
+/* Header */
+.topp {
+  display: flex;
+  align-items: center;
+  gap: 2.4vh;
+  flex: 0 0 auto;
+}
+.logo {
+  height: 7.5vh;
+  width: 7.5vh;
+  object-fit: contain;
+}
+.tittel h1 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 5.2vh;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.undertittel {
+  margin: 0.4vh 0 0;
+  font-size: 2.4vh;
+  color: var(--graa);
+}
+.idag {
+  margin-left: auto;
+  text-align: right;
+  font-size: 2.6vh;
+  color: var(--graa);
+}
+.idag strong {
+  display: block;
+  font-weight: 400;
+  color: var(--sort);
+  font-size: 3.2vh;
+}
+
+/* Rutenett med områdekort */
+.rutenett {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--marg);
+}
+.laster, .feil {
+  grid-column: 1 / -1;
+  align-self: center;
+  text-align: center;
+  font-size: 3vh;
+  color: var(--graa);
+}
+
+.kort {
+  background: var(--hvit);
+  border-radius: 1.6vh;
+  padding: 1.8vh 2vh 1.4vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-shadow: 0 0.2vh 0.8vh rgba(0, 0, 0, 0.04);
+}
+.kort h2 {
+  margin: 0 0 1.2vh;
+  padding-bottom: 1vh;
+  font-weight: 400;
+  font-size: 2.9vh;
+  line-height: 1.1;
+  border-bottom: 0.3vh solid var(--dnt-roed);
+}
+.kort ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.hytte {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.3vh;
+  padding: 0.5vh 0;
+  font-size: 2.45vh;
+  line-height: 1.15;
+}
+.hytte + .hytte {
+  border-top: 1px solid var(--moerk-beige);
+}
+.hytte .navn {
+  font-weight: 400;
+  white-space: nowrap;
+}
+.hytte .status {
+  text-align: right;
+  color: var(--graa);
+  font-size: 2.1vh;
+  line-height: 1.2;
+}
+.hytte .status .niva {
+  color: var(--sort);
+  font-weight: 400;
+}
+.hytte .status .snart {
+  color: var(--dnt-roed);
+  font-weight: 400;
+}
+
+/* Statusprikk */
+.prikk {
+  display: inline-block;
+  width: 1.9vh;
+  height: 1.9vh;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+.prikk.betjent { background: var(--moerk-groenn); }
+.prikk.selvbetjent { background: var(--oransje); }
+.prikk.stengt { background: var(--dnt-roed); }
+.prikk.ukjent { background: var(--graa); }
+
+.hytte.stengt .navn { color: var(--graa); font-weight: 300; }
+
+/* Bunn */
+.bunn {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2.1vh;
+  color: var(--graa);
+}
+.forklaring {
+  display: flex;
+  gap: 3vh;
+}
+.forklaring .prikk {
+  width: 1.5vh;
+  height: 1.5vh;
+  margin-right: 0.8vh;
+}
+.oppdatert.gammel {
+  color: var(--dnt-roed);
+  font-weight: 400;
+}

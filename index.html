@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Betjente hytter, DNT Oslo og Omegn</title>
+  <link rel="icon" href="assets/dnt-logo.png">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="topp">
+    <img class="logo" src="assets/dnt-logo.png" alt="DNT">
+    <div class="tittel">
+      <h1>Betjente hytter</h1>
+      <p class="undertittel">DNT Oslo og Omegn</p>
+    </div>
+    <div class="idag" id="idag"></div>
+  </header>
+
+  <main class="rutenett" id="rutenett" aria-live="polite">
+    <p class="laster">Henter åpningstider …</p>
+  </main>
+
+  <footer class="bunn">
+    <div class="forklaring">
+      <span><i class="prikk betjent"></i>Betjent</span>
+      <span><i class="prikk selvbetjent"></i>Selvbetjent</span>
+      <span><i class="prikk stengt"></i>Stengt</span>
+    </div>
+    <div class="oppdatert" id="oppdatert"></div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
