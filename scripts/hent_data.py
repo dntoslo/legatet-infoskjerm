@@ -54,6 +54,7 @@ Q_HYTTE = """
 query($id: Int!) {
   cabin(id: $id) {
     id name serviceLevel status updatedAt
+    geojson
     serviceStatusAll { serviceLevel beds from to openAllYear }
   }
 }
@@ -111,7 +112,19 @@ def hent_hytte(hytte_id):
     raise siste_feil
 
 
+def koordinater(cabin):
+    """(lon, lat) fra geojson-punktet på ut.no, eller (None, None) hvis det mangler.
+    Brukes av kartvisningen (kart.html). Koordinatene er offentlige på ut.no."""
+    try:
+        lon, lat = cabin["geojson"]["coordinates"][:2]
+        return round(float(lon), 4), round(float(lat), 4)
+    except (KeyError, TypeError, ValueError):
+        print(f"ADVARSEL {cabin.get('name')}: mangler koordinater på ut.no", file=sys.stderr)
+        return None, None
+
+
 def normaliser(konfig_hytte, cabin):
+    lon, lat = koordinater(cabin)
     perioder = []
     for p in cabin.get("serviceStatusAll") or []:
         perioder.append(
@@ -130,6 +143,8 @@ def normaliser(konfig_hytte, cabin):
         "navnUtno": cabin.get("name"),
         "omrade": konfig_hytte["omrade"],
         "utnoUrl": f"https://ut.no/hytte/{cabin['id']}",
+        "lon": lon,
+        "lat": lat,
         "serviceLevel": cabin.get("serviceLevel"),
         "oppdatertUtno": cabin.get("updatedAt"),
         "perioder": perioder,

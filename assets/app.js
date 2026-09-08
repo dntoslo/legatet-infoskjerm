@@ -133,6 +133,27 @@
     return e;
   }
 
+  // Ett områdekort med overskrift og én linje per hytte. Brukes også av kart.js.
+  function tegnKort(omrade, hytter, iDag) {
+    const kort = el("section", "kort");
+    kort.appendChild(el("h2", null, omrade));
+    const liste = el("ul");
+    for (const h of hytter) {
+      const s = status(h, iDag);
+      const li = el("li", `hytte ${s.klasse}`);
+      li.appendChild(el("i", `prikk ${s.klasse}`));
+      li.appendChild(el("span", "navn", h.navn));
+      const st = el("span", "status");
+      st.appendChild(el("span", "niva", s.niva));
+      st.appendChild(document.createTextNode(" · "));
+      st.appendChild(el("span", s.snart ? "snart" : "detalj", s.detalj));
+      li.appendChild(st);
+      liste.appendChild(li);
+    }
+    kort.appendChild(liste);
+    return kort;
+  }
+
   function tegn(data, iDag) {
     const rutenett = document.getElementById("rutenett");
     rutenett.replaceChildren();
@@ -141,24 +162,7 @@
     for (const omrade of omrader) {
       const hytter = data.hytter.filter(h => h.omrade === omrade);
       if (!hytter.length) continue;
-
-      const kort = el("section", "kort");
-      kort.appendChild(el("h2", null, omrade));
-      const liste = el("ul");
-      for (const h of hytter) {
-        const s = status(h, iDag);
-        const li = el("li", `hytte ${s.klasse}`);
-        li.appendChild(el("i", `prikk ${s.klasse}`));
-        li.appendChild(el("span", "navn", h.navn));
-        const st = el("span", "status");
-        st.appendChild(el("span", "niva", s.niva));
-        st.appendChild(document.createTextNode(" · "));
-        st.appendChild(el("span", s.snart ? "snart" : "detalj", s.detalj));
-        li.appendChild(st);
-        liste.appendChild(li);
-      }
-      kort.appendChild(liste);
-      rutenett.appendChild(kort);
+      rutenett.appendChild(tegnKort(omrade, hytter, iDag));
     }
   }
 
@@ -193,7 +197,10 @@
       const svar = await fetch(`${DATAFIL}?v=${Date.now()}`, { cache: "no-store" });
       if (!svar.ok) throw new Error(`HTTP ${svar.status}`);
       const data = await svar.json();
-      tegn(data, iDag);
+      // En annen visning (kart.html) kan overta tegningen ved å sette
+      // window.infoskjermTegn før denne fila lastes. Henting, dato og
+      // «sist oppdatert» er felles.
+      (window.infoskjermTegn || tegn)(data, iDag);
       visOppdatert(data.hentet);
     } catch (e) {
       const rutenett = document.getElementById("rutenett");
@@ -209,6 +216,6 @@
   last();
   setTimeout(() => location.reload(), RELOAD_MS);
 
-  // Eksponert for testing i konsollen: infoskjerm.status(hytte, "2026-10-04")
-  window.infoskjerm = { status, gjeldende, iDagOslo };
+  // Eksponert for kart.js og for testing i konsollen: infoskjerm.status(hytte, "2026-10-04")
+  window.infoskjerm = { status, gjeldende, iDagOslo, tegnKort, el };
 })();

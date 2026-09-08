@@ -1,0 +1,132 @@
+/* Kartvisning (kart.html). Bygger på style.css: farger, header, footer,
+   kort og prikker er felles. Her ligger bare det som er annerledes:
+   tre kolonner med kartet i midten, kort med høyde etter innhold, og
+   områdefargene som binder kort og flekk på kartet sammen.
+
+   Områdefargene er dempede DNT-toner, med hensikt ulike statusfargene
+   (grønn, oransje, rød), så prikkene leses tydelig oppå flekkene. */
+
+:root {
+  /* Rekkefølgen følger «omrader» i hytter.json. Breheimen (4) ligger tett på
+     Jotunheimen (1) på kartet, så de to må ha farger som skiller seg klart. */
+  --omrade-1: #C5DCEA;   /* blå: Jotunheimen */
+  --omrade-2: #FFF097;   /* gul: Hardangervidda og Skarvheimen */
+  --omrade-3: #E9F2D9;   /* lys grønn: Rondane og Dovrefjell */
+  --omrade-4: #DDD3EA;   /* lilla, dempet: Breheimen */
+  --omrade-5: #F5DDB0;   /* beige, litt dypere enn DNT mørk beige for å synes mot hvitt: Langsua og Femundsmarka */
+  --omrade-6: #FFC8C3;   /* lys rød: Oslomarka og Oslofjorden */
+}
+.omrade-1 { --farge: var(--omrade-1); }
+.omrade-2 { --farge: var(--omrade-2); }
+.omrade-3 { --farge: var(--omrade-3); }
+.omrade-4 { --farge: var(--omrade-4); }
+.omrade-5 { --farge: var(--omrade-5); }
+.omrade-6 { --farge: var(--omrade-6); }
+
+/* Tre kolonner: kort, kart, kort. Kartkolonnen er bred nok til at et kart
+   på ca. 79cqh høyde får plass uten luft på sidene. */
+.kartflate {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 60cqh minmax(0, 1fr);
+  gap: var(--marg);
+}
+.kartflate > .laster,
+.kartflate > .feil {
+  grid-column: 1 / -1;
+}
+
+.kolonne {
+  display: flex;
+  flex-direction: column;
+  gap: var(--marg);
+  min-height: 0;
+}
+.kolonne .kort {
+  flex: 0 1 auto;
+}
+
+/* Litt tettere linjer enn i rutenettvisningen, siden én kolonne kan ha
+   opptil 16 hytter. */
+.kartflate .kort {
+  padding: 1.5cqh 1.8cqh 1.2cqh;
+}
+.kartflate .kort h2 {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqh;
+  margin-bottom: 0.9cqh;
+  padding-bottom: 0.8cqh;
+  font-size: 2.6cqh;
+}
+.kartflate .kort h2::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 2.2cqh;
+  height: 2.2cqh;
+  border-radius: 0.6cqh;
+  background: var(--farge, var(--moerk-beige));
+}
+.kartflate .hytte {
+  font-size: 2.2cqh;
+  padding: 0.35cqh 0;
+  gap: 1.1cqh;
+}
+.kartflate .hytte .status {
+  font-size: 1.9cqh;
+}
+.kartflate .prikk {
+  width: 1.7cqh;
+  height: 1.7cqh;
+}
+.kartflate .forklaring .prikk {
+  width: 1.5cqh;
+  height: 1.5cqh;
+}
+
+/* Kartet */
+.kart {
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kart svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+.kart .laster,
+.kart .feil {
+  font-size: 2.4cqh;
+  color: var(--graa);
+  text-align: center;
+}
+
+/* Tegnet uttrykk: hvit landflate med tynn mørk strek mot den beige bakgrunnen. */
+.land path {
+  fill: var(--hvit);
+  stroke: var(--graa);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.flekk {
+  fill: var(--farge, var(--moerk-beige));
+  stroke: var(--farge, var(--moerk-beige));
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.hyttepunkt {
+  stroke: var(--hvit);
+  stroke-width: 2.5;
+}
+.hyttepunkt.betjent { fill: var(--moerk-groenn); }
+.hyttepunkt.selvbetjent { fill: var(--oransje); }
+.hyttepunkt.stengt { fill: var(--dnt-roed); r: 7; }
+.hyttepunkt.ukjent { fill: var(--graa); }

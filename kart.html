@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Betjente hytter på kartet, DNT Oslo og Omegn</title>
+  <link rel="icon" href="assets/dnt-logo.png">
+  <!-- Kartvisning under utprøving. Versjonsnummeret i lenkene bumpes ved endringer. -->
+  <link rel="stylesheet" href="assets/style.css?v=3">
+  <link rel="stylesheet" href="assets/kart.css?v=1">
+</head>
+<body>
+<div class="skjerm">
+  <header class="topp">
+    <img class="logo" src="assets/dnt-logo.png" alt="DNT">
+    <div class="tittel">
+      <h1>Betjente hytter</h1>
+      <p class="undertittel">DNT Oslo og Omegn</p>
+    </div>
+    <div class="idag" id="idag"></div>
+  </header>
+
+  <main class="kartflate" id="rutenett" aria-live="polite">
+    <p class="laster">Henter åpningstider …</p>
+  </main>
+
+  <footer class="bunn">
+    <div class="forklaring">
+      <span><i class="prikk betjent"></i>Betjent</span>
+      <span><i class="prikk selvbetjent"></i>Selvbetjent</span>
+      <span><i class="prikk stengt"></i>Stengt</span>
+    </div>
+    <div class="oppdatert" id="oppdatert"></div>
+  </footer>
+</div>
+
+  <!-- kart.js må lastes før app.js, siden den setter window.infoskjermTegn. -->
+  <script src="assets/kart.js?v=1"></script>
+  <script src="assets/app.js?v=3"></script>
+</body>
+</html>
