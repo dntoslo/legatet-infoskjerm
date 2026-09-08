@@ -65,6 +65,16 @@ Finnes, men hentes ikke fordi de er interne eller irrelevante: `internalNote`, `
 
 `StringFieldComparison` (for `name`-filter): `eq`, `neq`, `like`, `notLike`, `iLike`, `notILike`, `in`, `notIn` med flere.
 
+## Områder (brukes av lag_kart.py)
+
+Hver hytte har `areas { id name areaType }`. DNT-områdene har `areaType: DNT_AREA`, villreinområder `REINDEER_AREA`. Geometrien til et område hentes med
+
+```graphql
+query($id: Int!) { area(id: $id) { name areaType geojson centerPointGeojson } }
+```
+
+`geojson` er Polygon eller MultiPolygon i lon/lat. Polygonene kan gå utenfor riksgrensa (Femundsmarka går inn i Sverige), så `lag_kart.py` klipper dem mot landomrisset. ID-ene til områdene på skjermen står i `utnoOmrader` i `hytter.json`. Andre felt på typen `Area`: `status`, `provider`, `subType`, `description`, `area`, `restrictions`, `links`, `media`.
+
 ## Andre nyttige innganger
 
 - `search(input: {searchString: "...", fullResult: true})` er ut.no sitt autocomplete-søk på tvers av hytter, ruter og steder.
