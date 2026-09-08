@@ -8,6 +8,15 @@
     "Femundsmarka",
     "Oslomarka og Oslofjorden"
   ],
+  "utnoOmrader": {
+    "Jotunheimen": [1231],
+    "Hardangervidda og Skarvheimen": [1235, 1232],
+    "Rondane og Dovrefjell": [1224, 1243],
+    "Breheimen": [1227],
+    "Langsua": [1229],
+    "Femundsmarka": [1215],
+    "Oslomarka og Oslofjorden": [1223, 1279]
+  },
   "hytter": [
     { "id": 10941, "navn": "Fannaråken", "omrade": "Jotunheimen" },
     { "id": 10580, "navn": "Fondsbu", "omrade": "Jotunheimen" },

@@ -18,11 +18,11 @@ Statusen regnes ut på TV-en, ikke i scriptet, slik at en hytte som åpner eller
 
 ## Kartvisning (under utprøving)
 
-`kart.html` viser det samme innholdet med et enkelt kart av Sør-Norge i midten og områdekortene i to kolonner rundt. Hvert område har en farge som går igjen på kortet og som en flekk på kartet, og hyttene er prikker farget etter dagens status. Adresse når branchen er publisert: `.../legatet-infoskjerm/kart.html`.
+`kart.html` viser det samme innholdet med et enkelt kart av Sør-Norge i midten og områdekortene i to kolonner rundt. Hvert fjellområde er fylt med en farge som går igjen på kortet, en strek binder kort og område sammen, og hyttene er prikker farget etter dagens status. De største innsjøene, Glomma og noen byer er med for gjenkjenning. Adresse når branchen er publisert: `.../legatet-infoskjerm/kart.html`.
 
 - `assets/kart.js` overtar tegningen fra `app.js` gjennom `window.infoskjermTegn` og gjenbruker statuslogikken og kortene derfra. Hvilken kolonne et område står i, styres av `KOLONNER` øverst i fila.
 - Koordinatene til hyttene hentes fra ut.no av `hent_data.py` og ligger som `lon` og `lat` i `data.json`.
-- Omrisset ligger i `assets/sor-norge.json` og lages av `scripts/lag_kart.py` fra Natural Earth (public domain). Scriptet kjøres bare når omrisset skal endres, med `uv run --with shapely scripts/lag_kart.py`. Utsnitt og grad av forenkling står øverst i scriptet.
+- Kartgrunnlaget ligger i `assets/sor-norge.json` og lages av `scripts/lag_kart.py` med `uv run --with shapely scripts/lag_kart.py`. Landomriss, innsjøer, elver og byer kommer fra Natural Earth (public domain). Fjellområdene er DNT-områdene på ut.no. Hvilke ut.no-områder som hører til hvert kort, står i `utnoOmrader` i `hytter.json`, så et nytt område trenger både en linje der og en ny kjøring av scriptet. Utsnitt, forenklingsgrad og hvilke innsjøer, elver og byer som er med, står øverst i scriptet.
 
 ## Legge til eller fjerne en hytte
 
