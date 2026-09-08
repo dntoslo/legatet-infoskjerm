@@ -118,7 +118,14 @@
     for (const linje of kart.elver || []) vann.appendChild(svgEl("path", { class: "elv", d: sti(projiser(proj, linje), false) }));
     svg.appendChild(vann);
 
-    // Byer med navn
+    // Grenselinja tegnes én gang til, uten fyll, så den ligger over områdene
+    // og vannet der de går helt ut til kysten eller riksgrensa.
+    const grense = svgEl("g", { class: "grense" });
+    for (const ring of kart.ringer) grense.appendChild(svgEl("path", { d: sti(projiser(proj, ring), true) }));
+    svg.appendChild(grense);
+
+    // Byer med navn, over grensa så den hvite kanten rundt bokstavene
+    // dekker kystlinja der byen ligger ved sjøen.
     const byer = svgEl("g", { class: "byer" });
     for (const by of kart.byer || []) {
       const [x, y] = proj.p(by.lon, by.lat);
@@ -128,12 +135,6 @@
       byer.appendChild(t);
     }
     svg.appendChild(byer);
-
-    // Grenselinja tegnes én gang til, uten fyll, så den ligger over områdene
-    // og vannet der de går helt ut til kysten eller riksgrensa.
-    const grense = svgEl("g", { class: "grense" });
-    for (const ring of kart.ringer) grense.appendChild(svgEl("path", { d: sti(projiser(proj, ring), true) }));
-    svg.appendChild(grense);
 
     // Hyttene øverst
     const prikker = svgEl("g", { class: "prikker" });
