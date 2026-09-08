@@ -7,7 +7,7 @@ Adresse: https://dntoslo.github.io/legatet-infoskjerm/
 ## Slik virker det
 
 - `scripts/hent_data.py` henter åpningsperiodene for hyttene i `hytter.json` fra ut.no og skriver `data.json`.
-- GitHub Action (`.github/workflows/oppdater.yml`) kjører scriptet klokka 06:30 og 12:00 norsk tid, committer `data.json` hvis noe er endret og publiserer siden til GitHub Pages. Den kjører også ved hver push til `main`.
+- GitHub Action (`.github/workflows/oppdater.yml`) kjører scriptet klokka 06:30 og 12:00 norsk tid og publiserer siden til GitHub Pages. `data.json` committes til repoet bare når selve hyttedataene er endret, men den publiserte siden får alltid ferskt tidsstempel. Action kjører også ved hver push til `main`.
 - `index.html` med `assets/app.js` leser `data.json`, regner ut status for dagens dato i norsk tid og tegner ett kort per fjellområde. Tidspunktet for siste henting vises nederst til høyre. Er dataene eldre enn 36 timer, blir teksten rød.
 - Siden laster seg selv på nytt hver 30. minutt, i tillegg til at TV-en refresher.
 

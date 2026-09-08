@@ -36,19 +36,19 @@ jobs:
           python-version: "3.12"
 
       - name: Hent åpningstider fra ut.no
+        id: hent
         run: python scripts/hent_data.py
 
-      - name: Commit data.json hvis endret
+      # Committer bare når hyttedataene er endret, ikke bare tidsstempelet.
+      # Den publiserte siden får uansett fersk data.json fra arbeidskopien.
+      - name: Commit data.json hvis hyttedata er endret
+        if: steps.hent.outputs.endret == 'true'
         run: |
-          if git diff --quiet -- data.json; then
-            echo "Ingen endring i data.json"
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data.json
-            git commit -m "Oppdater åpningstider fra ut.no"
-            git push
-          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git commit -m "Oppdater åpningstider fra ut.no"
+          git push
 
       - uses: actions/configure-pages@v5
 

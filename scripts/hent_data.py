@@ -11,6 +11,7 @@ fil beholdes og kjøringen blir rød.
 """
 
 import json
+import os
 import sys
 import time
 import urllib.error
@@ -157,6 +158,18 @@ def main():
         print(f"\n{len(feil)} av {len(konfig['hytter'])} hytter feilet. data.json er ikke endret.", file=sys.stderr)
         return 1
 
+    # Har selve hyttedataene endret seg siden sist? Tidsstempelet «hentet»
+    # endres alltid, så det holdes utenfor sammenligningen. GitHub Action
+    # bruker svaret til å bare committe når noe faktisk er nytt, mens den
+    # publiserte siden alltid får ferskt tidsstempel.
+    endret = True
+    if UTFIL.exists():
+        try:
+            forrige = json.loads(UTFIL.read_text(encoding="utf-8"))
+            endret = forrige.get("hytter") != hytter_ut or forrige.get("omrader") != konfig["omrader"]
+        except ValueError:
+            endret = True
+
     naa = naa_oslo().replace(microsecond=0)
     ut = {
         "hentet": naa.isoformat(),
@@ -166,6 +179,12 @@ def main():
     }
     UTFIL.write_text(json.dumps(ut, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"\nSkrev {UTFIL.name} med {len(hytter_ut)} hytter, hentet {naa.isoformat()}")
+    print("Hyttedata endret siden sist" if endret else "Hyttedata uendret siden sist")
+
+    github_output = os.environ.get("GITHUB_OUTPUT")
+    if github_output:
+        with open(github_output, "a", encoding="utf-8") as f:
+            f.write(f"endret={'true' if endret else 'false'}\n")
     return 0
 
 
