@@ -1,6 +1,9 @@
 /* DNT-profil: farger fra DNTs visuelle identitet. Lyse, varme flater,
-   sort tekst, DNT Rød kun som aksent. Skrift skaleres med skjermhøyden
-   slik at alt fyller en 16:9-skjerm uten scrolling. */
+   sort tekst, DNT Rød kun som aksent.
+
+   Alt innhold ligger i .skjerm, en fast 16:9-flate som alltid får plass i
+   vinduet og sentreres. Størrelser bruker cqh (prosent av flatens høyde),
+   så layouten ser lik ut på en TV, i et smalt vindu og i et stående vindu. */
 
 @font-face {
   font-family: "ABC Social";
@@ -29,7 +32,6 @@
   --sort: #000000;
   --graa: #5a5651;
 
-  --marg: 2.2vh;
   --font: "ABC Social", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -47,47 +49,60 @@ html, body {
 
 body {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+  width: 100vw;
+}
+
+/* Fast 16:9-flate som fyller vinduet så langt formatet tillater. */
+.skjerm {
+  --marg: 2.2cqh;
+  container-type: size;
+  width: min(100vw, calc(100dvh * 16 / 9));
+  height: min(100dvh, calc(100vw * 9 / 16));
+  display: flex;
   flex-direction: column;
-  height: 100vh;
   padding: var(--marg) calc(var(--marg) * 1.4);
   gap: var(--marg);
+  overflow: hidden;
 }
 
 /* Header */
 .topp {
   display: flex;
   align-items: center;
-  gap: 2.4vh;
+  gap: 2.4cqh;
   flex: 0 0 auto;
 }
 .logo {
-  height: 7.5vh;
-  width: 7.5vh;
+  height: 7.5cqh;
+  width: 7.5cqh;
   object-fit: contain;
 }
 .tittel h1 {
   margin: 0;
   font-weight: 400;
-  font-size: 5.2vh;
+  font-size: 5.2cqh;
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
 .undertittel {
-  margin: 0.4vh 0 0;
-  font-size: 2.4vh;
+  margin: 0.4cqh 0 0;
+  font-size: 2.4cqh;
   color: var(--graa);
 }
 .idag {
   margin-left: auto;
   text-align: right;
-  font-size: 2.6vh;
+  font-size: 2.6cqh;
   color: var(--graa);
 }
 .idag strong {
   display: block;
   font-weight: 400;
   color: var(--sort);
-  font-size: 3.2vh;
+  font-size: 3.2cqh;
 }
 
 /* Rutenett med områdekort */
@@ -103,26 +118,26 @@ body {
   grid-column: 1 / -1;
   align-self: center;
   text-align: center;
-  font-size: 3vh;
+  font-size: 3cqh;
   color: var(--graa);
 }
 
 .kort {
   background: var(--hvit);
-  border-radius: 1.6vh;
-  padding: 1.8vh 2vh 1.4vh;
+  border-radius: 1.6cqh;
+  padding: 1.8cqh 2cqh 1.4cqh;
   display: flex;
   flex-direction: column;
   min-height: 0;
-  box-shadow: 0 0.2vh 0.8vh rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0.2cqh 0.8cqh rgba(0, 0, 0, 0.04);
 }
 .kort h2 {
-  margin: 0 0 1.2vh;
-  padding-bottom: 1vh;
+  margin: 0 0 1.2cqh;
+  padding-bottom: 1cqh;
   font-weight: 400;
-  font-size: 2.9vh;
+  font-size: 2.9cqh;
   line-height: 1.1;
-  border-bottom: 0.3vh solid var(--dnt-roed);
+  border-bottom: 0.3cqh solid var(--dnt-roed);
 }
 .kort ul {
   list-style: none;
@@ -138,9 +153,9 @@ body {
   display: grid;
   grid-template-columns: auto auto minmax(0, 1fr);
   align-items: center;
-  gap: 1.3vh;
-  padding: 0.5vh 0;
-  font-size: 2.45vh;
+  gap: 1.3cqh;
+  padding: 0.5cqh 0;
+  font-size: 2.45cqh;
   line-height: 1.15;
 }
 .hytte + .hytte {
@@ -153,7 +168,7 @@ body {
 .hytte .status {
   text-align: right;
   color: var(--graa);
-  font-size: 2.1vh;
+  font-size: 2.1cqh;
   line-height: 1.2;
 }
 .hytte .status .niva {
@@ -168,8 +183,8 @@ body {
 /* Statusprikk */
 .prikk {
   display: inline-block;
-  width: 1.9vh;
-  height: 1.9vh;
+  width: 1.9cqh;
+  height: 1.9cqh;
   border-radius: 50%;
   flex: 0 0 auto;
   vertical-align: middle;
@@ -187,17 +202,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 2.1vh;
+  font-size: 2.1cqh;
   color: var(--graa);
 }
 .forklaring {
   display: flex;
-  gap: 3vh;
+  gap: 3cqh;
 }
 .forklaring .prikk {
-  width: 1.5vh;
-  height: 1.5vh;
-  margin-right: 0.8vh;
+  width: 1.5cqh;
+  height: 1.5cqh;
+  margin-right: 0.8cqh;
 }
 .oppdatert.gammel {
   color: var(--dnt-roed);
