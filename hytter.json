@@ -1,12 +1,23 @@
 {
   "omrader": [
     "Jotunheimen",
-    "Hardangervidda og Skarvheimen",
+    "Hardangervidda",
+    "Skarvheimen",
     "Rondane og Dovrefjell",
     "Breheimen",
-    "Langsua og Femundsmarka",
+    "Langsua",
+    "Femundsmarka",
     "Oslomarka og Oslofjorden"
   ],
+  "utnoOmrader": {
+    "Jotunheimen": [1231],
+    "Hardangervidda": [1235],
+    "Skarvheimen": [1232],
+    "Rondane og Dovrefjell": [1224, 1243],
+    "Breheimen": [1227],
+    "Langsua": [1229],
+    "Femundsmarka": [1215]
+  },
   "hytter": [
     { "id": 10941, "navn": "Fannaråken", "omrade": "Jotunheimen" },
     { "id": 10580, "navn": "Fondsbu", "omrade": "Jotunheimen" },
@@ -16,13 +27,14 @@
     { "id": 101059, "navn": "Leirvassbu", "omrade": "Jotunheimen" },
     { "id": 10734, "navn": "Skogadalsbøen", "omrade": "Jotunheimen" },
 
-    { "id": 101272, "navn": "Aurlandsdalen", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 10929, "navn": "Finsehytta", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 10808, "navn": "Geiterygghytta", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 10973, "navn": "Iungsdalshytta", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 101064, "navn": "Krækkja", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 10712, "navn": "Litlos", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 10495, "navn": "Sandhaug", "omrade": "Hardangervidda og Skarvheimen" },
+    { "id": 10929, "navn": "Finsehytta", "omrade": "Hardangervidda" },
+    { "id": 101064, "navn": "Krækkja", "omrade": "Hardangervidda" },
+    { "id": 10712, "navn": "Litlos", "omrade": "Hardangervidda" },
+    { "id": 10495, "navn": "Sandhaug", "omrade": "Hardangervidda" },
+
+    { "id": 101272, "navn": "Aurlandsdalen", "omrade": "Skarvheimen" },
+    { "id": 10808, "navn": "Geiterygghytta", "omrade": "Skarvheimen" },
+    { "id": 10973, "navn": "Iungsdalshytta", "omrade": "Skarvheimen" },
 
     { "id": 101110, "navn": "Bjørnhollia", "omrade": "Rondane og Dovrefjell" },
     { "id": 10494, "navn": "Grimsdalshytta", "omrade": "Rondane og Dovrefjell" },
@@ -32,8 +44,8 @@
     { "id": 10496, "navn": "Nørdstedalseter", "omrade": "Breheimen" },
     { "id": 10490, "navn": "Sota Sæter", "omrade": "Breheimen" },
 
-    { "id": 101369, "navn": "Liomseter", "omrade": "Langsua og Femundsmarka" },
-    { "id": 10726, "navn": "Svukuriset", "omrade": "Langsua og Femundsmarka" },
+    { "id": 101369, "navn": "Liomseter", "omrade": "Langsua" },
+    { "id": 10726, "navn": "Svukuriset", "omrade": "Femundsmarka" },
 
     { "id": 10645, "navn": "Kobberhaughytta", "omrade": "Oslomarka og Oslofjorden" },
     { "id": 101380, "navn": "Sæteren Gård", "omrade": "Oslomarka og Oslofjorden" },

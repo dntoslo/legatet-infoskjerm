@@ -1,12 +1,14 @@
 {
- "hentet": "2026-09-08T13:45:23+02:00",
+ "hentet": "2026-09-08T15:08:48+02:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
-  "Hardangervidda og Skarvheimen",
+  "Hardangervidda",
+  "Skarvheimen",
   "Rondane og Dovrefjell",
   "Breheimen",
-  "Langsua og Femundsmarka",
+  "Langsua",
+  "Femundsmarka",
   "Oslomarka og Oslofjorden"
  ],
  "hytter": [
@@ -16,6 +18,8 @@
    "navnUtno": "Fannaråkhytta",
    "omrade": "Jotunheimen",
    "utnoUrl": "https://ut.no/hytte/10941",
+   "lon": 7.9069,
+   "lat": 61.5161,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-08-31T07:15:07.084Z",
    "perioder": [
@@ -55,6 +59,8 @@
    "navnUtno": "Fondsbu",
    "omrade": "Jotunheimen",
    "utnoUrl": "https://ut.no/hytte/10580",
+   "lon": 8.2973,
+   "lat": 61.3752,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-06T12:36:21.211Z",
    "perioder": [
@@ -108,6 +114,8 @@
    "navnUtno": "Gjendebu",
    "omrade": "Jotunheimen",
    "utnoUrl": "https://ut.no/hytte/10581",
+   "lon": 8.4885,
+   "lat": 61.4514,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-07T14:50:58.372Z",
    "perioder": [
@@ -168,6 +176,8 @@
    "navnUtno": "Gjendesheim",
    "omrade": "Jotunheimen",
    "utnoUrl": "https://ut.no/hytte/10604",
+   "lon": 8.8128,
+   "lat": 61.4941,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-07T11:20:29.407Z",
    "perioder": [
@@ -221,6 +231,8 @@
    "navnUtno": "Glitterheim",
    "omrade": "Jotunheimen",
    "utnoUrl": "https://ut.no/hytte/10583",
+   "lon": 8.6324,
+   "lat": 61.6227,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-06T11:59:23.673Z",
    "perioder": [
@@ -288,6 +300,8 @@
    "navnUtno": "Leirvassbu Turisthytte",
    "omrade": "Jotunheimen",
    "utnoUrl": "https://ut.no/hytte/101059",
+   "lon": 8.2473,
+   "lat": 61.5488,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-07T08:49:38.736Z",
    "perioder": [
@@ -362,6 +376,8 @@
    "navnUtno": "Skogadalsbøen",
    "omrade": "Jotunheimen",
    "utnoUrl": "https://ut.no/hytte/10734",
+   "lon": 8.0143,
+   "lat": 61.4632,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-07T06:18:50.981Z",
    "perioder": [
@@ -410,50 +426,13 @@
    ]
   },
   {
-   "id": 101272,
-   "navn": "Aurlandsdalen",
-   "navnUtno": "Aurlandsdalen Turisthytte Østerbø",
-   "omrade": "Hardangervidda og Skarvheimen",
-   "utnoUrl": "https://ut.no/hytte/101272",
-   "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-05T09:50:40.661Z",
-   "perioder": [
-    {
-     "niva": "STAFFED",
-     "senger": 117,
-     "fra": "2025-05-23",
-     "til": "2025-09-21",
-     "heleAaret": false
-    },
-    {
-     "niva": "CLOSED",
-     "senger": 0,
-     "fra": "2025-09-21",
-     "til": "2026-05-22",
-     "heleAaret": false
-    },
-    {
-     "niva": "STAFFED",
-     "senger": 117,
-     "fra": "2026-05-22",
-     "til": "2026-09-20",
-     "heleAaret": false
-    },
-    {
-     "niva": "CLOSED",
-     "senger": 0,
-     "fra": "2026-09-20",
-     "til": "2026-12-31",
-     "heleAaret": false
-    }
-   ]
-  },
-  {
    "id": 10929,
    "navn": "Finsehytta",
    "navnUtno": "Finsehytta",
-   "omrade": "Hardangervidda og Skarvheimen",
+   "omrade": "Hardangervidda",
    "utnoUrl": "https://ut.no/hytte/10929",
+   "lon": 7.507,
+   "lat": 60.5979,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-07T16:45:51.446Z",
    "perioder": [
@@ -565,124 +544,13 @@
    ]
   },
   {
-   "id": 10808,
-   "navn": "Geiterygghytta",
-   "navnUtno": "Geiterygghytta",
-   "omrade": "Hardangervidda og Skarvheimen",
-   "utnoUrl": "https://ut.no/hytte/10808",
-   "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-06T12:27:20.214Z",
-   "perioder": [
-    {
-     "niva": "STAFFED",
-     "senger": 88,
-     "fra": "2025-06-27",
-     "til": "2025-09-14",
-     "heleAaret": false
-    },
-    {
-     "niva": "CLOSED",
-     "senger": 0,
-     "fra": "2025-09-14",
-     "til": "2026-02-27",
-     "heleAaret": false
-    },
-    {
-     "niva": "STAFFED",
-     "senger": 88,
-     "fra": "2026-02-27",
-     "til": "2026-05-03",
-     "heleAaret": false
-    },
-    {
-     "niva": "CLOSED",
-     "senger": 0,
-     "fra": "2026-05-03",
-     "til": "2026-06-26",
-     "heleAaret": false
-    },
-    {
-     "niva": "STAFFED",
-     "senger": 88,
-     "fra": "2026-06-26",
-     "til": "2026-09-13",
-     "heleAaret": false
-    },
-    {
-     "niva": "CLOSED",
-     "senger": 0,
-     "fra": "2026-09-13",
-     "til": "2026-12-31",
-     "heleAaret": false
-    }
-   ]
-  },
-  {
-   "id": 10973,
-   "navn": "Iungsdalshytta",
-   "navnUtno": "Iungsdalshytta",
-   "omrade": "Hardangervidda og Skarvheimen",
-   "utnoUrl": "https://ut.no/hytte/10973",
-   "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-07T08:24:34.966Z",
-   "perioder": [
-    {
-     "niva": "CLOSED",
-     "senger": 0,
-     "fra": "2025-10-15",
-     "til": "2026-02-15",
-     "heleAaret": false
-    },
-    {
-     "niva": "SELF_SERVICE",
-     "senger": 12,
-     "fra": "2026-02-15",
-     "til": "2026-02-27",
-     "heleAaret": false
-    },
-    {
-     "niva": "STAFFED",
-     "senger": 52,
-     "fra": "2026-02-27",
-     "til": "2026-04-19",
-     "heleAaret": false
-    },
-    {
-     "niva": "SELF_SERVICE",
-     "senger": 12,
-     "fra": "2026-04-19",
-     "til": "2026-06-26",
-     "heleAaret": false
-    },
-    {
-     "niva": "STAFFED",
-     "senger": 52,
-     "fra": "2026-06-26",
-     "til": "2026-09-13",
-     "heleAaret": false
-    },
-    {
-     "niva": "SELF_SERVICE",
-     "senger": 12,
-     "fra": "2026-09-13",
-     "til": "2026-10-15",
-     "heleAaret": false
-    },
-    {
-     "niva": "CLOSED",
-     "senger": 0,
-     "fra": "2026-10-15",
-     "til": "2027-02-14",
-     "heleAaret": false
-    }
-   ]
-  },
-  {
    "id": 101064,
    "navn": "Krækkja",
    "navnUtno": "Krækkja",
-   "omrade": "Hardangervidda og Skarvheimen",
+   "omrade": "Hardangervidda",
    "utnoUrl": "https://ut.no/hytte/101064",
+   "lon": 7.7131,
+   "lat": 60.4514,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-06T11:34:58.243Z",
    "perioder": [
@@ -727,8 +595,10 @@
    "id": 10712,
    "navn": "Litlos",
    "navnUtno": "Litlos",
-   "omrade": "Hardangervidda og Skarvheimen",
+   "omrade": "Hardangervidda",
    "utnoUrl": "https://ut.no/hytte/10712",
+   "lon": 7.1371,
+   "lat": 60.0936,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-06T14:23:55.360Z",
    "perioder": [
@@ -794,8 +664,10 @@
    "id": 10495,
    "navn": "Sandhaug",
    "navnUtno": "Sandhaug",
-   "omrade": "Hardangervidda og Skarvheimen",
+   "omrade": "Hardangervidda",
    "utnoUrl": "https://ut.no/hytte/10495",
+   "lon": 7.4819,
+   "lat": 60.1839,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-06T12:14:47.939Z",
    "perioder": [
@@ -851,11 +723,171 @@
    ]
   },
   {
+   "id": 101272,
+   "navn": "Aurlandsdalen",
+   "navnUtno": "Aurlandsdalen Turisthytte Østerbø",
+   "omrade": "Skarvheimen",
+   "utnoUrl": "https://ut.no/hytte/101272",
+   "lon": 7.5045,
+   "lat": 60.8285,
+   "serviceLevel": "STAFFED",
+   "oppdatertUtno": "2026-09-05T09:50:40.661Z",
+   "perioder": [
+    {
+     "niva": "STAFFED",
+     "senger": 117,
+     "fra": "2025-05-23",
+     "til": "2025-09-21",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-09-21",
+     "til": "2026-05-22",
+     "heleAaret": false
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 117,
+     "fra": "2026-05-22",
+     "til": "2026-09-20",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-09-20",
+     "til": "2026-12-31",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10808,
+   "navn": "Geiterygghytta",
+   "navnUtno": "Geiterygghytta",
+   "omrade": "Skarvheimen",
+   "utnoUrl": "https://ut.no/hytte/10808",
+   "lon": 7.6035,
+   "lat": 60.7009,
+   "serviceLevel": "STAFFED",
+   "oppdatertUtno": "2026-09-06T12:27:20.214Z",
+   "perioder": [
+    {
+     "niva": "STAFFED",
+     "senger": 88,
+     "fra": "2025-06-27",
+     "til": "2025-09-14",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-09-14",
+     "til": "2026-02-27",
+     "heleAaret": false
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 88,
+     "fra": "2026-02-27",
+     "til": "2026-05-03",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-05-03",
+     "til": "2026-06-26",
+     "heleAaret": false
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 88,
+     "fra": "2026-06-26",
+     "til": "2026-09-13",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-09-13",
+     "til": "2026-12-31",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10973,
+   "navn": "Iungsdalshytta",
+   "navnUtno": "Iungsdalshytta",
+   "omrade": "Skarvheimen",
+   "utnoUrl": "https://ut.no/hytte/10973",
+   "lon": 7.9336,
+   "lat": 60.8102,
+   "serviceLevel": "STAFFED",
+   "oppdatertUtno": "2026-09-07T08:24:34.966Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-02-15",
+     "til": "2026-02-27",
+     "heleAaret": false
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 52,
+     "fra": "2026-02-27",
+     "til": "2026-04-19",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-04-19",
+     "til": "2026-06-26",
+     "heleAaret": false
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 52,
+     "fra": "2026-06-26",
+     "til": "2026-09-13",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-09-13",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-14",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
    "id": 101110,
    "navn": "Bjørnhollia",
    "navnUtno": "Bjørnhollia",
    "omrade": "Rondane og Dovrefjell",
    "utnoUrl": "https://ut.no/hytte/101110",
+   "lon": 10.0125,
+   "lat": 61.8841,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-06T10:55:26.578Z",
    "perioder": [
@@ -909,6 +941,8 @@
    "navnUtno": "Grimsdalshytta",
    "omrade": "Rondane og Dovrefjell",
    "utnoUrl": "https://ut.no/hytte/10494",
+   "lon": 9.6415,
+   "lat": 62.0907,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-07T10:28:08.322Z",
    "perioder": [
@@ -948,6 +982,8 @@
    "navnUtno": "Rondvassbu",
    "omrade": "Rondane og Dovrefjell",
    "utnoUrl": "https://ut.no/hytte/101111",
+   "lon": 9.7963,
+   "lat": 61.8788,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-08T08:29:47.280Z",
    "perioder": [
@@ -987,6 +1023,8 @@
    "navnUtno": "Snøheim",
    "omrade": "Rondane og Dovrefjell",
    "utnoUrl": "https://ut.no/hytte/10917",
+   "lon": 9.3508,
+   "lat": 62.2943,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-08T05:06:49.477Z",
    "perioder": [
@@ -1026,6 +1064,8 @@
    "navnUtno": "Nørdstedalseter",
    "omrade": "Breheimen",
    "utnoUrl": "https://ut.no/hytte/10496",
+   "lon": 7.7905,
+   "lat": 61.6427,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-01T18:01:34.624Z",
    "perioder": [
@@ -1086,6 +1126,8 @@
    "navnUtno": "Sota Sæter",
    "omrade": "Breheimen",
    "utnoUrl": "https://ut.no/hytte/10490",
+   "lon": 7.7094,
+   "lat": 61.8092,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-06T06:53:31.434Z",
    "perioder": [
@@ -1333,8 +1375,10 @@
    "id": 101369,
    "navn": "Liomseter",
    "navnUtno": "Liomseter",
-   "omrade": "Langsua og Femundsmarka",
+   "omrade": "Langsua",
    "utnoUrl": "https://ut.no/hytte/101369",
+   "lon": 9.5951,
+   "lat": 61.2426,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-08T09:54:03.499Z",
    "perioder": [
@@ -1393,8 +1437,10 @@
    "id": 10726,
    "navn": "Svukuriset",
    "navnUtno": "Svukuriset",
-   "omrade": "Langsua og Femundsmarka",
+   "omrade": "Femundsmarka",
    "utnoUrl": "https://ut.no/hytte/10726",
+   "lon": 12.015,
+   "lat": 62.2215,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-05T19:07:02.844Z",
    "perioder": [
@@ -1448,6 +1494,8 @@
    "navnUtno": "Kobberhaughytta",
    "omrade": "Oslomarka og Oslofjorden",
    "utnoUrl": "https://ut.no/hytte/10645",
+   "lon": 10.6637,
+   "lat": 60.0361,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-06T10:59:44.897Z",
    "perioder": [
@@ -1466,6 +1514,8 @@
    "navnUtno": "Sæteren Gård - Hovedhus+Sovehus",
    "omrade": "Oslomarka og Oslofjorden",
    "utnoUrl": "https://ut.no/hytte/101380",
+   "lon": 10.5619,
+   "lat": 59.9481,
    "serviceLevel": "STAFFED",
    "oppdatertUtno": "2026-09-06T11:42:15.844Z",
    "perioder": [
@@ -1484,8 +1534,10 @@
    "navnUtno": "Breivoll Gård",
    "omrade": "Oslomarka og Oslofjorden",
    "utnoUrl": "https://ut.no/hytte/10136374",
+   "lon": 10.729,
+   "lat": 59.7374,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-06T08:46:29.688Z",
+   "oppdatertUtno": "2026-09-08T12:41:40.847Z",
    "perioder": [
     {
      "niva": "STAFFED",

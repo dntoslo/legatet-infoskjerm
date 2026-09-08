@@ -3,7 +3,11 @@
 
    Alt innhold ligger i .skjerm, en fast 16:9-flate som alltid får plass i
    vinduet og sentreres. Størrelser bruker cqh (prosent av flatens høyde),
-   så layouten ser lik ut på en TV, i et smalt vindu og i et stående vindu. */
+   så layouten ser lik ut på en TV, i et smalt vindu og i et stående vindu.
+
+   Flaten har tre kolonner: områdekort til venstre, kartet av Sør-Norge i
+   midten, områdekort til høyre. Områdefargene settes av app.js som --farge
+   på kortet og på polygonet, ut fra tabellen FARGER der. */
 
 @font-face {
   font-family: "ABC Social";
@@ -31,6 +35,7 @@
   --lys-roed: #FFC8C3;
   --sort: #000000;
   --graa: #5a5651;
+  --vann: #8FBBD6;       /* innsjøer og elver på kartet */
 
   --font: "ABC Social", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
@@ -57,7 +62,7 @@ body {
 
 /* Fast 16:9-flate som fyller vinduet så langt formatet tillater. */
 .skjerm {
-  --marg: 2.2cqh;
+  --marg: 1.8cqh;
   container-type: size;
   width: min(100vw, calc(100dvh * 16 / 9));
   height: min(100dvh, calc(100vw * 9 / 16));
@@ -68,7 +73,7 @@ body {
   overflow: hidden;
 }
 
-/* Header */
+/* Toppen: logo, tittel, legende og dato på én linje. */
 .topp {
   display: flex;
   align-items: center;
@@ -76,24 +81,36 @@ body {
   flex: 0 0 auto;
 }
 .logo {
-  height: 7.5cqh;
-  width: 7.5cqh;
+  height: 6.8cqh;
+  width: 6.8cqh;
   object-fit: contain;
 }
 .tittel h1 {
   margin: 0;
   font-weight: 400;
-  font-size: 5.2cqh;
+  font-size: 4.6cqh;
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
 .undertittel {
   margin: 0.4cqh 0 0;
-  font-size: 2.4cqh;
+  font-size: 2.2cqh;
   color: var(--graa);
 }
-.idag {
+.forklaring {
   margin-left: auto;
+  display: flex;
+  gap: 2.6cqh;
+  font-size: 2.1cqh;
+  color: var(--graa);
+}
+.forklaring .prikk {
+  width: 1.5cqh;
+  height: 1.5cqh;
+  margin-right: 0.8cqh;
+}
+.idag {
+  margin-left: 5cqh;
   text-align: right;
   font-size: 2.6cqh;
   color: var(--graa);
@@ -105,13 +122,27 @@ body {
   font-size: 3.2cqh;
 }
 
-/* Rutenett med områdekort */
-.rutenett {
+/* «Sist oppdatert» som en stille linje helt nederst til høyre. */
+.oppdatert {
+  flex: 0 0 auto;
+  margin-top: calc(var(--marg) * -0.55);
+  text-align: right;
+  font-size: 1.7cqh;
+  color: var(--graa);
+}
+.oppdatert.gammel {
+  color: var(--dnt-roed);
+  font-weight: 400;
+}
+
+/* Tre kolonner: kort, kart, kort. Kartkolonnen er bred nok til at et kart
+   på ca. 85cqh høyde får plass uten luft på sidene. */
+.kartflate {
+  position: relative;          /* for streklaget */
   flex: 1 1 auto;
   min-height: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: minmax(0, 1fr) 60cqh minmax(0, 1fr);
   gap: var(--marg);
 }
 .laster, .feil {
@@ -122,22 +153,48 @@ body {
   color: var(--graa);
 }
 
-.kort {
-  background: var(--hvit);
-  border-radius: 1.6cqh;
-  padding: 1.8cqh 2cqh 1.4cqh;
+/* Kortene har høyde etter innholdet, så avstanden mellom radene er lik i
+   alle kort. Ledig plass i kolonnen legges mellom kortene. */
+.kolonne {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  gap: var(--marg);
   min-height: 0;
+}
+
+/* Områdekort */
+.kort {
+  flex: 0 0 auto;
+  background: var(--hvit);
+  border-radius: 1.6cqh;
+  padding: 1.5cqh 2.2cqh 1.3cqh;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 0.2cqh 0.8cqh rgba(0, 0, 0, 0.04);
 }
 .kort h2 {
-  margin: 0 0 1.2cqh;
-  padding-bottom: 1cqh;
+  display: flex;
+  align-items: center;
+  gap: 1.2cqh;
+  margin: 0 0 0.6cqh;
+  padding-bottom: 0.7cqh;
   font-weight: 400;
-  font-size: 2.9cqh;
+  font-size: 2.5cqh;
   line-height: 1.1;
   border-bottom: 0.3cqh solid var(--dnt-roed);
+}
+/* Fargemarkør som binder kortet til området på kartet. */
+.kort h2::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 2.1cqh;
+  height: 2.1cqh;
+  border-radius: 0.6cqh;
+  background: var(--farge, var(--moerk-beige));
+}
+.kort.uten-farge h2::before {
+  display: none;
 }
 .kort ul {
   list-style: none;
@@ -145,17 +202,14 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  flex: 1 1 auto;
-  min-height: 0;
 }
 .hytte {
   display: grid;
   grid-template-columns: auto auto minmax(0, 1fr);
   align-items: center;
-  gap: 1.3cqh;
-  padding: 0.5cqh 0;
-  font-size: 2.45cqh;
+  gap: 1.1cqh;
+  padding: 0.4cqh 0;
+  font-size: 2.05cqh;
   line-height: 1.15;
 }
 .hytte + .hytte {
@@ -168,7 +222,7 @@ body {
 .hytte .status {
   text-align: right;
   color: var(--graa);
-  font-size: 2.1cqh;
+  font-size: 1.8cqh;
   line-height: 1.2;
 }
 .hytte .status .niva {
@@ -179,12 +233,13 @@ body {
   color: var(--dnt-roed);
   font-weight: 400;
 }
+.hytte.stengt .navn { color: var(--graa); font-weight: 300; }
 
-/* Statusprikk */
+/* Statusprikk i listene og legenden */
 .prikk {
   display: inline-block;
-  width: 1.9cqh;
-  height: 1.9cqh;
+  width: 1.6cqh;
+  height: 1.6cqh;
   border-radius: 50%;
   flex: 0 0 auto;
   vertical-align: middle;
@@ -194,27 +249,102 @@ body {
 .prikk.stengt { background: var(--dnt-roed); }
 .prikk.ukjent { background: var(--graa); }
 
-.hytte.stengt .navn { color: var(--graa); font-weight: 300; }
-
-/* Bunn */
-.bunn {
-  flex: 0 0 auto;
+/* Kartet */
+.kart {
+  min-height: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  font-size: 2.1cqh;
-  color: var(--graa);
+  justify-content: center;
 }
-.forklaring {
-  display: flex;
-  gap: 3cqh;
+.kart svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
 }
-.forklaring .prikk {
-  width: 1.5cqh;
-  height: 1.5cqh;
-  margin-right: 0.8cqh;
+.kart .laster,
+.kart .feil {
+  font-size: 2.4cqh;
 }
-.oppdatert.gammel {
-  color: var(--dnt-roed);
+
+/* Tegnet uttrykk: hvit landflate med tynn mørk strek mot den beige bakgrunnen.
+   Lagene tegnes i denne rekkefølgen: land, områder, vann, grense, byer, hytter. */
+.land path {
+  fill: var(--hvit);
+  stroke: none;
+}
+.grense path {
+  fill: none;
+  stroke: var(--graa);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* DNT-områdene fra ut.no, fylt i områdets farge. Tynn hvit kant skiller
+   områder som grenser til hverandre. */
+.omrade {
+  fill: var(--farge, var(--moerk-beige));
+  stroke: var(--hvit);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Vann i en tydeligere blå enn områdefargene, så Mjøsa ikke forveksles med Jotunheimen. */
+.innsjo {
+  fill: var(--vann);
+  stroke: none;
+}
+.elv {
+  fill: none;
+  stroke: var(--vann);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Byer: prikk og navn med hvit kant rundt bokstavene, så de leses oppå kystlinja. */
+.byer circle {
+  fill: var(--sort);
+}
+.byer text {
+  font-family: var(--font);
   font-weight: 400;
+  font-size: 24px;              /* viewBox-enheter, ca. 2cqh på skjermen */
+  fill: var(--sort);
+  stroke: var(--hvit);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  dominant-baseline: middle;
+}
+
+/* Hyttene på kartet, farget etter dagens status */
+.hyttepunkt {
+  stroke: var(--hvit);
+  stroke-width: 2.5;
+}
+.hyttepunkt.betjent { fill: var(--moerk-groenn); }
+.hyttepunkt.selvbetjent { fill: var(--oransje); }
+.hyttepunkt.stengt { fill: var(--dnt-roed); r: 7; }
+.hyttepunkt.ukjent { fill: var(--graa); }
+
+/* Streker fra kort til område, i et lag over hele flaten. */
+.streker {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.strek {
+  stroke: var(--graa);
+  stroke-width: 0.2cqh;
+  stroke-linecap: round;
+}
+.strekende {
+  fill: var(--graa);
 }

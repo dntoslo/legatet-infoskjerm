@@ -7,7 +7,7 @@
   <title>Betjente hytter, DNT Oslo og Omegn</title>
   <link rel="icon" href="assets/dnt-logo.png">
   <!-- Versjonsnummeret i lenkene bumpes ved endringer, så TV-en ikke bruker gammel CSS/JS fra cache. -->
-  <link rel="stylesheet" href="assets/style.css?v=2">
+  <link rel="stylesheet" href="assets/style.css?v=4">
 </head>
 <body>
 <div class="skjerm">
@@ -17,23 +17,21 @@
       <h1>Betjente hytter</h1>
       <p class="undertittel">DNT Oslo og Omegn</p>
     </div>
-    <div class="idag" id="idag"></div>
-  </header>
-
-  <main class="rutenett" id="rutenett" aria-live="polite">
-    <p class="laster">Henter åpningstider …</p>
-  </main>
-
-  <footer class="bunn">
     <div class="forklaring">
       <span><i class="prikk betjent"></i>Betjent</span>
       <span><i class="prikk selvbetjent"></i>Selvbetjent</span>
       <span><i class="prikk stengt"></i>Stengt</span>
     </div>
-    <div class="oppdatert" id="oppdatert"></div>
-  </footer>
+    <div class="idag" id="idag"></div>
+  </header>
+
+  <main class="kartflate" id="kartflate" aria-live="polite">
+    <p class="laster">Henter åpningstider …</p>
+  </main>
+
+  <div class="oppdatert" id="oppdatert"></div>
 </div>
 
-  <script src="assets/app.js?v=2"></script>
+  <script src="assets/app.js?v=4"></script>
 </body>
 </html>
