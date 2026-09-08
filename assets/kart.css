@@ -1,33 +1,52 @@
-/* Kartvisning (kart.html). Bygger på style.css: farger, header, footer,
-   kort og prikker er felles. Her ligger bare det som er annerledes:
-   tre kolonner med kartet i midten, kort med høyde etter innhold, og
-   områdefargene som binder kort og flekk på kartet sammen.
+/* Kartvisning (kart.html). Bygger på style.css: farger, header, kort og
+   prikker er felles. Her ligger bare det som er annerledes: tre kolonner med
+   kartet i midten, kort med høyde etter innhold, legende i toppen i stedet
+   for en bunnlinje, og kartlagene.
 
-   Områdefargene er dempede DNT-toner, med hensikt ulike statusfargene
-   (grønn, oransje, rød), så prikkene leses tydelig oppå flekkene. */
+   Områdefargene settes av kart.js som --farge på kortet og på polygonet, ut
+   fra tabellen FARGER der. */
 
 :root {
-  /* Rekkefølgen følger «omrader» i hytter.json. Breheimen (4) ligger tett på
-     Jotunheimen (1) på kartet, så de to må ha farger som skiller seg klart. */
-  --omrade-1: #C5DCEA;   /* blå: Jotunheimen */
-  --omrade-2: #FFF097;   /* gul: Hardangervidda og Skarvheimen */
-  --omrade-3: #E9F2D9;   /* lys grønn: Rondane og Dovrefjell */
-  --omrade-4: #DDD3EA;   /* lilla, dempet: Breheimen */
-  --omrade-5: #F5DDB0;   /* beige, litt dypere enn DNT mørk beige for å synes mot hvitt: Langsua */
-  --omrade-6: #C9E9E4;   /* lys turkis: Femundsmarka */
-  --omrade-7: #FFC8C3;   /* lys rød: Oslomarka og Oslofjorden */
   --vann: #8FBBD6;       /* innsjøer og elver */
 }
-.omrade-1 { --farge: var(--omrade-1); }
-.omrade-2 { --farge: var(--omrade-2); }
-.omrade-3 { --farge: var(--omrade-3); }
-.omrade-4 { --farge: var(--omrade-4); }
-.omrade-5 { --farge: var(--omrade-5); }
-.omrade-6 { --farge: var(--omrade-6); }
-.omrade-7 { --farge: var(--omrade-7); }
+
+/* Litt mindre marger enn rutenettvisningen, siden åtte kort skal få plass. */
+.skjerm.kartvisning {
+  --marg: 1.8cqh;
+}
+
+/* Toppen: logo, tittel, legende og dato på én linje. */
+.kartvisning .logo {
+  height: 6.8cqh;
+  width: 6.8cqh;
+}
+.kartvisning .tittel h1 {
+  font-size: 4.6cqh;
+}
+.kartvisning .undertittel {
+  font-size: 2.2cqh;
+}
+.kartvisning .topp .forklaring {
+  margin-left: auto;
+  gap: 2.6cqh;
+  font-size: 2.1cqh;
+  color: var(--graa);
+}
+.kartvisning .topp .idag {
+  margin-left: 5cqh;
+}
+
+/* «Sist oppdatert» som en stille linje helt nederst til høyre. */
+.kartvisning .oppdatert {
+  flex: 0 0 auto;
+  margin-top: calc(var(--marg) * -0.55);
+  text-align: right;
+  font-size: 1.7cqh;
+  color: var(--graa);
+}
 
 /* Tre kolonner: kort, kart, kort. Kartkolonnen er bred nok til at et kart
-   på ca. 79cqh høyde får plass uten luft på sidene. */
+   på ca. 85cqh høyde får plass uten luft på sidene. */
 .kartflate {
   position: relative;          /* for streklaget */
   flex: 1 1 auto;
@@ -48,45 +67,45 @@
   min-height: 0;
 }
 .kolonne .kort {
-  flex: 0 1 auto;
+  flex: 1 1 auto;              /* flex-grow overstyres per kort av kart.js */
+  min-height: 0;
 }
 
-/* Litt tettere linjer enn i rutenettvisningen, siden én kolonne kan ha
-   opptil 16 hytter. */
+/* Litt mindre skrift enn i rutenettvisningen, siden én kolonne kan ha
+   fire kort og 16 hytter. Luften kommer fra at kortene deler ledig plass. */
 .kartflate .kort {
-  padding: 1.5cqh 1.8cqh 1.2cqh;
+  padding: 1.5cqh 2.2cqh 1.3cqh;
 }
 .kartflate .kort h2 {
   display: flex;
   align-items: center;
   gap: 1.2cqh;
-  margin-bottom: 0.9cqh;
+  margin-bottom: 0.7cqh;
   padding-bottom: 0.8cqh;
-  font-size: 2.6cqh;
+  font-size: 2.5cqh;
 }
 .kartflate .kort h2::before {
   content: "";
   flex: 0 0 auto;
-  width: 2.2cqh;
-  height: 2.2cqh;
+  width: 2.1cqh;
+  height: 2.1cqh;
   border-radius: 0.6cqh;
   background: var(--farge, var(--moerk-beige));
 }
+.kartflate .kort.uten-farge h2::before {
+  display: none;
+}
 .kartflate .hytte {
-  font-size: 2.2cqh;
-  padding: 0.35cqh 0;
+  font-size: 2.05cqh;
+  padding: 0.4cqh 0;
   gap: 1.1cqh;
 }
 .kartflate .hytte .status {
-  font-size: 1.9cqh;
+  font-size: 1.8cqh;
 }
 .kartflate .prikk {
-  width: 1.7cqh;
-  height: 1.7cqh;
-}
-.kartflate .forklaring .prikk {
-  width: 1.5cqh;
-  height: 1.5cqh;
+  width: 1.6cqh;
+  height: 1.6cqh;
 }
 
 /* Kartet */
@@ -143,18 +162,23 @@
   vector-effect: non-scaling-stroke;
 }
 
+/* Byer: prikk og navn med hvit kant rundt bokstavene, så de leses oppå kystlinja. */
 .byer circle {
   fill: var(--sort);
 }
 .byer text {
   font-family: var(--font);
-  font-weight: 300;
-  font-size: 21px;              /* viewBox-enheter, ca. 1,8cqh på skjermen */
-  fill: var(--graa);
+  font-weight: 400;
+  font-size: 28px;              /* viewBox-enheter, ca. 2,3cqh på skjermen */
+  fill: var(--sort);
+  stroke: var(--hvit);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
   dominant-baseline: middle;
 }
 
-/* Streker fra kort til flekk, i et lag over hele flaten. */
+/* Streker fra kort til område, i et lag over hele flaten. */
 .streker {
   position: absolute;
   inset: 0;

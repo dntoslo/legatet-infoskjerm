@@ -14,12 +14,31 @@
   // Hvilken kolonne hvert område står i. Vest til venstre, øst til høyre,
   // nord øverst. Områder som ikke står her, havner nederst til høyre.
   const KOLONNER = {
-    venstre: ["Breheimen", "Jotunheimen", "Hardangervidda og Skarvheimen"],
+    venstre: ["Breheimen", "Jotunheimen", "Skarvheimen", "Hardangervidda"],
     hoyre: ["Rondane og Dovrefjell", "Femundsmarka", "Langsua", "Oslomarka og Oslofjorden"],
   };
 
+  // Farge per område, brukt både på kortet og som fyll på kartet. Dempede
+  // DNT-toner, med hensikt ulike statusfargene grønn, oransje og rød, så
+  // prikkene leses tydelig oppå. Områder som ikke står her (Oslomarka og
+  // Oslofjorden), tegnes ikke på kartet, og streken går til hyttene i stedet.
+  // Naboområder må ha farger som skiller seg klart: Breheimen, Jotunheimen,
+  // Skarvheimen og Hardangervidda ligger etter hverandre nord til sør.
+  const FARGER = {
+    "Jotunheimen": "#C5DCEA",            // blå
+    "Hardangervidda": "#FFF097",         // gul
+    "Skarvheimen": "#FFC8C3",            // lys rød
+    "Rondane og Dovrefjell": "#E9F2D9",  // lys grønn
+    "Breheimen": "#DDD3EA",              // lilla, dempet
+    "Langsua": "#F5DDB0",                // beige, litt dypere enn DNT mørk beige for å synes mot hvitt
+    "Femundsmarka": "#C9E9E4",           // lys turkis
+  };
+
   const PRIKK_R = 9;            // hytteprikk, i viewBox-enheter (1 enhet er ca. 0,6 km)
-  const BY_R = 5;
+  const BY_R = 6;
+
+  // CSS-klassenavn for et område, brukt til å koble kort, polygon og prikker.
+  const omradeKlasse = omrade => "omrade-" + omrade.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   const COS_LAT = Math.cos(61 * Math.PI / 180);
 
   let kartLovnad = null;
@@ -78,17 +97,19 @@
     for (const ring of kart.ringer) land.appendChild(svgEl("path", { d: sti(projiser(proj, ring), true) }));
     svg.appendChild(land);
 
-    // DNT-områdene, i samme rekkefølge og farge som kortene. Punktene tas
-    // vare på, så streken fra kortet kan gå til nærmeste punkt på kanten.
+    // DNT-områdene, fylt i samme farge som kortet. Punktene tas vare på, så
+    // streken fra kortet kan gå til nærmeste punkt på kanten.
     const omradeLag = svgEl("g", { class: "omrader" });
-    omrader.forEach((omrade, i) => {
+    for (const omrade of omrader) {
+      if (!FARGER[omrade]) continue;
       for (const ring of kart.omrader[omrade] || []) {
         const pkt = projiser(proj, ring);
-        const path = svgEl("path", { class: `omrade omrade-${i + 1}`, d: sti(pkt, true) });
+        const path = svgEl("path", { class: `omrade ${omradeKlasse(omrade)}`, d: sti(pkt, true) });
+        path.style.setProperty("--farge", FARGER[omrade]);
         path.__punkter = pkt;
         omradeLag.appendChild(path);
       }
-    });
+    }
     svg.appendChild(omradeLag);
 
     // Vann: innsjøer og elver
@@ -114,7 +135,8 @@
       if (h.lon == null || h.lat == null) continue;
       const [x, y] = proj.p(h.lon, h.lat);
       const s = status(h, iDag);
-      const c = svgEl("circle", { class: `hyttepunkt ${s.klasse}`, cx: tall(x), cy: tall(y), r: PRIKK_R });
+      const c = svgEl("circle", { class: `hyttepunkt ${s.klasse} ${omradeKlasse(h.omrade)}`, cx: tall(x), cy: tall(y), r: PRIKK_R });
+      c.__punkter = [[x, y]];
       c.appendChild(svgEl("title")).textContent = `${h.navn}: ${s.niva}, ${s.detalj}`;
       prikker.appendChild(c);
     }
@@ -122,9 +144,9 @@
     return svg;
   }
 
-  // Strek fra hvert kort til nærmeste punkt på kanten av området sitt,
-  // tegnet i et SVG-lag over hele flaten i skjermpiksler. Tegnes på nytt
-  // når flaten endrer størrelse.
+  // Strek fra hvert kort til nærmeste punkt på kanten av området sitt, eller
+  // til nærmeste hytte når området ikke er tegnet. Tegnes i et SVG-lag over
+  // hele flaten i skjermpiksler, og på nytt når flaten endrer størrelse.
   function tegnStreker(flate) {
     let lag = flate.querySelector(".streker");
     if (!lag) {
@@ -156,8 +178,9 @@
       };
 
       let slutt = null;
-      for (const path of kartSvg.querySelectorAll(`.omrade.${klasse}`)) {
-        for (const pkt of path.__punkter || []) {
+      const maal = kartSvg.querySelectorAll(`.omrade.${klasse}`);
+      for (const element of maal.length ? maal : kartSvg.querySelectorAll(`.hyttepunkt.${klasse}`)) {
+        for (const pkt of element.__punkter || []) {
           const s = tilSkjerm(pkt);
           const d = Math.hypot(s.x - start.x, s.y - start.y);
           if (!slutt || d < slutt.d) slutt = { ...s, d };
@@ -165,6 +188,12 @@
       }
       if (!slutt) continue;
 
+      // Går streken til en hytteprikk, stopper den like utenfor prikken.
+      if (!maal.length) {
+        const prikkR = 0.9 * cqh;
+        slutt.x -= (slutt.x - start.x) / slutt.d * prikkR;
+        slutt.y -= (slutt.y - start.y) / slutt.d * prikkR;
+      }
       lag.appendChild(svgEl("line", {
         class: "strek", x1: tall(start.x), y1: tall(start.y), x2: tall(slutt.x), y2: tall(slutt.y),
       }));
@@ -192,11 +221,16 @@
     kart.appendChild(el("p", "laster", "Henter kart …"));
 
     // Kort i samme rekkefølge som kolonnelisten, ukjente områder til høyre.
+    // Ledig plass i kolonnen fordeles etter antall hytter, så luften i
+    // kortene blir jevn.
     const plasser = (navn, kolonne) => {
-      const i = omrader.indexOf(navn);
-      if (i < 0) return;
-      const kort = tegnKort(navn, data.hytter.filter(h => h.omrade === navn), iDag);
-      kort.classList.add(`omrade-${i + 1}`);
+      if (!omrader.includes(navn)) return;
+      const hytter = data.hytter.filter(h => h.omrade === navn);
+      const kort = tegnKort(navn, hytter, iDag);
+      kort.classList.add(omradeKlasse(navn));
+      kort.style.flexGrow = hytter.length;
+      if (FARGER[navn]) kort.style.setProperty("--farge", FARGER[navn]);
+      else kort.classList.add("uten-farge");
       kolonne.appendChild(kort);
     };
     KOLONNER.venstre.forEach(n => plasser(n, venstre));

@@ -1,7 +1,8 @@
 {
   "omrader": [
     "Jotunheimen",
-    "Hardangervidda og Skarvheimen",
+    "Hardangervidda",
+    "Skarvheimen",
     "Rondane og Dovrefjell",
     "Breheimen",
     "Langsua",
@@ -10,12 +11,12 @@
   ],
   "utnoOmrader": {
     "Jotunheimen": [1231],
-    "Hardangervidda og Skarvheimen": [1235, 1232],
+    "Hardangervidda": [1235],
+    "Skarvheimen": [1232],
     "Rondane og Dovrefjell": [1224, 1243],
     "Breheimen": [1227],
     "Langsua": [1229],
-    "Femundsmarka": [1215],
-    "Oslomarka og Oslofjorden": [1223, 1279]
+    "Femundsmarka": [1215]
   },
   "hytter": [
     { "id": 10941, "navn": "Fannaråken", "omrade": "Jotunheimen" },
@@ -26,13 +27,14 @@
     { "id": 101059, "navn": "Leirvassbu", "omrade": "Jotunheimen" },
     { "id": 10734, "navn": "Skogadalsbøen", "omrade": "Jotunheimen" },
 
-    { "id": 101272, "navn": "Aurlandsdalen", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 10929, "navn": "Finsehytta", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 10808, "navn": "Geiterygghytta", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 10973, "navn": "Iungsdalshytta", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 101064, "navn": "Krækkja", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 10712, "navn": "Litlos", "omrade": "Hardangervidda og Skarvheimen" },
-    { "id": 10495, "navn": "Sandhaug", "omrade": "Hardangervidda og Skarvheimen" },
+    { "id": 10929, "navn": "Finsehytta", "omrade": "Hardangervidda" },
+    { "id": 101064, "navn": "Krækkja", "omrade": "Hardangervidda" },
+    { "id": 10712, "navn": "Litlos", "omrade": "Hardangervidda" },
+    { "id": 10495, "navn": "Sandhaug", "omrade": "Hardangervidda" },
+
+    { "id": 101272, "navn": "Aurlandsdalen", "omrade": "Skarvheimen" },
+    { "id": 10808, "navn": "Geiterygghytta", "omrade": "Skarvheimen" },
+    { "id": 10973, "navn": "Iungsdalshytta", "omrade": "Skarvheimen" },
 
     { "id": 101110, "navn": "Bjørnhollia", "omrade": "Rondane og Dovrefjell" },
     { "id": 10494, "navn": "Grimsdalshytta", "omrade": "Rondane og Dovrefjell" },

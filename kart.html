@@ -11,12 +11,19 @@
   <link rel="stylesheet" href="assets/kart.css?v=1">
 </head>
 <body>
-<div class="skjerm">
+<div class="skjerm kartvisning">
+  <!-- Legenden og «sist oppdatert» ligger i toppen her, ikke i en egen bunnlinje,
+       for å gi kortene mer høyde. -->
   <header class="topp">
     <img class="logo" src="assets/dnt-logo.png" alt="DNT">
     <div class="tittel">
       <h1>Betjente hytter</h1>
       <p class="undertittel">DNT Oslo og Omegn</p>
+    </div>
+    <div class="forklaring">
+      <span><i class="prikk betjent"></i>Betjent</span>
+      <span><i class="prikk selvbetjent"></i>Selvbetjent</span>
+      <span><i class="prikk stengt"></i>Stengt</span>
     </div>
     <div class="idag" id="idag"></div>
   </header>
@@ -25,14 +32,7 @@
     <p class="laster">Henter åpningstider …</p>
   </main>
 
-  <footer class="bunn">
-    <div class="forklaring">
-      <span><i class="prikk betjent"></i>Betjent</span>
-      <span><i class="prikk selvbetjent"></i>Selvbetjent</span>
-      <span><i class="prikk stengt"></i>Stengt</span>
-    </div>
-    <div class="oppdatert" id="oppdatert"></div>
-  </footer>
+  <div class="oppdatert" id="oppdatert"></div>
 </div>
 
   <!-- kart.js må lastes før app.js, siden den setter window.infoskjermTegn. -->
