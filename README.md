@@ -13,7 +13,7 @@ Adresse: https://dntoslo.github.io/legatet-infoskjerm/
 - Siden laster seg selv på nytt hver 30. minutt, i tillegg til at TV-en refresher.
 - Innholdet ligger i en fast 16:9-flate som sentreres i vinduet, så siden ser lik ut på TV, i et smalt vindu og i et stående vindu.
 
-Endrer du `assets/style.css` eller `assets/app.js`, bump versjonsnummeret (`?v=4`) i lenkene i `index.html`, slik at TV-en ikke fortsetter med gammel fil fra cache.
+Endrer du `assets/style.css` eller `assets/app.js`, bump versjonsnummeret (`?v=5`) i lenkene i `index.html`, slik at TV-en ikke fortsetter med gammel fil fra cache.
 
 Statusen regnes ut på TV-en, ikke i scriptet, slik at en hytte som åpner eller stenger ved midnatt vises riktig selv om dataene ble hentet kvelden før. Endringer som er 14 dager eller færre unna vises i rødt som «om N dager», ellers som dato.
 

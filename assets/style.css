@@ -2,8 +2,11 @@
    sort tekst, DNT Rød kun som aksent.
 
    Alt innhold ligger i .skjerm, en fast 16:9-flate som alltid får plass i
-   vinduet og sentreres. Størrelser bruker cqh (prosent av flatens høyde),
-   så layouten ser lik ut på en TV, i et smalt vindu og i et stående vindu.
+   vinduet og sentreres. Størrelser bruker rem, der 1 rem er 1 % av flatens
+   høyde (satt som font-size på html), så layouten ser lik ut på en TV, i et
+   smalt vindu og i et stående vindu. Skjermen kjører Tizen 7.0 med
+   Chromium 94, som ikke kan cqh, dvh eller container-type. Nyere CSS må
+   derfor ha en enkel fallback foran seg i kaskaden.
 
    Flaten har tre kolonner: områdekort til venstre, kartet av Sør-Norge i
    midten, områdekort til høyre. Områdefargene settes av app.js som --farge
@@ -42,6 +45,13 @@
 
 * { box-sizing: border-box; }
 
+/* 1 rem er 1 % av flatens høyde. Første linje holder på en liggende 16:9-TV,
+   den andre tar over i smale og stående vinduer der nettleseren kan min(). */
+html {
+  font-size: 1vh;
+  font-size: min(1vh, calc(100vw * 9 / 16 / 100));
+}
+
 html, body {
   margin: 0;
   height: 100%;
@@ -56,16 +66,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100dvh;
+  height: 100vh;
   width: 100vw;
 }
 
-/* Fast 16:9-flate som fyller vinduet så langt formatet tillater. */
+/* Fast 16:9-flate som fyller vinduet så langt formatet tillater. De to første
+   linjene er fallback for nettlesere uten min(). */
 .skjerm {
-  --marg: 1.8cqh;
-  container-type: size;
-  width: min(100vw, calc(100dvh * 16 / 9));
-  height: min(100dvh, calc(100vw * 9 / 16));
+  --marg: 1.8rem;
+  width: 100vw;
+  height: 100vh;
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
   display: flex;
   flex-direction: column;
   padding: var(--marg) calc(var(--marg) * 1.4);
@@ -77,49 +89,49 @@ body {
 .topp {
   display: flex;
   align-items: center;
-  gap: 2.4cqh;
+  gap: 2.4rem;
   flex: 0 0 auto;
 }
 .logo {
-  height: 6.8cqh;
-  width: 6.8cqh;
+  height: 6.8rem;
+  width: 6.8rem;
   object-fit: contain;
 }
 .tittel h1 {
   margin: 0;
   font-weight: 400;
-  font-size: 4.6cqh;
+  font-size: 4.6rem;
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
 .undertittel {
-  margin: 0.4cqh 0 0;
-  font-size: 2.2cqh;
+  margin: 0.4rem 0 0;
+  font-size: 2.2rem;
   color: var(--graa);
 }
 .forklaring {
   margin-left: auto;
   display: flex;
-  gap: 2.6cqh;
-  font-size: 2.1cqh;
+  gap: 2.6rem;
+  font-size: 2.1rem;
   color: var(--graa);
 }
 .forklaring .prikk {
-  width: 1.5cqh;
-  height: 1.5cqh;
-  margin-right: 0.8cqh;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.8rem;
 }
 .idag {
-  margin-left: 5cqh;
+  margin-left: 5rem;
   text-align: right;
-  font-size: 2.6cqh;
+  font-size: 2.6rem;
   color: var(--graa);
 }
 .idag strong {
   display: block;
   font-weight: 400;
   color: var(--sort);
-  font-size: 3.2cqh;
+  font-size: 3.2rem;
 }
 
 /* «Sist oppdatert» som en stille linje helt nederst til høyre. */
@@ -127,7 +139,7 @@ body {
   flex: 0 0 auto;
   margin-top: calc(var(--marg) * -0.55);
   text-align: right;
-  font-size: 1.7cqh;
+  font-size: 1.7rem;
   color: var(--graa);
 }
 .oppdatert.gammel {
@@ -136,20 +148,20 @@ body {
 }
 
 /* Tre kolonner: kort, kart, kort. Kartkolonnen er bred nok til at et kart
-   på ca. 85cqh høyde får plass uten luft på sidene. */
+   på ca. 85 % av flatens høyde får plass uten luft på sidene. */
 .kartflate {
   position: relative;          /* for streklaget */
   flex: 1 1 auto;
   min-height: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 60cqh minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 60rem minmax(0, 1fr);
   gap: var(--marg);
 }
 .laster, .feil {
   grid-column: 1 / -1;
   align-self: center;
   text-align: center;
-  font-size: 3cqh;
+  font-size: 3rem;
   color: var(--graa);
 }
 
@@ -167,30 +179,30 @@ body {
 .kort {
   flex: 0 0 auto;
   background: var(--hvit);
-  border-radius: 1.6cqh;
-  padding: 1.5cqh 2.2cqh 1.3cqh;
+  border-radius: 1.6rem;
+  padding: 1.5rem 2.2rem 1.3rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0.2cqh 0.8cqh rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.04);
 }
 .kort h2 {
   display: flex;
   align-items: center;
-  gap: 1.2cqh;
-  margin: 0 0 0.6cqh;
-  padding-bottom: 0.7cqh;
+  gap: 1.2rem;
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.7rem;
   font-weight: 400;
-  font-size: 2.5cqh;
+  font-size: 2.5rem;
   line-height: 1.1;
-  border-bottom: 0.3cqh solid var(--dnt-roed);
+  border-bottom: 0.3rem solid var(--dnt-roed);
 }
 /* Fargemarkør som binder kortet til området på kartet. */
 .kort h2::before {
   content: "";
   flex: 0 0 auto;
-  width: 2.1cqh;
-  height: 2.1cqh;
-  border-radius: 0.6cqh;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 0.6rem;
   background: var(--farge, var(--moerk-beige));
 }
 .kort.uten-farge h2::before {
@@ -207,9 +219,9 @@ body {
   display: grid;
   grid-template-columns: auto auto minmax(0, 1fr);
   align-items: center;
-  gap: 1.1cqh;
-  padding: 0.4cqh 0;
-  font-size: 2.05cqh;
+  gap: 1.1rem;
+  padding: 0.4rem 0;
+  font-size: 2.05rem;
   line-height: 1.15;
 }
 .hytte + .hytte {
@@ -222,7 +234,7 @@ body {
 .hytte .status {
   text-align: right;
   color: var(--graa);
-  font-size: 1.8cqh;
+  font-size: 1.8rem;
   line-height: 1.2;
 }
 .hytte .status .niva {
@@ -238,8 +250,8 @@ body {
 /* Statusprikk i listene og legenden */
 .prikk {
   display: inline-block;
-  width: 1.6cqh;
-  height: 1.6cqh;
+  width: 1.6rem;
+  height: 1.6rem;
   border-radius: 50%;
   flex: 0 0 auto;
   vertical-align: middle;
@@ -264,7 +276,7 @@ body {
 }
 .kart .laster,
 .kart .feil {
-  font-size: 2.4cqh;
+  font-size: 2.4rem;
 }
 
 /* Tegnet uttrykk: hvit landflate med tynn mørk strek mot den beige bakgrunnen.
@@ -312,7 +324,7 @@ body {
 .byer text {
   font-family: var(--font);
   font-weight: 400;
-  font-size: 24px;              /* viewBox-enheter, ca. 2cqh på skjermen */
+  font-size: 24px;              /* viewBox-enheter, ca. 2 % av skjermhøyden */
   fill: var(--sort);
   stroke: var(--hvit);
   stroke-width: 5px;
@@ -334,7 +346,8 @@ body {
 /* Streker fra kort til område, i et lag over hele flaten. */
 .streker {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
@@ -342,7 +355,7 @@ body {
 }
 .strek {
   stroke: var(--graa);
-  stroke-width: 0.2cqh;
+  stroke-width: 0.2rem;
   stroke-linecap: round;
 }
 .strekende {

@@ -4,7 +4,10 @@
    rundt et kart av Sør-Norge. Kartgrunnlaget ligger i assets/sor-norge.json
    (laget av scripts/lag_kart.py): landomriss, DNT-områdene fra ut.no,
    innsjøer, elver og byer, alt i lon/lat. Det projiseres her sammen med
-   hyttene. */
+   hyttene.
+
+   Skjermen kjører Tizen 7.0 med Chromium 94. Bruk ikke JS nyere enn det
+   (replaceChildren er det nyeste her). */
 
 (function () {
   "use strict";
@@ -324,7 +327,7 @@
     if (!kartSvg) return;
 
     const origo = flate.getBoundingClientRect();
-    const cqh = flate.closest(".skjerm").clientHeight / 100;
+    const enhet = flate.closest(".skjerm").clientHeight / 100;   // 1 % av flatens høyde, som 1rem i CSS
     lag.setAttribute("viewBox", `0 0 ${origo.width} ${origo.height}`);
     const ctm = kartSvg.getScreenCTM();
     const tilSkjerm = ([x, y]) => {
@@ -339,7 +342,7 @@
       const kortRect = kort.getBoundingClientRect();
       const h2Rect = kort.querySelector("h2").getBoundingClientRect();
       const start = {
-        x: (venstre ? kortRect.right : kortRect.left) - origo.left + (venstre ? 1 : -1) * 0.6 * cqh,
+        x: (venstre ? kortRect.right : kortRect.left) - origo.left + (venstre ? 1 : -1) * 0.6 * enhet,
         y: h2Rect.top + h2Rect.height / 2 - origo.top,
       };
 
@@ -356,14 +359,14 @@
 
       // Går streken til en hytteprikk, stopper den like utenfor prikken.
       if (!maal.length) {
-        const prikkR = 0.9 * cqh;
+        const prikkR = 0.9 * enhet;
         slutt.x -= (slutt.x - start.x) / slutt.d * prikkR;
         slutt.y -= (slutt.y - start.y) / slutt.d * prikkR;
       }
       lag.appendChild(svgEl("line", {
         class: "strek", x1: tall(start.x), y1: tall(start.y), x2: tall(slutt.x), y2: tall(slutt.y),
       }));
-      lag.appendChild(svgEl("circle", { class: "strekende", cx: tall(slutt.x), cy: tall(slutt.y), r: tall(0.45 * cqh) }));
+      lag.appendChild(svgEl("circle", { class: "strekende", cx: tall(slutt.x), cy: tall(slutt.y), r: tall(0.45 * enhet) }));
     }
   }
 
