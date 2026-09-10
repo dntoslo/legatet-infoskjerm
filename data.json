@@ -1,5 +1,5 @@
 {
- "hentet": "2026-09-09T09:48:07+02:00",
+ "hentet": "2026-09-10T11:02:41+02:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -62,7 +62,7 @@
    "lon": 8.2973,
    "lat": 61.3752,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-06T12:36:21.211Z",
+   "oppdatertUtno": "2026-09-10T05:19:43.741Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -179,7 +179,7 @@
    "lon": 8.8128,
    "lat": 61.4941,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-08T16:45:56.813Z",
+   "oppdatertUtno": "2026-09-09T18:57:23.711Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -234,7 +234,7 @@
    "lon": 8.6324,
    "lat": 61.6227,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-08T18:01:10.492Z",
+   "oppdatertUtno": "2026-09-09T21:32:47.870Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -303,7 +303,7 @@
    "lon": 8.2473,
    "lat": 61.5488,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-07T08:49:38.736Z",
+   "oppdatertUtno": "2026-09-09T18:25:52.732Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -434,7 +434,7 @@
    "lon": 7.507,
    "lat": 60.5979,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-07T16:45:51.446Z",
+   "oppdatertUtno": "2026-09-09T18:02:48.766Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -669,7 +669,7 @@
    "lon": 7.4819,
    "lat": 60.1839,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-06T12:14:47.939Z",
+   "oppdatertUtno": "2026-09-10T06:31:08.780Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -772,7 +772,7 @@
    "lon": 7.6035,
    "lat": 60.7009,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-06T12:27:20.214Z",
+   "oppdatertUtno": "2026-09-09T18:56:09.317Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -827,7 +827,7 @@
    "lon": 7.9336,
    "lat": 60.8102,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-07T08:24:34.966Z",
+   "oppdatertUtno": "2026-09-09T19:50:37.225Z",
    "perioder": [
     {
      "niva": "CLOSED",
