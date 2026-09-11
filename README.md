@@ -6,14 +6,13 @@ Adresser:
 
 - Side 1, betjente hytter: https://dntoslo.github.io/legatet-infoskjerm/
 - Side 2, selvbetjente hytter: https://dntoslo.github.io/legatet-infoskjerm/selvbetjente.html
-- Side 2, avviksvarianten: https://dntoslo.github.io/legatet-infoskjerm/selvbetjente.html?visning=avvik
 
 ## Slik virker det
 
 - `scripts/hent_data.py` henter alle publiserte hytter til DNT Oslo og Omegn (eier 156 på ut.no) i én spørring, velger de betjente og selvbetjente etter reglene i `hytter.json`, og skriver `data.json` med åpningsperioder, koordinater og sengetall.
 - GitHub Action (`.github/workflows/oppdater.yml`) kjører scriptet klokka 06:30 og 12:00 norsk tid og publiserer sidene til GitHub Pages. `data.json` committes til repoet bare når selve hyttedataene er endret, men de publiserte sidene får alltid ferskt tidsstempel. Action kjører også ved hver push til `main`.
 - `index.html` og `selvbetjente.html` bruker samme `assets/app.js` og `assets/style.css`. `data-side` på `<body>` velger konfigurasjonen i `SIDER` i `app.js`, som filtrerer `data.json` på `serviceLevel`, regner ut status for dagens dato i norsk tid, tegner ett kort per fjellområde og kartet i midten. Tidspunktet for siste henting vises nederst til høyre. Er dataene eldre enn 36 timer, blir teksten rød.
-- Side 2 har to kortvarianter, valgt med `?visning=` i adressen. `liste` (standard) viser alle hyttenavn i to spalter med statusprikk, en teller i overskriften og en kort dato bak stengte hytter. `avvik` viser en oppsummering per område og bare hyttene som er stengt eller endrer status innen 14 dager. Begge er laget for å kunne sammenlignes på TV-en. Nederst på side 2 står en merknad om at selvbetjeningskvarter ved betjente hytter ikke er med.
+- Side 2 viser alle hyttenavn i to spalter per kort med statusprikk, en teller i overskriften («10 hytter · 8 åpne») og en kort dato bak stengte hytter («til 15. feb.», i rødt som «om 3 dager» når det er innen 14 dager). Kortvarianten per side står som `kort` i `SIDER`. Nederst på side 2 står en merknad om at selvbetjeningskvarter ved betjente hytter ikke er med.
 - Kartgrunnlaget ligger i `assets/sor-norge.json` og lages av `scripts/lag_kart.py`, se under.
 - Sidene laster seg selv på nytt hver 30. minutt, i tillegg til at TV-en refresher.
 - Innholdet ligger i en fast 16:9-flate som sentreres i vinduet, så siden ser lik ut på TV, i et smalt vindu og i et stående vindu.

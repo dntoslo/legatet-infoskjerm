@@ -412,25 +412,6 @@ body {
   font-weight: 400;
 }
 
-/* Avviksvarianten: oppsummering per område og bare hyttene som er stengt
-   eller snart endrer seg, med samme rad som side 1. */
-.kort.avvik .oppsummering {
-  margin: 0 0 0.4rem;
-  font-size: 1.9rem;
-  line-height: 1.25;
-  color: var(--graa);
-}
-.kort.avvik .oppsummering:last-child {
-  margin-bottom: 0;
-}
-.kort.avvik .hytte {
-  font-size: 1.9rem;
-  padding: 0.35rem 0;
-}
-.kort.avvik .hytte .status {
-  font-size: 1.7rem;
-}
-
 /* Bunnlinja på side 2: merknad til venstre, «Sist oppdatert» til høyre. */
 .bunn {
   flex: 0 0 auto;
