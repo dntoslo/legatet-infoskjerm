@@ -4,22 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>Betjente hytter, DNT Oslo og Omegn</title>
+  <title>Selvbetjente hytter, DNT Oslo og Omegn</title>
   <link rel="icon" href="assets/dnt-logo.png">
   <!-- Versjonsnummeret i lenkene bumpes ved endringer, så TV-en ikke bruker gammel CSS/JS fra cache.
        Samme tall i index.html og selvbetjente.html. -->
   <link rel="stylesheet" href="assets/style.css?v=6">
 </head>
-<body>
+<!-- data-side velger konfigurasjonen i assets/app.js. Kortvarianten velges med
+     ?visning=liste (standard) eller ?visning=avvik i adressen, se README.md. -->
+<body data-side="selvbetjente">
 <div class="skjerm">
   <header class="topp">
     <img class="logo" src="assets/dnt-logo.png" alt="DNT">
     <div class="tittel">
-      <h1>Betjente hytter</h1>
+      <h1>Selvbetjente hytter</h1>
       <p class="undertittel">DNT Oslo og Omegn</p>
     </div>
     <div class="forklaring">
-      <span><i class="prikk betjent"></i>Betjent</span>
       <span><i class="prikk selvbetjent"></i>Selvbetjent</span>
       <span><i class="prikk stengt"></i>Stengt</span>
     </div>
@@ -30,7 +31,10 @@
     <p class="laster">Henter åpningstider …</p>
   </main>
 
-  <div class="oppdatert" id="oppdatert"></div>
+  <footer class="bunn">
+    <p class="merknad">Selvbetjeningskvarter ved betjente hytter er ikke med i denne oversikten.</p>
+    <div class="oppdatert" id="oppdatert"></div>
+  </footer>
 </div>
 
   <script src="assets/app.js?v=6"></script>

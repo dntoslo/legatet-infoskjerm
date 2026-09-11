@@ -1,10 +1,11 @@
-/* Infoskjerm for betjente hytter i DNT Oslo og Omegn.
-   Leser data.json (generert av scripts/hent_data.py), regner ut status for
-   dagens dato i norsk tid og tegner ett kort per fjellområde i to kolonner
-   rundt et kart av Sør-Norge. Kartgrunnlaget ligger i assets/sor-norge.json
-   (laget av scripts/lag_kart.py): landomriss, DNT-områdene fra ut.no,
-   innsjøer, elver og byer, alt i lon/lat. Det projiseres her sammen med
-   hyttene.
+/* Infoskjerm for hyttene i DNT Oslo og Omegn. Ett skript for begge sidene:
+   index.html (betjente hytter) og selvbetjente.html (selvbetjente hytter).
+   Leser data.json (generert av scripts/hent_data.py), plukker hyttene som
+   hører til sida, regner ut status for dagens dato i norsk tid og tegner ett
+   kort per fjellområde i to kolonner rundt et kart av Sør-Norge.
+   Kartgrunnlaget ligger i assets/sor-norge.json (laget av
+   scripts/lag_kart.py): landomriss, DNT-områdene fra ut.no, innsjøer, elver
+   og byer, alt i lon/lat. Det projiseres her sammen med hyttene.
 
    Skjermen kjører Tizen 7.0 med Chromium 94. Bruk ikke JS nyere enn det
    (replaceChildren er det nyeste her). */
@@ -18,12 +19,40 @@
   const GAMMEL_ETTER_TIMER = 36;          // varsle hvis Action ikke har levert nye data
   const SNART_DAGER = 14;                 // vis «om N dager» innen dette
 
-  // Hvilken kolonne hvert område står i. Vest til venstre, øst til høyre,
-  // nord øverst. Områder som ikke står her, havner nederst til høyre.
-  const KOLONNER = {
-    venstre: ["Breheimen", "Jotunheimen", "Skarvheimen", "Hardangervidda"],
-    hoyre: ["Rondane og Dovrefjell", "Femundsmarka", "Langsua", "Oslomarka og Oslofjorden"],
+  // Én konfigurasjon per side. Sida velges med data-side på <body>, og
+  // kortvarianten med ?visning= i adressen der sida har flere.
+  //   velg: hvilke hytter i data.json som hører til sida.
+  //   kolonner: hvilken kolonne hvert område står i. Vest til venstre, øst til
+  //     høyre, nord øverst. Områder som ikke står her, havner nederst til høyre.
+  //   prikkR: hytteprikk på kartet i viewBox-enheter (1 enhet er ca. 0,6 km).
+  // Side 2 har dobbelt så mange hytter, derfor mindre prikker, og Langsua står
+  // til høyre fordi venstre kolonne med 30 hytter er nesten full.
+  const SIDER = {
+    betjente: {
+      velg: h => h.serviceLevel === "STAFFED",
+      kolonner: {
+        venstre: ["Breheimen", "Jotunheimen", "Skarvheimen", "Hardangervidda"],
+        hoyre: ["Rondane og Dovrefjell", "Femundsmarka", "Langsua", "Oslomarka og Oslofjorden"],
+      },
+      prikkR: 9,
+      standard: "detalj",
+      varianter: ["detalj"],
+    },
+    selvbetjente: {
+      velg: h => h.serviceLevel === "SELF_SERVICE",
+      kolonner: {
+        venstre: ["Breheimen", "Jotunheimen", "Skarvheimen", "Hardangervidda"],
+        hoyre: ["Rondane og Dovrefjell", "Langsua", "Femundsmarka", "Østerdalsfjella"],
+      },
+      prikkR: 5.5,              // samme tall som r på .hyttepunkt.stengt for side 2 i style.css
+      standard: "liste",
+      varianter: ["liste", "avvik"],
+    },
   };
+  const SIDE = SIDER[document.body.dataset.side] || SIDER.betjente;
+  const oensketVisning = new URLSearchParams(location.search).get("visning");
+  const VISNING = SIDE.varianter.includes(oensketVisning) ? oensketVisning : SIDE.standard;
+  document.body.dataset.visning = VISNING;
 
   // Farge per område, brukt både på kortet og som fyll på kartet. Dempede
   // DNT-toner, med hensikt ulike statusfargene grønn, oransje og rød, så
@@ -39,10 +68,10 @@
     "Breheimen": "#DDD3EA",              // lilla, dempet
     "Langsua": "#F5DDB0",                // beige, litt dypere enn DNT mørk beige for å synes mot hvitt
     "Femundsmarka": "#C9E9E4",           // lys turkis
+    "Østerdalsfjella": "#F2CFDF",        // lys rosa, ulik naboene Femundsmarka og Rondane
   };
 
-  const PRIKK_R = 9;            // hytteprikk, i viewBox-enheter (1 enhet er ca. 0,6 km)
-  const BY_R = 6;
+  const BY_R = 6;               // byprikk, i viewBox-enheter (1 enhet er ca. 0,6 km)
   const COS_LAT = Math.cos(61 * Math.PI / 180);
   const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -186,28 +215,97 @@
   }
 
   // CSS-klassenavn for et område, brukt til å koble kort, polygon og prikker.
-  const omradeKlasse = omrade => "omrade-" + omrade.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  // æ, ø og å skrives om først, så «Østerdalsfjella» blir omrade-oesterdalsfjella.
+  const omradeKlasse = omrade => "omrade-" + omrade.toLowerCase()
+    .replace(/æ/g, "ae").replace(/ø/g, "oe").replace(/å/g, "aa")
+    .replace(/[^a-z0-9]+/g, "-");
 
   /* ---------- Kort ---------- */
 
-  // Ett områdekort med overskrift og én linje per hytte.
+  // Én rad slik side 1 viser den: prikk, navn og «Betjent · stenger om 3 dager».
+  function radDetalj(rad) {
+    const { hytte: h, s } = rad;
+    const li = el("li", `hytte ${s.klasse}`);
+    li.appendChild(el("i", `prikk ${s.klasse}`));
+    li.appendChild(el("span", "navn", h.navn));
+    const st = el("span", "status");
+    st.appendChild(el("span", "niva", s.niva));
+    st.appendChild(document.createTextNode(" · "));
+    st.appendChild(el("span", s.snart ? "snart" : "detalj", s.detalj));
+    li.appendChild(st);
+    return li;
+  }
+
+  // Kort tidsangivelse til listevarianten: når en stengt hytte åpner («til
+  // 15. feb.»), eller når endringen er nær («om 3 dager», i rødt). Bruker
+  // samme perioder og regler som status(), men får plass ved siden av navnet.
+  function kortNaar(rad, iDag) {
+    const { hytte: h, s } = rad;
+    const perioder = h.perioder || [];
+    if (s.klasse === "stengt") {
+      const aapner = neste(perioder, iDag, erAapen);
+      if (!aapner) return null;
+      return s.snart
+        ? { klasse: "snart", tekst: relativ(aapner.fra, iDag) }
+        : { klasse: "detalj", tekst: `til ${formaterDato(aapner.fra, iDag)}` };
+    }
+    const naa = gjeldende(perioder, iDag);
+    if (s.snart && naa && naa.til) return { klasse: "snart", tekst: relativ(naa.til, iDag) };
+    return null;
+  }
+
+  // Én rad i listevarianten: prikk, navn og eventuelt kort tidsangivelse.
+  function radListe(rad, iDag) {
+    const { hytte: h, s } = rad;
+    const li = el("li", `hytte ${s.klasse}`);
+    li.appendChild(el("i", `prikk ${s.klasse}`));
+    li.appendChild(el("span", "navn", h.navn));
+    const n = kortNaar(rad, iDag);
+    if (n) li.appendChild(el("span", `naar ${n.klasse}`, n.tekst));
+    return li;
+  }
+
+  // «10 hytter · 8 åpne», med « · 2 stengt» bak når medStengt er satt.
+  function tell(rader, medStengt) {
+    const stengt = rader.filter(r => r.s.klasse === "stengt").length;
+    const aapne = rader.length - stengt;
+    let tekst = `${rader.length} ${rader.length === 1 ? "hytte" : "hytter"} · ${aapne} ${aapne === 1 ? "åpen" : "åpne"}`;
+    if (medStengt) tekst += ` · ${stengt} stengt`;
+    return tekst;
+  }
+
+  // Ett områdekort. Rammen er lik på begge sidene, innholdet følger VISNING:
+  // «detalj» (side 1) har én statuslinje per hytte, «liste» har alle navn i to
+  // spalter med prikk og teller i overskriften, «avvik» har en oppsummering og
+  // bare hyttene som er stengt eller snart endrer seg.
   function tegnKort(omrade, hytter, iDag) {
     const kort = el("section", `kort ${omradeKlasse(omrade)}`);
     if (FARGER[omrade]) kort.style.setProperty("--farge", FARGER[omrade]);
     else kort.classList.add("uten-farge");
-    kort.appendChild(el("h2", null, omrade));
+    const h2 = el("h2", null, omrade);
+    kort.appendChild(h2);
+    const rader = hytter.map(h => ({ hytte: h, s: status(h, iDag) }));
     const liste = el("ul");
-    for (const h of hytter) {
-      const s = status(h, iDag);
-      const li = el("li", `hytte ${s.klasse}`);
-      li.appendChild(el("i", `prikk ${s.klasse}`));
-      li.appendChild(el("span", "navn", h.navn));
-      const st = el("span", "status");
-      st.appendChild(el("span", "niva", s.niva));
-      st.appendChild(document.createTextNode(" · "));
-      st.appendChild(el("span", s.snart ? "snart" : "detalj", s.detalj));
-      li.appendChild(st);
-      liste.appendChild(li);
+
+    if (VISNING === "liste") {
+      kort.classList.add("liste");
+      h2.appendChild(el("span", "teller", tell(rader, false)));
+      // To spalter fylt kolonnevis, så radene ligger på linje på tvers.
+      const perSpalte = Math.ceil(rader.length / 2);
+      liste.style.gridTemplateRows = `repeat(${perSpalte}, auto)`;
+      rader.forEach((rad, i) => {
+        const li = radListe(rad, iDag);
+        if (i % perSpalte === 0) li.classList.add("spaltestart");
+        liste.appendChild(li);
+      });
+    } else if (VISNING === "avvik") {
+      kort.classList.add("avvik");
+      kort.appendChild(el("p", "oppsummering", tell(rader, true)));
+      const avvik = rader.filter(r => r.s.klasse === "stengt" || r.s.snart);
+      if (!avvik.length) return kort;
+      for (const rad of avvik) liste.appendChild(radDetalj(rad));
+    } else {
+      for (const rad of rader) liste.appendChild(radDetalj(rad));
     }
     kort.appendChild(liste);
     return kort;
@@ -215,10 +313,12 @@
 
   /* ---------- Kart ---------- */
 
+  // Hentes én gang per sidelasting, uten cache, så et nytt kartgrunnlag når
+  // TV-en uten at ?v= må bumpes. Fila er 20 kB, det tåles hver halvtime.
   let kartLovnad = null;
   function hentKart() {
     if (!kartLovnad) {
-      kartLovnad = fetch(KARTFIL).then(r => {
+      kartLovnad = fetch(`${KARTFIL}?v=${Date.now()}`, { cache: "no-store" }).then(r => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
       });
@@ -304,7 +404,7 @@
       if (h.lon == null || h.lat == null) continue;
       const [x, y] = proj.p(h.lon, h.lat);
       const s = status(h, iDag);
-      const c = svgEl("circle", { class: `hyttepunkt ${s.klasse} ${omradeKlasse(h.omrade)}`, cx: tall(x), cy: tall(y), r: PRIKK_R });
+      const c = svgEl("circle", { class: `hyttepunkt ${s.klasse} ${omradeKlasse(h.omrade)}`, cx: tall(x), cy: tall(y), r: SIDE.prikkR });
       c.__punkter = [[x, y]];
       c.appendChild(svgEl("title")).textContent = `${h.navn}: ${s.niva}, ${s.detalj}`;
       prikker.appendChild(c);
@@ -382,8 +482,18 @@
     const flate = document.getElementById("kartflate");
     flate.replaceChildren();
 
-    const omrader = (data.omrader || [...new Set(data.hytter.map(h => h.omrade))])
-      .filter(o => data.hytter.some(h => h.omrade === o));
+    // Bare hyttene som hører til denne sida. data.json har begge gruppene.
+    const hytter = (data.hytter || []).filter(SIDE.velg);
+    if (!hytter.length) {
+      flate.replaceChildren(el("p", "feil", "Fant ingen hytter for denne sida i data.json."));
+      return;
+    }
+    const visning = { ...data, hytter };
+
+    // Områdene i kanonisk rekkefølge fra data.omrader, med påfyll av områder
+    // som bare finnes på hyttene, og bare de som har hytter på denne sida.
+    const omrader = [...new Set([...(data.omrader || []), ...hytter.map(h => h.omrade)])]
+      .filter(o => hytter.some(h => h.omrade === o));
 
     const venstre = el("div", "kolonne venstre");
     const hoyre = el("div", "kolonne hoyre");
@@ -391,20 +501,21 @@
     kart.appendChild(el("p", "laster", "Henter kart …"));
 
     // Kort i samme rekkefølge som kolonnelisten, ukjente områder til høyre.
+    const kolonner = SIDE.kolonner;
     const plasser = (navn, kolonne) => {
       if (!omrader.includes(navn)) return;
-      kolonne.appendChild(tegnKort(navn, data.hytter.filter(h => h.omrade === navn), iDag));
+      kolonne.appendChild(tegnKort(navn, hytter.filter(h => h.omrade === navn), iDag));
     };
-    KOLONNER.venstre.forEach(n => plasser(n, venstre));
-    KOLONNER.hoyre.forEach(n => plasser(n, hoyre));
-    omrader.filter(o => !KOLONNER.venstre.includes(o) && !KOLONNER.hoyre.includes(o))
+    kolonner.venstre.forEach(n => plasser(n, venstre));
+    kolonner.hoyre.forEach(n => plasser(n, hoyre));
+    omrader.filter(o => !kolonner.venstre.includes(o) && !kolonner.hoyre.includes(o))
       .forEach(n => plasser(n, hoyre));
 
     flate.append(venstre, kart, hoyre);
 
     hentKart()
       .then(grunnlag => {
-        kart.replaceChildren(tegnKart(grunnlag, omrader, data, iDag));
+        kart.replaceChildren(tegnKart(grunnlag, omrader, visning, iDag));
         // Fontene kan komme etter kartet og flytte overskriftene, så strekene
         // tegnes én gang nå og én gang når fontene er klare.
         tegnStreker(flate);
@@ -461,5 +572,5 @@
   setTimeout(() => location.reload(), RELOAD_MS);
 
   // Eksponert for testing i konsollen: infoskjerm.status(hytte, "2026-10-04")
-  window.infoskjerm = { status, gjeldende, iDagOslo };
+  window.infoskjerm = { status, gjeldende, iDagOslo, SIDE, VISNING };
 })();

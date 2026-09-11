@@ -361,3 +361,99 @@ body {
 .strekende {
   fill: var(--graa);
 }
+
+/* ---------- Side 2: selvbetjente hytter (selvbetjente.html) ---------- */
+
+/* Teller i kortoverskriften («10 hytter · 8 åpne») i listevarianten. */
+.kort h2 .teller {
+  margin-left: auto;
+  font-size: 1.7rem;
+  font-weight: 300;
+  color: var(--graa);
+  white-space: nowrap;
+}
+
+/* Listevarianten: alle navn i to spalter fylt kolonnevis, så radene ligger på
+   linje på tvers. Mindre skrift enn side 1, fordi venstre kolonne har 30 hytter. */
+.kort.liste ul {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2rem;
+}
+.kort.liste .hytte {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.7rem;
+  padding: 0.3rem 0;
+  font-size: 1.8rem;
+  border-top: 1px solid var(--moerk-beige);
+}
+.kort.liste .hytte.spaltestart {
+  border-top: none;
+}
+.kort.liste .prikk {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+.kort.liste .navn {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Kort tidsangivelse bak navnet: «til 15. feb.» i grått, «om 3 dager» i rødt. */
+.hytte .naar {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--graa);
+  white-space: nowrap;
+  text-align: right;
+}
+.hytte .naar.snart {
+  color: var(--dnt-roed);
+  font-weight: 400;
+}
+
+/* Avviksvarianten: oppsummering per område og bare hyttene som er stengt
+   eller snart endrer seg, med samme rad som side 1. */
+.kort.avvik .oppsummering {
+  margin: 0 0 0.4rem;
+  font-size: 1.9rem;
+  line-height: 1.25;
+  color: var(--graa);
+}
+.kort.avvik .oppsummering:last-child {
+  margin-bottom: 0;
+}
+.kort.avvik .hytte {
+  font-size: 1.9rem;
+  padding: 0.35rem 0;
+}
+.kort.avvik .hytte .status {
+  font-size: 1.7rem;
+}
+
+/* Bunnlinja på side 2: merknad til venstre, «Sist oppdatert» til høyre. */
+.bunn {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  margin-top: calc(var(--marg) * -0.55);
+}
+.bunn .oppdatert {
+  margin-top: 0;
+}
+.merknad {
+  margin: 0;
+  font-size: 1.7rem;
+  color: var(--graa);
+}
+
+/* Mindre hytteprikker på side 2, med tynnere hvit kant som skiller prikker
+   som overlapper. r skal være lik prikkR for selvbetjente i app.js. */
+body[data-side="selvbetjente"] .hyttepunkt {
+  stroke-width: 1.5;
+}
+body[data-side="selvbetjente"] .hyttepunkt.stengt {
+  r: 5.5;
+}
