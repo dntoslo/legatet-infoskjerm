@@ -400,9 +400,60 @@
     return svg;
   }
 
-  // Strek fra hvert kort til nærmeste punkt på kanten av området sitt, eller
-  // til nærmeste hytte når området ikke er tegnet. Tegnes i et SVG-lag over
-  // hele flaten i skjermpiksler, og på nytt når flaten endrer størrelse.
+  // Tyngdepunktet i ett eller flere polygoner, arealveid (skjermpiksler).
+  function tyngdepunkt(ringer) {
+    let A = 0, cx = 0, cy = 0;
+    for (const r of ringer) {
+      for (let i = 0; i < r.length; i++) {
+        const p = r[i], q = r[(i + 1) % r.length];
+        const k = p.x * q.y - q.x * p.y;
+        A += k; cx += (p.x + q.x) * k; cy += (p.y + q.y) * k;
+      }
+    }
+    return A ? { x: cx / (3 * A), y: cy / (3 * A) } : null;
+  }
+
+  // Punktet der strålen fra start mot tyngdepunktet først krysser en kant.
+  function motMidten(start, ringer) {
+    const c = tyngdepunkt(ringer);
+    if (!c) return null;
+    const dx = c.x - start.x, dy = c.y - start.y;
+    let beste = null;
+    for (const r of ringer) {
+      for (let i = 0; i < r.length; i++) {
+        const p = r[i], q = r[(i + 1) % r.length];
+        const ex = q.x - p.x, ey = q.y - p.y;
+        const det = dx * ey - dy * ex;
+        if (Math.abs(det) < 1e-9) continue;
+        const t = ((p.x - start.x) * ey - (p.y - start.y) * ex) / det;
+        const u = ((p.x - start.x) * dy - (p.y - start.y) * dx) / det;
+        if (t > 0 && u >= 0 && u <= 1 && (!beste || t < beste.t)) {
+          beste = { t, x: start.x + t * dx, y: start.y + t * dy };
+        }
+      }
+    }
+    return beste;
+  }
+
+  // Nærmeste punkt på kanten av polygonene, ikke bare nærmeste hjørne.
+  function naermestPaaKant(start, ringer) {
+    let beste = null;
+    for (const r of ringer) {
+      for (let i = 0; i < r.length; i++) {
+        const p = r[i], q = r[(i + 1) % r.length];
+        const ex = q.x - p.x, ey = q.y - p.y, l2 = ex * ex + ey * ey;
+        const u = l2 ? Math.max(0, Math.min(1, ((start.x - p.x) * ex + (start.y - p.y) * ey) / l2)) : 0;
+        const x = p.x + u * ex, y = p.y + u * ey, d = Math.hypot(x - start.x, y - start.y);
+        if (!beste || d < beste.d) beste = { x, y, d };
+      }
+    }
+    return beste;
+  }
+
+  // Strek fra hvert kort til kanten av området sitt, rettet mot midten av
+  // området, eller til nærmeste hytte når området ikke er tegnet. Tegnes i et
+  // SVG-lag over hele flaten i skjermpiksler, og på nytt når flaten endrer
+  // størrelse.
   function tegnStreker(flate) {
     let lag = flate.querySelector(".streker");
     if (!lag) {
@@ -435,21 +486,29 @@
 
       let slutt = null;
       const maal = kartSvg.querySelectorAll(`.omrade.${klasse}`);
-      for (const element of maal.length ? maal : kartSvg.querySelectorAll(`.hyttepunkt.${klasse}`)) {
-        for (const pkt of element.__punkter || []) {
-          const s = tilSkjerm(pkt);
-          const d = Math.hypot(s.x - start.x, s.y - start.y);
-          if (!slutt || d < slutt.d) slutt = { ...s, d };
+      if (maal.length) {
+        // Streken peker mot midten av området og stopper på kanten, så den
+        // tydelig hører til dette området og ikke ender i et hjørne som deles
+        // med naboen. Treffer strålen ikke kanten (bukt eller gap mellom
+        // delområder), brukes nærmeste punkt på kanten.
+        const ringer = [...maal].map(e => (e.__punkter || []).map(tilSkjerm)).filter(r => r.length >= 3);
+        slutt = motMidten(start, ringer) || naermestPaaKant(start, ringer);
+      } else {
+        // Uten polygon: nærmeste hytteprikk, og stopp like utenfor prikken.
+        for (const element of kartSvg.querySelectorAll(`.hyttepunkt.${klasse}`)) {
+          for (const pkt of element.__punkter || []) {
+            const s = tilSkjerm(pkt);
+            const d = Math.hypot(s.x - start.x, s.y - start.y);
+            if (!slutt || d < slutt.d) slutt = { ...s, d };
+          }
+        }
+        if (slutt) {
+          const prikkR = 0.9 * enhet;
+          slutt.x -= (slutt.x - start.x) / slutt.d * prikkR;
+          slutt.y -= (slutt.y - start.y) / slutt.d * prikkR;
         }
       }
       if (!slutt) continue;
-
-      // Går streken til en hytteprikk, stopper den like utenfor prikken.
-      if (!maal.length) {
-        const prikkR = 0.9 * enhet;
-        slutt.x -= (slutt.x - start.x) / slutt.d * prikkR;
-        slutt.y -= (slutt.y - start.y) / slutt.d * prikkR;
-      }
       lag.appendChild(svgEl("line", {
         class: "strek", x1: tall(start.x), y1: tall(start.y), x2: tall(slutt.x), y2: tall(slutt.y),
       }));
