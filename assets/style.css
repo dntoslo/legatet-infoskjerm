@@ -430,6 +430,16 @@ body {
   color: var(--graa);
 }
 
+/* På side 2 er selvbetjent den normale åpne tilstanden, ikke et redusert
+   tilbud slik det er ved en betjent hytte på side 1. Åpne hytter får derfor
+   samme grønne som betjent, og oransje brukes bare på side 1. */
+body[data-side="selvbetjente"] .prikk.selvbetjent {
+  background: var(--moerk-groenn);
+}
+body[data-side="selvbetjente"] .hyttepunkt.selvbetjent {
+  fill: var(--moerk-groenn);
+}
+
 /* Mindre hytteprikker på side 2, med tynnere hvit kant som skiller prikker
    som overlapper. r skal være lik prikkR for selvbetjente i app.js. */
 body[data-side="selvbetjente"] .hyttepunkt {
