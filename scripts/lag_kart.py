@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lager assets/sor-norge.json: kartgrunnlaget til kartet i index.html og selvbetjente.html.
+"""Lager assets/sor-norge.json: kartgrunnlaget til kartet i betjente.html og selvbetjente.html.
 
 Engangsscript, ikke del av GitHub Action. Kjøres med:
 

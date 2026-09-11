@@ -9,7 +9,7 @@ Utvalget er dynamisk. Én GraphQL-spørring gir alle publiserte hytter til
 eieren i hytter.json (DNT Oslo og Omegn, 156). Scriptet tar med hyttene med
 serviceLevel STAFFED og SELF_SERVICE, utelater selvbetjeningskvarter ved
 betjente hytter, og plasserer hver hytte i et visningsområde etter reglene i
-hytter.json. Visningen (index.html og selvbetjente.html med assets/app.js)
+hytter.json. Visningen (betjente.html og selvbetjente.html med assets/app.js)
 filtrerer på serviceLevel per side og regner ut status for i dag selv.
 
 Kun standardbiblioteket. Feiler hentingen eller reglene, avsluttes scriptet
@@ -229,7 +229,10 @@ def hent_alle(eier):
 def skal_utelates(cabin, konfig):
     """Selvbetjeningskvarter ved betjente hytter fører ut.no som egne hytter
     med «Selvbetjent» eller «selvbetjening» i navnet. Hovedhytta står på
-    side 1 og viser overgangen til selvbetjening selv."""
+    side 1 og viser overgangen til selvbetjening selv.
+
+    Utelatelsen skjer før områdemappingen med hensikt: Brebua ved Finsehytta
+    ligger i to DNT-områder på ut.no og ville ellers krevd en overstyring."""
     if cabin["id"] in konfig["utelat_ider"]:
         return True
     monster = konfig["utelat_monster"]
