@@ -44,7 +44,7 @@
       kort: "liste",
       kolonner: {
         venstre: ["Breheimen", "Jotunheimen", "Skarvheimen", "Hardangervidda"],
-        hoyre: ["Femundsmarka", "Rondane og Dovrefjell", "Østerdalsfjella", "Langsua"],
+        hoyre: ["Rondane og Dovrefjell", "Femundsmarka", "Østerdalsfjella", "Langsua"],
       },
       prikkR: 5.5,              // samme tall som r på .hyttepunkt.stengt for side 2 i style.css
     },
