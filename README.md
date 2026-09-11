@@ -55,7 +55,7 @@ Layouten er laget for åtte områder per side, fire i hver kolonne. Venstre kolo
 ### Nytt område
 
 1. Legg området i `omrader` i `hytter.json` med `polygon` og `grupper`. ut.no-ID-en for et DNT-område finnes med `cabin(id) { areas { id name areaType } }` på en av hyttene, se `docs/utno-graphql.md`.
-2. Gi det en farge i `FARGER` og en plass i `kolonner` under hver side det skal vises på i `SIDER`, i `assets/app.js`. Fargen må skille seg klart fra naboområdene på kartet.
+2. Gi det en farge i `FARGER` og en plass i `kolonner` under hver side det skal vises på i `SIDER`, i `assets/app.js`. Fargen må skille seg klart fra naboområdene på kartet. Rekkefølgen i kolonnen skal følge nord til sør, ellers krysser strekene fra kortene hverandre. Sjekk ved 1920 x 1080 at ingen `.streker line` krysser en annen.
 3. Kjør `scripts/lag_kart.py` på nytt og commit `assets/sor-norge.json`.
 4. Bump `?v=` i begge HTML-filene.
 

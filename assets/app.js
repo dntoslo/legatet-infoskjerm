@@ -27,7 +27,8 @@
   //     høyre, nord øverst. Områder som ikke står her, havner nederst til høyre.
   //   prikkR: hytteprikk på kartet i viewBox-enheter (1 enhet er ca. 0,6 km).
   // Side 2 har dobbelt så mange hytter, derfor mindre prikker, og Langsua står
-  // til høyre fordi venstre kolonne med 30 hytter er nesten full.
+  // til høyre fordi venstre kolonne med 30 hytter er nesten full. Rekkefølgen
+  // i en kolonne må følge nord til sør, ellers krysser strekene hverandre.
   const SIDER = {
     betjente: {
       velg: h => h.serviceLevel === "STAFFED",
@@ -43,7 +44,7 @@
       kort: "liste",
       kolonner: {
         venstre: ["Breheimen", "Jotunheimen", "Skarvheimen", "Hardangervidda"],
-        hoyre: ["Rondane og Dovrefjell", "Langsua", "Femundsmarka", "Østerdalsfjella"],
+        hoyre: ["Femundsmarka", "Rondane og Dovrefjell", "Østerdalsfjella", "Langsua"],
       },
       prikkR: 5.5,              // samme tall som r på .hyttepunkt.stengt for side 2 i style.css
     },
