@@ -1,5 +1,5 @@
 {
- "hentet": "2026-09-10T15:55:28+02:00",
+ "hentet": "2026-09-11T09:26:30+02:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -9,18 +9,20 @@
   "Breheimen",
   "Langsua",
   "Femundsmarka",
+  "Østerdalsfjella",
   "Oslomarka og Oslofjorden"
  ],
  "hytter": [
   {
    "id": 10941,
-   "navn": "Fannaråken",
+   "navn": "Fannaråkhytta",
    "navnUtno": "Fannaråkhytta",
    "omrade": "Jotunheimen",
    "utnoUrl": "https://ut.no/hytte/10941",
    "lon": 7.9069,
    "lat": 61.5161,
    "serviceLevel": "STAFFED",
+   "senger": 34,
    "oppdatertUtno": "2026-08-31T07:15:07.084Z",
    "perioder": [
     {
@@ -62,6 +64,7 @@
    "lon": 8.2973,
    "lat": 61.3752,
    "serviceLevel": "STAFFED",
+   "senger": 100,
    "oppdatertUtno": "2026-09-10T05:19:43.741Z",
    "perioder": [
     {
@@ -117,6 +120,7 @@
    "lon": 8.4885,
    "lat": 61.4514,
    "serviceLevel": "STAFFED",
+   "senger": 119,
    "oppdatertUtno": "2026-09-07T14:50:58.372Z",
    "perioder": [
     {
@@ -179,6 +183,7 @@
    "lon": 8.8128,
    "lat": 61.4941,
    "serviceLevel": "STAFFED",
+   "senger": 185,
    "oppdatertUtno": "2026-09-09T18:57:23.711Z",
    "perioder": [
     {
@@ -234,6 +239,7 @@
    "lon": 8.6324,
    "lat": 61.6227,
    "serviceLevel": "STAFFED",
+   "senger": 137,
    "oppdatertUtno": "2026-09-09T21:32:47.870Z",
    "perioder": [
     {
@@ -303,6 +309,7 @@
    "lon": 8.2473,
    "lat": 61.5488,
    "serviceLevel": "STAFFED",
+   "senger": 189,
    "oppdatertUtno": "2026-09-10T10:15:11.486Z",
    "perioder": [
     {
@@ -379,7 +386,8 @@
    "lon": 8.0143,
    "lat": 61.4632,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-07T06:18:50.981Z",
+   "senger": 87,
+   "oppdatertUtno": "2026-09-11T06:11:58.087Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -434,6 +442,7 @@
    "lon": 7.507,
    "lat": 60.5979,
    "serviceLevel": "STAFFED",
+   "senger": 174,
    "oppdatertUtno": "2026-09-09T18:02:48.766Z",
    "perioder": [
     {
@@ -552,6 +561,7 @@
    "lon": 7.7131,
    "lat": 60.4514,
    "serviceLevel": "STAFFED",
+   "senger": 85,
    "oppdatertUtno": "2026-09-08T13:13:24.842Z",
    "perioder": [
     {
@@ -600,6 +610,7 @@
    "lon": 7.1371,
    "lat": 60.0936,
    "serviceLevel": "STAFFED",
+   "senger": 52,
    "oppdatertUtno": "2026-09-06T14:23:55.360Z",
    "perioder": [
     {
@@ -669,6 +680,7 @@
    "lon": 7.4819,
    "lat": 60.1839,
    "serviceLevel": "STAFFED",
+   "senger": 80,
    "oppdatertUtno": "2026-09-10T06:31:08.780Z",
    "perioder": [
     {
@@ -731,6 +743,7 @@
    "lon": 7.5045,
    "lat": 60.8285,
    "serviceLevel": "STAFFED",
+   "senger": 117,
    "oppdatertUtno": "2026-09-05T09:50:40.661Z",
    "perioder": [
     {
@@ -772,6 +785,7 @@
    "lon": 7.6035,
    "lat": 60.7009,
    "serviceLevel": "STAFFED",
+   "senger": 88,
    "oppdatertUtno": "2026-09-09T18:56:09.317Z",
    "perioder": [
     {
@@ -827,6 +841,7 @@
    "lon": 7.9336,
    "lat": 60.8102,
    "serviceLevel": "STAFFED",
+   "senger": 52,
    "oppdatertUtno": "2026-09-09T19:50:37.225Z",
    "perioder": [
     {
@@ -889,6 +904,7 @@
    "lon": 10.0125,
    "lat": 61.8841,
    "serviceLevel": "STAFFED",
+   "senger": 90,
    "oppdatertUtno": "2026-09-06T10:55:26.578Z",
    "perioder": [
     {
@@ -944,6 +960,7 @@
    "lon": 9.6415,
    "lat": 62.0907,
    "serviceLevel": "STAFFED",
+   "senger": 54,
    "oppdatertUtno": "2026-09-07T10:28:08.322Z",
    "perioder": [
     {
@@ -985,6 +1002,7 @@
    "lon": 9.7963,
    "lat": 61.8788,
    "serviceLevel": "STAFFED",
+   "senger": 128,
    "oppdatertUtno": "2026-09-08T08:29:47.280Z",
    "perioder": [
     {
@@ -1026,7 +1044,8 @@
    "lon": 9.3508,
    "lat": 62.2943,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-08T05:06:49.477Z",
+   "senger": 80,
+   "oppdatertUtno": "2026-09-11T06:53:08.942Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -1067,6 +1086,7 @@
    "lon": 7.7905,
    "lat": 61.6427,
    "serviceLevel": "STAFFED",
+   "senger": 42,
    "oppdatertUtno": "2026-09-01T18:01:34.624Z",
    "perioder": [
     {
@@ -1129,7 +1149,8 @@
    "lon": 7.7094,
    "lat": 61.8092,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-06T06:53:31.434Z",
+   "senger": 86,
+   "oppdatertUtno": "2026-09-10T19:50:39.721Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -1380,6 +1401,7 @@
    "lon": 9.5951,
    "lat": 61.2426,
    "serviceLevel": "STAFFED",
+   "senger": 51,
    "oppdatertUtno": "2026-09-10T09:26:22.492Z",
    "perioder": [
     {
@@ -1442,6 +1464,7 @@
    "lon": 12.015,
    "lat": 62.2215,
    "serviceLevel": "STAFFED",
+   "senger": 45,
    "oppdatertUtno": "2026-09-05T19:07:02.844Z",
    "perioder": [
     {
@@ -1489,6 +1512,27 @@
    ]
   },
   {
+   "id": 10136374,
+   "navn": "Breivoll Gård",
+   "navnUtno": "Breivoll Gård",
+   "omrade": "Oslomarka og Oslofjorden",
+   "utnoUrl": "https://ut.no/hytte/10136374",
+   "lon": 10.729,
+   "lat": 59.7374,
+   "serviceLevel": "STAFFED",
+   "senger": 28,
+   "oppdatertUtno": "2026-09-08T12:41:40.847Z",
+   "perioder": [
+    {
+     "niva": "STAFFED",
+     "senger": 28,
+     "fra": null,
+     "til": null,
+     "heleAaret": true
+    }
+   ]
+  },
+  {
    "id": 10645,
    "navn": "Kobberhaughytta",
    "navnUtno": "Kobberhaughytta",
@@ -1497,7 +1541,8 @@
    "lon": 10.6637,
    "lat": 60.0361,
    "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-06T10:59:44.897Z",
+   "senger": 54,
+   "oppdatertUtno": "2026-09-10T16:54:07.730Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -1517,6 +1562,7 @@
    "lon": 10.5619,
    "lat": 59.9481,
    "serviceLevel": "STAFFED",
+   "senger": 48,
    "oppdatertUtno": "2026-09-10T12:45:50.036Z",
    "perioder": [
     {
@@ -1529,22 +1575,2501 @@
    ]
   },
   {
-   "id": 10136374,
-   "navn": "Breivoll Gård",
-   "navnUtno": "Breivoll Gård",
-   "omrade": "Oslomarka og Oslofjorden",
-   "utnoUrl": "https://ut.no/hytte/10136374",
-   "lon": 10.729,
-   "lat": 59.7374,
-   "serviceLevel": "STAFFED",
-   "oppdatertUtno": "2026-09-08T12:41:40.847Z",
+   "id": 10713,
+   "navn": "Olavsbu",
+   "navnUtno": "Olavsbu",
+   "omrade": "Jotunheimen",
+   "utnoUrl": "https://ut.no/hytte/10713",
+   "lon": 8.2739,
+   "lat": 61.4711,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 52,
+   "oppdatertUtno": "2026-09-11T06:11:58.041Z",
    "perioder": [
     {
-     "niva": "STAFFED",
-     "senger": 28,
+     "niva": "SELF_SERVICE",
+     "senger": 52,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 52,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 52,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10714,
+   "navn": "Tomashelleren",
+   "navnUtno": "Tomashelleren",
+   "omrade": "Jotunheimen",
+   "utnoUrl": "https://ut.no/hytte/10714",
+   "lon": 8.5325,
+   "lat": 61.2355,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 14,
+   "oppdatertUtno": "2026-08-19T10:36:40.155Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10915,
+   "navn": "Torfinnsbu",
+   "navnUtno": "Torfinnsbu",
+   "omrade": "Jotunheimen",
+   "utnoUrl": "https://ut.no/hytte/10915",
+   "lon": 8.5956,
+   "lat": 61.3562,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 42,
+   "oppdatertUtno": "2026-09-06T10:37:36.525Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 42,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 42,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 42,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 101130759,
+   "navn": "Vettismorki",
+   "navnUtno": "Vettismorki",
+   "omrade": "Jotunheimen",
+   "utnoUrl": "https://ut.no/hytte/101130759",
+   "lon": 7.9634,
+   "lat": 61.3835,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 9,
+   "oppdatertUtno": "2026-09-08T11:25:14.827Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": "2026-02-15",
+     "til": "2026-03-27",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-03-27",
+     "til": "2026-04-06",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": "2026-04-06",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": "2027-02-15",
+     "til": "2027-03-19",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-03-19",
+     "til": "2027-03-29",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": "2027-03-29",
+     "til": "2027-10-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10715,
+   "navn": "Yksendalsbu",
+   "navnUtno": "Yksendalsbu",
+   "omrade": "Jotunheimen",
+   "utnoUrl": "https://ut.no/hytte/10715",
+   "lon": 8.5169,
+   "lat": 61.3094,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 18,
+   "oppdatertUtno": "2026-09-06T10:31:57.248Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 18,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 18,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 18,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10711,
+   "navn": "Helberghytta",
+   "navnUtno": "Helberghytta",
+   "omrade": "Hardangervidda",
+   "utnoUrl": "https://ut.no/hytte/10711",
+   "lon": 8.4799,
+   "lat": 59.9289,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 14,
+   "oppdatertUtno": "2026-08-29T19:54:42.247Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-06-25",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2026-06-26",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-28",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10636,
+   "navn": "Hellevassbu",
+   "navnUtno": "Hellevassbu",
+   "omrade": "Hardangervidda",
+   "utnoUrl": "https://ut.no/hytte/10636",
+   "lon": 7.2151,
+   "lat": 59.9829,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 24,
+   "oppdatertUtno": "2026-09-06T14:23:53.832Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-28",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 24,
+     "fra": "2026-03-01",
+     "til": "2026-04-12",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-04-12",
+     "til": "2026-06-26",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 24,
+     "fra": "2026-06-26",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-28",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10630,
+   "navn": "Kjeldebu",
+   "navnUtno": "Kjeldebu",
+   "omrade": "Hardangervidda",
+   "utnoUrl": "https://ut.no/hytte/10630",
+   "lon": 7.4975,
+   "lat": 60.4267,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 48,
+   "oppdatertUtno": "2026-09-06T17:06:11.432Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 48,
+     "fra": "2025-03-01",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-16",
+     "til": "2026-02-28",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 48,
+     "fra": "2026-03-01",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-28",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10336,
+   "navn": "Lufsjå",
+   "navnUtno": "Lufsjå",
+   "omrade": "Hardangervidda",
+   "utnoUrl": "https://ut.no/hytte/10336",
+   "lon": 8.7982,
+   "lat": 60.1445,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 16,
+   "oppdatertUtno": "2026-08-30T08:35:10.865Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 16,
+     "fra": "2025-06-11",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-28",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 16,
+     "fra": "2026-03-01",
+     "til": "2026-04-12",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-04-12",
+     "til": "2026-06-26",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 16,
+     "fra": "2026-06-26",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-28",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 101365,
+   "navn": "Lågaros",
+   "navnUtno": "Lågaros",
+   "omrade": "Hardangervidda",
+   "utnoUrl": "https://ut.no/hytte/101365",
+   "lon": 7.8018,
+   "lat": 60.1315,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 38,
+   "oppdatertUtno": "2026-09-05T05:34:17.679Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-06-25",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 38,
+     "fra": "2026-06-26",
+     "til": "2026-09-07",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-09-07",
+     "til": "2027-02-28",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10646,
+   "navn": "Middalsbu",
+   "navnUtno": "Middalsbu",
+   "omrade": "Hardangervidda",
+   "utnoUrl": "https://ut.no/hytte/10646",
+   "lon": 6.9901,
+   "lat": 59.9549,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 12,
+   "oppdatertUtno": "2026-08-27T15:02:44.052Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2025-06-11",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-28",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-03-01",
+     "til": "2026-04-12",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-04-12",
+     "til": "2026-06-26",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-06-26",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-28",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10758,
+   "navn": "Rembesdalseter",
+   "navnUtno": "Rembesdalseter",
+   "omrade": "Hardangervidda",
+   "utnoUrl": "https://ut.no/hytte/10758",
+   "lon": 7.2702,
+   "lat": 60.5342,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 16,
+   "oppdatertUtno": "2026-08-25T17:12:30.653Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 16,
+     "fra": "2025-03-01",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-16",
+     "til": "2026-02-28",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 16,
+     "fra": "2026-03-01",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-28",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10653,
+   "navn": "Stordalsbu",
+   "navnUtno": "Stordalsbu",
+   "omrade": "Hardangervidda",
+   "utnoUrl": "https://ut.no/hytte/10653",
+   "lon": 8.0815,
+   "lat": 60.0602,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 12,
+   "oppdatertUtno": "2026-09-11T05:04:05.296Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-16",
+     "til": "2026-06-25",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-06-26",
+     "til": "2026-08-20",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-08-20",
+     "til": "2026-09-30",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-10-01",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-28",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 101321,
+   "navn": "Tyssevassbu",
+   "navnUtno": "Tyssevassbu",
+   "omrade": "Hardangervidda",
+   "utnoUrl": "https://ut.no/hytte/101321",
+   "lon": 6.8418,
+   "lat": 60.1561,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 12,
+   "oppdatertUtno": "2026-08-25T12:24:19.782Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2025-06-11",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-28",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-03-01",
+     "til": "2026-04-12",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-04-12",
+     "til": "2026-06-26",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-06-26",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-28",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10812,
+   "navn": "Bjordalsbu",
+   "navnUtno": "Bjordalsbu",
+   "omrade": "Skarvheimen",
+   "utnoUrl": "https://ut.no/hytte/10812",
+   "lon": 7.9982,
+   "lat": 60.927,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 24,
+   "oppdatertUtno": "2026-09-04T15:36:47.587Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 24,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 24,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 24,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10928,
+   "navn": "Kljåen",
+   "navnUtno": "Kljåen",
+   "omrade": "Skarvheimen",
+   "utnoUrl": "https://ut.no/hytte/10928",
+   "lon": 8.3169,
+   "lat": 61.0266,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 8,
+   "oppdatertUtno": "2026-09-05T13:05:57.995Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 8,
+     "fra": "2024-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 8,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 8,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10811,
+   "navn": "Kongshelleren",
+   "navnUtno": "Kongshelleren",
+   "omrade": "Skarvheimen",
+   "utnoUrl": "https://ut.no/hytte/10811",
+   "lon": 7.7012,
+   "lat": 60.7771,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 12,
+   "oppdatertUtno": "2026-09-10T13:19:14.638Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 101265,
+   "navn": "Skarvheim",
+   "navnUtno": "Skarvheim",
+   "omrade": "Skarvheimen",
+   "utnoUrl": "https://ut.no/hytte/101265",
+   "lon": 8.0416,
+   "lat": 61.0222,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 9,
+   "oppdatertUtno": "2026-09-09T13:41:38.888Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10680,
+   "navn": "Slettningsbu",
+   "navnUtno": "Slettningsbu",
+   "omrade": "Skarvheimen",
+   "utnoUrl": "https://ut.no/hytte/10680",
+   "lon": 8.1297,
+   "lat": 61.2459,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 14,
+   "oppdatertUtno": "2026-09-09T11:29:45.449Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10686,
+   "navn": "Sulebu",
+   "navnUtno": "Sulebu",
+   "omrade": "Skarvheimen",
+   "utnoUrl": "https://ut.no/hytte/10686",
+   "lon": 8.1753,
+   "lat": 61.1403,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 22,
+   "oppdatertUtno": "2026-09-05T12:05:07.730Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 22,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 22,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 22,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 101363,
+   "navn": "Eldåbu",
+   "navnUtno": "Eldåbu",
+   "omrade": "Rondane og Dovrefjell",
+   "utnoUrl": "https://ut.no/hytte/101363",
+   "lon": 9.9792,
+   "lat": 61.7561,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 20,
+   "oppdatertUtno": "2026-09-05T11:30:00.572Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 20,
+     "fra": "2025-06-18",
+     "til": "2026-04-10",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-04-10",
+     "til": "2026-06-18",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 20,
+     "fra": "2026-06-18",
+     "til": "2027-04-01",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10341,
+   "navn": "Jammerdalsbu",
+   "navnUtno": "Jammerdalsbu",
+   "omrade": "Rondane og Dovrefjell",
+   "utnoUrl": "https://ut.no/hytte/10341",
+   "lon": 10.3529,
+   "lat": 61.5857,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 14,
+   "oppdatertUtno": "2026-09-05T14:14:16.867Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-04-07",
+     "til": "2025-06-18",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2025-06-18",
+     "til": "2026-04-10",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-04-10",
+     "til": "2026-06-18",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2026-06-18",
+     "til": "2027-05-01",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10918,
+   "navn": "Reinheim",
+   "navnUtno": "Reinheim",
+   "omrade": "Rondane og Dovrefjell",
+   "utnoUrl": "https://ut.no/hytte/10918",
+   "lon": 9.3571,
+   "lat": 62.3415,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 34,
+   "oppdatertUtno": "2026-09-06T10:38:52.082Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 34,
+     "fra": "2025-01-01",
+     "til": "2026-08-23",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-08-23",
+     "til": "2027-03-01",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10370415,
+   "navn": "Veslefjellbua",
+   "navnUtno": "Veslefjellbua",
+   "omrade": "Rondane og Dovrefjell",
+   "utnoUrl": "https://ut.no/hytte/10370415",
+   "lon": 10.142,
+   "lat": 61.6685,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 15,
+   "oppdatertUtno": "2026-08-31T19:44:05.088Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 15,
+     "fra": "2025-06-18",
+     "til": "2026-04-10",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-04-10",
+     "til": "2026-06-18",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 15,
+     "fra": "2026-06-18",
+     "til": "2027-04-01",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 101098,
+   "navn": "Arentzbu",
+   "navnUtno": "Arentzbu",
+   "omrade": "Breheimen",
+   "utnoUrl": "https://ut.no/hytte/101098",
+   "lon": 7.5556,
+   "lat": 61.6406,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 22,
+   "oppdatertUtno": "2026-09-08T11:20:52.502Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 22,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 22,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 22,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10717,
+   "navn": "Fast",
+   "navnUtno": "Fast",
+   "omrade": "Breheimen",
+   "utnoUrl": "https://ut.no/hytte/10717",
+   "lon": 7.5382,
+   "lat": 61.5733,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 11,
+   "oppdatertUtno": "2026-09-08T11:19:13.502Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 11,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 11,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 11,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10719,
+   "navn": "Navarsete",
+   "navnUtno": "Navarsete",
+   "omrade": "Breheimen",
+   "utnoUrl": "https://ut.no/hytte/10719",
+   "lon": 7.3409,
+   "lat": 61.4328,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 9,
+   "oppdatertUtno": "2026-09-07T07:51:10.454Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10932,
+   "navn": "Skridulaupbu",
+   "navnUtno": "Skridulaupbu",
+   "omrade": "Breheimen",
+   "utnoUrl": "https://ut.no/hytte/10932",
+   "lon": 7.6057,
+   "lat": 61.9034,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 4,
+   "oppdatertUtno": "2026-08-29T05:53:02.000Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 4,
+     "fra": "2024-02-15",
+     "til": "2024-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2024-10-15",
+     "til": "2025-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 4,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 4,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 4,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10526,
+   "navn": "Slæom",
+   "navnUtno": "Slæom",
+   "omrade": "Breheimen",
+   "utnoUrl": "https://ut.no/hytte/10526",
+   "lon": 7.4819,
+   "lat": 61.8235,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 18,
+   "oppdatertUtno": "2026-08-29T05:53:00.190Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 18,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 18,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 18,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10718,
+   "navn": "Sprongdalshytta",
+   "navnUtno": "Sprongdalshytta",
+   "omrade": "Breheimen",
+   "utnoUrl": "https://ut.no/hytte/10718",
+   "lon": 7.4884,
+   "lat": 61.7403,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 12,
+   "oppdatertUtno": "2026-09-01T16:02:13.399Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10920,
+   "navn": "Stølsdalen",
+   "navnUtno": "Stølsdalen",
+   "omrade": "Breheimen",
+   "utnoUrl": "https://ut.no/hytte/10920",
+   "lon": 7.8131,
+   "lat": 61.5678,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 10,
+   "oppdatertUtno": "2026-09-08T11:22:04.935Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 10,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 10,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 10,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10228,
+   "navn": "Torsbu",
+   "navnUtno": "Torsbu",
+   "omrade": "Breheimen",
+   "utnoUrl": "https://ut.no/hytte/10228",
+   "lon": 7.8483,
+   "lat": 62.1242,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 14,
+   "oppdatertUtno": "2026-08-30T07:14:10.645Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2026-02-15",
+     "til": "2026-10-14",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10946,
+   "navn": "Trulsbu",
+   "navnUtno": "Trulsbu",
+   "omrade": "Breheimen",
+   "utnoUrl": "https://ut.no/hytte/10946",
+   "lon": 7.9391,
+   "lat": 61.7384,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 12,
+   "oppdatertUtno": "2026-08-25T12:24:19.782Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2025-02-15",
+     "til": "2025-04-30",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-05-01",
+     "til": "2025-06-10",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2025-06-11",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-02-15",
+     "til": "2026-04-30",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-05-01",
+     "til": "2026-06-10",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-06-11",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 101372,
+   "navn": "Vigdalstøl",
+   "navnUtno": "Vigdalstøl",
+   "omrade": "Breheimen",
+   "utnoUrl": "https://ut.no/hytte/101372",
+   "lon": 7.3618,
+   "lat": 61.5188,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 10,
+   "oppdatertUtno": "2026-09-09T09:48:38.559Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 10,
+     "fra": "2025-02-27",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 10,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 10,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 101168,
+   "navn": "Fehytta",
+   "navnUtno": "Fehytta",
+   "omrade": "Langsua",
+   "utnoUrl": "https://ut.no/hytte/101168",
+   "lon": 9.5866,
+   "lat": 61.2452,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 10,
+   "oppdatertUtno": "2026-09-06T11:34:25.667Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-05-15",
+     "til": "2025-11-01",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 10,
+     "fra": "2025-11-01",
+     "til": "2026-03-20",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-03-20",
+     "til": "2026-04-05",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 10,
+     "fra": "2026-04-05",
+     "til": "2026-05-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-05-15",
+     "til": "2026-11-01",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 10,
+     "fra": "2026-11-01",
+     "til": "2026-12-31",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10503,
+   "navn": "Haldorbu",
+   "navnUtno": "Haldorbu",
+   "omrade": "Langsua",
+   "utnoUrl": "https://ut.no/hytte/10503",
+   "lon": 9.3704,
+   "lat": 61.2605,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 15,
+   "oppdatertUtno": "2026-09-05T18:22:19.584Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 15,
      "fra": null,
      "til": null,
      "heleAaret": true
+    }
+   ]
+  },
+  {
+   "id": 10584,
+   "navn": "Oskampen",
+   "navnUtno": "Oskampen",
+   "omrade": "Langsua",
+   "utnoUrl": "https://ut.no/hytte/10584",
+   "lon": 9.1476,
+   "lat": 61.4263,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 12,
+   "oppdatertUtno": "2026-09-08T08:51:50.719Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": null,
+     "til": null,
+     "heleAaret": true
+    }
+   ]
+  },
+  {
+   "id": 10504,
+   "navn": "Skriurusten",
+   "navnUtno": "Skriurusten",
+   "omrade": "Langsua",
+   "utnoUrl": "https://ut.no/hytte/10504",
+   "lon": 9.3429,
+   "lat": 61.3338,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 16,
+   "oppdatertUtno": "2026-09-07T11:48:50.385Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 16,
+     "fra": null,
+     "til": null,
+     "heleAaret": true
+    }
+   ]
+  },
+  {
+   "id": 101193,
+   "navn": "Storeskag",
+   "navnUtno": "Storeskag",
+   "omrade": "Langsua",
+   "utnoUrl": "https://ut.no/hytte/101193",
+   "lon": 9.233,
+   "lat": 61.2768,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 19,
+   "oppdatertUtno": "2026-08-30T18:05:22.659Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 19,
+     "fra": null,
+     "til": null,
+     "heleAaret": true
+    }
+   ]
+  },
+  {
+   "id": 10233,
+   "navn": "Storhøliseter",
+   "navnUtno": "Storhøliseter",
+   "omrade": "Langsua",
+   "utnoUrl": "https://ut.no/hytte/10233",
+   "lon": 9.3453,
+   "lat": 61.4176,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 18,
+   "oppdatertUtno": "2026-09-07T11:48:54.777Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 18,
+     "fra": null,
+     "til": null,
+     "heleAaret": true
+    }
+   ]
+  },
+  {
+   "id": 10229,
+   "navn": "Storkvolvbua",
+   "navnUtno": "Storkvolvbua",
+   "omrade": "Langsua",
+   "utnoUrl": "https://ut.no/hytte/10229",
+   "lon": 9.4457,
+   "lat": 61.3374,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 27,
+   "oppdatertUtno": "2026-09-06T15:49:32.456Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 27,
+     "fra": null,
+     "til": null,
+     "heleAaret": true
+    }
+   ]
+  },
+  {
+   "id": 10429,
+   "navn": "Svarthamar",
+   "navnUtno": "Svarthamar",
+   "omrade": "Langsua",
+   "utnoUrl": "https://ut.no/hytte/10429",
+   "lon": 9.5072,
+   "lat": 61.143,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 9,
+   "oppdatertUtno": "2026-08-13T14:17:30.964Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 9,
+     "fra": null,
+     "til": null,
+     "heleAaret": true
+    }
+   ]
+  },
+  {
+   "id": 10831,
+   "navn": "Ellefsplass",
+   "navnUtno": "Ellefsplass",
+   "omrade": "Femundsmarka",
+   "utnoUrl": "https://ut.no/hytte/10831",
+   "lon": 11.4482,
+   "lat": 62.2041,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 8,
+   "oppdatertUtno": "2026-09-03T15:12:40.278Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 8,
+     "fra": "2025-06-01",
+     "til": "2025-09-10",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-09-10",
+     "til": "2026-06-01",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 8,
+     "fra": "2026-06-01",
+     "til": "2026-09-10",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-09-10",
+     "til": "2027-06-01",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 8,
+     "fra": "2027-06-01",
+     "til": "2027-09-10",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-09-10",
+     "til": "2028-06-01",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 101027588,
+   "navn": "Fjølburøsta",
+   "navnUtno": "Fjølburøsta",
+   "omrade": "Femundsmarka",
+   "utnoUrl": "https://ut.no/hytte/101027588",
+   "lon": 11.8295,
+   "lat": 62.4983,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 12,
+   "oppdatertUtno": "2026-09-02T13:35:16.691Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2024-10-15",
+     "til": "2025-06-09",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2025-06-09",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-05-31",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-06-01",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-06-01",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2027-06-01",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-06-01",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10721,
+   "navn": "Marenvollen",
+   "navnUtno": "Marenvollen",
+   "omrade": "Femundsmarka",
+   "utnoUrl": "https://ut.no/hytte/10721",
+   "lon": 11.6394,
+   "lat": 62.5434,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 13,
+   "oppdatertUtno": "2026-09-04T10:13:22.706Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 13,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 13,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 13,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10722,
+   "navn": "Narjordet",
+   "navnUtno": "Narjordet",
+   "omrade": "Femundsmarka",
+   "utnoUrl": "https://ut.no/hytte/10722",
+   "lon": 11.411,
+   "lat": 62.4302,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 6,
+   "oppdatertUtno": "2026-08-19T12:49:27.472Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 6,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 6,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 6,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 101375,
+   "navn": "Røvollen",
+   "navnUtno": "Røvollen",
+   "omrade": "Femundsmarka",
+   "utnoUrl": "https://ut.no/hytte/101375",
+   "lon": 12.0493,
+   "lat": 62.3506,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 21,
+   "oppdatertUtno": "2026-09-09T06:30:56.431Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 21,
+     "fra": "2025-06-11",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 21,
+     "fra": "2026-02-15",
+     "til": "2026-04-30",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-05-01",
+     "til": "2026-06-10",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 21,
+     "fra": "2026-06-11",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 21,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10832,
+   "navn": "Knausen",
+   "navnUtno": "Knausen",
+   "omrade": "Østerdalsfjella",
+   "utnoUrl": "https://ut.no/hytte/10832",
+   "lon": 10.9558,
+   "lat": 62.2239,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 6,
+   "oppdatertUtno": "2026-09-09T14:51:16.506Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 6,
+     "fra": "2024-06-01",
+     "til": "2024-10-14",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2024-10-15",
+     "til": "2025-05-31",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 6,
+     "fra": "2025-06-01",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-05-31",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 6,
+     "fra": "2026-06-01",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-06-01",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 6,
+     "fra": "2027-06-01",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-06-01",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10720,
+   "navn": "Korsberghytta",
+   "navnUtno": "Korsberghytta",
+   "omrade": "Østerdalsfjella",
+   "utnoUrl": "https://ut.no/hytte/10720",
+   "lon": 10.4436,
+   "lat": 61.9746,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 18,
+   "oppdatertUtno": "2026-09-03T14:50:06.064Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-16",
+     "til": "2026-02-14",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 18,
+     "fra": "2026-02-15",
+     "til": "2026-05-01",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-05-01",
+     "til": "2026-06-10",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 18,
+     "fra": "2026-06-11",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10723,
+   "navn": "Raudsjødalen",
+   "navnUtno": "Raudsjødalen",
+   "omrade": "Østerdalsfjella",
+   "utnoUrl": "https://ut.no/hytte/10723",
+   "lon": 11.1504,
+   "lat": 62.2152,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 12,
+   "oppdatertUtno": "2026-08-30T11:37:47.964Z",
+   "perioder": [
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2025-02-15",
+     "til": "2025-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-10-15",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2026-02-15",
+     "til": "2026-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-10-15",
+     "til": "2027-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2027-02-15",
+     "til": "2027-10-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false
+    }
+   ]
+  },
+  {
+   "id": 10716,
+   "navn": "Storgrytdalseter",
+   "navnUtno": "Storgrytdalseter",
+   "omrade": "Østerdalsfjella",
+   "utnoUrl": "https://ut.no/hytte/10716",
+   "lon": 10.3695,
+   "lat": 61.9124,
+   "serviceLevel": "SELF_SERVICE",
+   "senger": 14,
+   "oppdatertUtno": "2026-09-03T14:50:55.625Z",
+   "perioder": [
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2025-09-26",
+     "til": "2026-02-15",
+     "heleAaret": false
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2026-02-15",
+     "til": "2026-09-25",
+     "heleAaret": false
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2026-09-25",
+     "til": "2027-02-15",
+     "heleAaret": false
     }
    ]
   }

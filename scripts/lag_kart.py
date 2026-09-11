@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lager assets/sor-norge.json: kartgrunnlaget til kartvisningen (kart.html).
+"""Lager assets/sor-norge.json: kartgrunnlaget til kartet i index.html og selvbetjente.html.
 
 Engangsscript, ikke del av GitHub Action. Kjøres med:
 
@@ -9,13 +9,14 @@ Innhold og kilder:
 - Omriss av Sør-Norge: Natural Earth 1:10m «Admin 0 – Countries» (public
   domain), hentet som GeoJSON fra github.com/nvkelso/natural-earth-vector.
 - Fjellområdene: DNT-områdene på ut.no (samme GraphQL-endepunkt som
-  hent_data.py). Hvilke ut.no-områder som hører til hvert kort, står i
-  «utnoOmrader» i hytter.json.
+  hent_data.py). Hvilke ut.no-områder som tegnes for hvert kort, står i
+  «polygon» under hvert område i «omrader» i hytter.json. Områder med tom
+  liste (Oslomarka og Oslofjorden) tegnes ikke.
 - Innsjøer, elver og byer: Natural Earth 1:10m lakes, rivers_lake_centerlines
   og populated_places, filtrert på navnene under.
 
 Alt klippes til en boks rundt Sør-Norge, forenkles så det ser tegnet ut, og
-skrives som ringer og linjer i lon/lat. Projeksjonen gjøres i assets/kart.js,
+skrives som ringer og linjer i lon/lat. Projeksjonen gjøres i assets/app.js,
 slik at alle lagene og hyttene bruker samme funksjon.
 """
 
@@ -120,9 +121,13 @@ def land():
 
 
 def omrader(konfig, landflate):
-    """{kortnavn: [ringer]} fra DNT-områdene på ut.no, klippet mot landflaten."""
+    """{kortnavn: [ringer]} fra DNT-områdene på ut.no, klippet mot landflaten.
+    Områder uten «polygon» hoppes over og får ingen nøkkel."""
     ut = {}
-    for kort, ider in konfig.get("utnoOmrader", {}).items():
+    for kort, regler in konfig.get("omrader", {}).items():
+        ider = regler.get("polygon") or []
+        if not ider:
+            continue
         ringer = []
         for omrade_id in ider:
             print(f"Henter ut.no-område {omrade_id} ({kort}) ...", file=sys.stderr)

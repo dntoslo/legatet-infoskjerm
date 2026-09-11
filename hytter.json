@@ -1,54 +1,57 @@
 {
-  "omrader": [
-    "Jotunheimen",
-    "Hardangervidda",
-    "Skarvheimen",
-    "Rondane og Dovrefjell",
-    "Breheimen",
-    "Langsua",
-    "Femundsmarka",
-    "Oslomarka og Oslofjorden"
-  ],
-  "utnoOmrader": {
-    "Jotunheimen": [1231],
-    "Hardangervidda": [1235],
-    "Skarvheimen": [1232],
-    "Rondane og Dovrefjell": [1224, 1243],
-    "Breheimen": [1227],
-    "Langsua": [1229],
-    "Femundsmarka": [1215]
+  "eier": 156,
+  "omrader": {
+    "Jotunheimen": {
+      "polygon": [1231],
+      "grupper": { "1231": "Jotunheimen" }
+    },
+    "Hardangervidda": {
+      "polygon": [1235],
+      "grupper": { "1235": "Hardangervidda", "12177": "Hardangervidda Sør", "1213": "Blefjell og Vegglifjell" }
+    },
+    "Skarvheimen": {
+      "polygon": [1232],
+      "grupper": { "1232": "Skarvheimen", "12222": "Hallingdal" }
+    },
+    "Rondane og Dovrefjell": {
+      "polygon": [1224, 1243],
+      "grupper": { "1224": "Rondane", "1243": "Dovrefjell", "1222": "Lillehammer-Rondane" }
+    },
+    "Breheimen": {
+      "polygon": [1227],
+      "grupper": { "1227": "Breheimen med Jostedalsbreen", "1230": "Tafjordfjella og Reinheimen" }
+    },
+    "Langsua": {
+      "polygon": [1229],
+      "grupper": { "1229": "Langsua" }
+    },
+    "Femundsmarka": {
+      "polygon": [1215],
+      "grupper": { "1215": "Femundsmarka" }
+    },
+    "Østerdalsfjella": {
+      "polygon": [12171],
+      "grupper": { "12171": "Østerdalsfjella", "123": "Alvdal Vestfjell" }
+    },
+    "Oslomarka og Oslofjorden": {
+      "polygon": [],
+      "grupper": {
+        "1223": "Oslomarka", "1279": "Oslofjorden", "1271": "Nordmarka", "12165": "Bærumsmarka",
+        "12166": "Krokskogen", "12163": "Kjekstadmarka", "12168": "Lillomarka og Gjelleråsen",
+        "12167": "Romeriksåsene", "1272": "Vestmarka", "1273": "Østmarka"
+      }
+    }
   },
-  "hytter": [
-    { "id": 10941, "navn": "Fannaråken", "omrade": "Jotunheimen" },
-    { "id": 10580, "navn": "Fondsbu", "omrade": "Jotunheimen" },
-    { "id": 10581, "navn": "Gjendebu", "omrade": "Jotunheimen" },
-    { "id": 10604, "navn": "Gjendesheim", "omrade": "Jotunheimen" },
-    { "id": 10583, "navn": "Glitterheim", "omrade": "Jotunheimen" },
-    { "id": 101059, "navn": "Leirvassbu", "omrade": "Jotunheimen" },
-    { "id": 10734, "navn": "Skogadalsbøen", "omrade": "Jotunheimen" },
-
-    { "id": 10929, "navn": "Finsehytta", "omrade": "Hardangervidda" },
-    { "id": 101064, "navn": "Krækkja", "omrade": "Hardangervidda" },
-    { "id": 10712, "navn": "Litlos", "omrade": "Hardangervidda" },
-    { "id": 10495, "navn": "Sandhaug", "omrade": "Hardangervidda" },
-
-    { "id": 101272, "navn": "Aurlandsdalen", "omrade": "Skarvheimen" },
-    { "id": 10808, "navn": "Geiterygghytta", "omrade": "Skarvheimen" },
-    { "id": 10973, "navn": "Iungsdalshytta", "omrade": "Skarvheimen" },
-
-    { "id": 101110, "navn": "Bjørnhollia", "omrade": "Rondane og Dovrefjell" },
-    { "id": 10494, "navn": "Grimsdalshytta", "omrade": "Rondane og Dovrefjell" },
-    { "id": 101111, "navn": "Rondvassbu", "omrade": "Rondane og Dovrefjell" },
-    { "id": 10917, "navn": "Snøheim", "omrade": "Rondane og Dovrefjell" },
-
-    { "id": 10496, "navn": "Nørdstedalseter", "omrade": "Breheimen" },
-    { "id": 10490, "navn": "Sota Sæter", "omrade": "Breheimen" },
-
-    { "id": 101369, "navn": "Liomseter", "omrade": "Langsua" },
-    { "id": 10726, "navn": "Svukuriset", "omrade": "Femundsmarka" },
-
-    { "id": 10645, "navn": "Kobberhaughytta", "omrade": "Oslomarka og Oslofjorden" },
-    { "id": 101380, "navn": "Sæteren Gård", "omrade": "Oslomarka og Oslofjorden" },
-    { "id": 10136374, "navn": "Breivoll Gård", "omrade": "Oslomarka og Oslofjorden" }
-  ]
+  "overstyr": {
+    "101272": { "navn": "Aurlandsdalen", "navnUtno": "Aurlandsdalen Turisthytte Østerbø" },
+    "101059": { "navn": "Leirvassbu",    "navnUtno": "Leirvassbu Turisthytte" },
+    "101380": { "navn": "Sæteren Gård",  "navnUtno": "Sæteren Gård - Hovedhus+Sovehus" },
+    "10929":  { "omrade": "Hardangervidda" },
+    "10831":  { "omrade": "Femundsmarka" },
+    "10722":  { "omrade": "Femundsmarka" }
+  },
+  "utelat": {
+    "navnMonster": "selvbetjen(t|ing)",
+    "ider": []
+  }
 }
