@@ -46,7 +46,7 @@ Hyttene hentes fra ut.no, ikke fra en liste i repoet. Scriptet tar med alle publ
 `hytter.json` inneholder reglene:
 
 - `omrader`: visningsområdene i den rekkefølgen kartet tegner dem. Hvert område har `polygon` (ut.no-område-ID-er som tegnes på kartet) og `grupper` (ut.no-område-ID med navn, alle ut.no-områdene som samles under dette kortet). Hallingdal samles for eksempel under Skarvheimen, og Rondane, Dovrefjell og Lillehammer-Rondane under «Rondane og Dovrefjell». Hver ID kan bare stå under ett område.
-- `overstyr`: per ut.no-ID, `navn` for et kortere visningsnavn (Fannaråkhytta vises som Fannaråken) og `omrade` når hytta ligger i flere visningsområder på ut.no (Finsehytta ligger i både Skarvheimen og Hardangervidda og vises under Hardangervidda).
+- `overstyr`: per ut.no-ID, `navn` for et kortere visningsnavn («Aurlandsdalen Turisthytte Østerbø» vises som Aurlandsdalen) og `omrade` når hytta ligger i flere visningsområder på ut.no (Finsehytta ligger i både Skarvheimen og Hardangervidda og vises under Hardangervidda). `navnUtno` ved siden av `navn` sier hva ut.no kalte hytta da overstyringen ble lagt inn. Endrer ut.no navnet, varsler scriptet, så noen kan vurdere om overstyringen fortsatt trengs.
 - `utelat`: `navnMonster` og `ider`. Selvbetjeningskvarter ved betjente hytter fører ut.no som egne hytter med «Selvbetjent» i navnet. De utelates fordi hovedhytta på side 1 viser overgangen til selvbetjening selv.
 
 Ligger en hytte i to visningsområder, eller i et ut.no-område som ikke står i `grupper`, feiler scriptet med en melding som sier hvilken hytte og hvilke områder det gjelder, og `data.json` røres ikke. Det er med hensikt: noen må bestemme hvor hytta skal stå, i `overstyr` eller `grupper`. Alle slike feil rapporteres i samme kjøring.

@@ -174,7 +174,7 @@ def les_konfig():
     overstyr = {}
     for streng, regel in (raa.get("overstyr") or {}).items():
         hytte_id = heltall(streng, "overstyr")
-        ukjent = set(regel) - {"navn", "omrade"}
+        ukjent = set(regel) - {"navn", "navnUtno", "omrade"}
         if ukjent:
             raise KonfigFeil(f"overstyr {hytte_id}: ukjente felt {sorted(ukjent)}")
         if "omrade" in regel and regel["omrade"] not in omrader:
@@ -266,7 +266,13 @@ def bestem_omrade(cabin, konfig):
 
 
 def visningsnavn(cabin, konfig):
-    return konfig["overstyr"].get(cabin["id"], {}).get("navn") or cabin.get("name")
+    """Overstyrt navn eller ut.no-navnet. «navnUtno» i overstyringen sier hva
+    ut.no kalte hytta da overstyringen ble lagt inn, og gir varsel hvis ut.no
+    har endret navnet siden, så noen kan vurdere om overstyringen fortsatt trengs."""
+    regel = konfig["overstyr"].get(cabin["id"], {})
+    if regel.get("navnUtno") and regel["navnUtno"] != cabin.get("name"):
+        advarsel(f"{cabin.get('name')} ({cabin['id']}) het «{regel['navnUtno']}» da overstyringen ble laget, sjekk om «{regel.get('navn')}» fortsatt er riktig")
+    return regel.get("navn") or cabin.get("name")
 
 
 def koordinater(cabin):

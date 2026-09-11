@@ -43,10 +43,9 @@
     }
   },
   "overstyr": {
-    "10941":  { "navn": "Fannaråken" },
-    "101272": { "navn": "Aurlandsdalen" },
-    "101059": { "navn": "Leirvassbu" },
-    "101380": { "navn": "Sæteren Gård" },
+    "101272": { "navn": "Aurlandsdalen", "navnUtno": "Aurlandsdalen Turisthytte Østerbø" },
+    "101059": { "navn": "Leirvassbu",    "navnUtno": "Leirvassbu Turisthytte" },
+    "101380": { "navn": "Sæteren Gård",  "navnUtno": "Sæteren Gård - Hovedhus+Sovehus" },
     "10929":  { "omrade": "Hardangervidda" },
     "10831":  { "omrade": "Femundsmarka" },
     "10722":  { "omrade": "Femundsmarka" }
