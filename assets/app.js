@@ -1,5 +1,6 @@
 /* Infoskjerm for hyttene i DNT Oslo og Omegn. Ett skript for begge sidene:
-   index.html (betjente hytter) og selvbetjente.html (selvbetjente hytter).
+   betjente.html (betjente hytter) og selvbetjente.html (selvbetjente hytter).
+   index.html er bare navigasjon til de to og bruker ikke dette skriptet.
    Leser data.json (generert av scripts/hent_data.py), plukker hyttene som
    hører til sida, regner ut status for dagens dato i norsk tid og tegner ett
    kort per fjellområde i to kolonner rundt et kart av Sør-Norge.

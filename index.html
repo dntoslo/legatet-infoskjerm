@@ -3,36 +3,137 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>Betjente hytter, DNT Oslo og Omegn</title>
+  <title>Hyttene i DNT Oslo og Omegn</title>
   <link rel="icon" href="assets/dnt-logo.png">
-  <!-- Versjonsnummeret i lenkene bumpes ved endringer, så TV-en ikke bruker gammel CSS/JS fra cache.
-       Samme tall i index.html og selvbetjente.html. -->
-  <link rel="stylesheet" href="assets/style.css?v=6">
+  <!-- Hovedsiden er bare navigasjon til de to infoskjermsidene. TV-en peker
+       rett på betjente.html og selvbetjente.html og bruker ikke denne sida.
+       Sida bruker ikke assets/style.css med hensikt: det stilarket låser alt
+       til en fast 16:9-flate med rem som 1 % av flatehøyden, som gir uleselig
+       liten tekst på en telefon. Denne sida åpnes i vanlige nettlesere og har
+       derfor egen, enkel stil med samme font og farger som sidene. -->
+  <style>
+    @font-face {
+      font-family: "ABC Social";
+      src: url("assets/fonts/ABCSocial-Regular.otf") format("opentype");
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "ABC Social";
+      src: url("assets/fonts/ABCSocial-Light.otf") format("opentype");
+      font-weight: 300;
+      font-display: swap;
+    }
+
+    /* Samme DNT-farger som i assets/style.css. */
+    :root {
+      --lys-beige: #FFF7E9;
+      --hvit: #FFFFFF;
+      --sort: #000000;
+      --graa: #5a5651;
+      --dnt-roed: #D82D20;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      background: var(--lys-beige);
+      color: var(--sort);
+      font-family: "ABC Social", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-weight: 300;
+    }
+
+    .side {
+      max-width: 60rem;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .topp {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .logo {
+      width: 4.5rem;
+      height: 4.5rem;
+      object-fit: contain;
+    }
+    h1 {
+      margin: 0;
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+    .undertittel {
+      margin: 0.3rem 0 0;
+      color: var(--graa);
+      font-size: 1.15rem;
+    }
+
+    /* To lenkekort ved siden av hverandre, under hverandre i smale vinduer. */
+    .valg {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+    @media (max-width: 44rem) {
+      .valg { grid-template-columns: 1fr; }
+    }
+    .kort {
+      display: block;
+      background: var(--hvit);
+      border-radius: 1rem;
+      padding: 1.5rem 1.8rem 1.6rem;
+      box-shadow: 0 0.15rem 0.6rem rgba(0, 0, 0, 0.04);
+      color: inherit;
+      text-decoration: none;
+    }
+    .kort:hover {
+      box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.1);
+    }
+    .kort:focus-visible {
+      outline: 0.2rem solid var(--dnt-roed);
+      outline-offset: 0.2rem;
+    }
+    .kort h2 {
+      margin: 0 0 0.8rem;
+      padding-bottom: 0.5rem;
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 1.1;
+      border-bottom: 0.2rem solid var(--dnt-roed);
+    }
+    .kort p {
+      margin: 0;
+      color: var(--graa);
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+  </style>
 </head>
 <body>
-<div class="skjerm">
+<div class="side">
   <header class="topp">
     <img class="logo" src="assets/dnt-logo.png" alt="DNT">
-    <div class="tittel">
-      <h1>Betjente hytter</h1>
-      <p class="undertittel">DNT Oslo og Omegn</p>
+    <div>
+      <h1>Hyttene i DNT Oslo og Omegn</h1>
+      <p class="undertittel">Infoskjerm</p>
     </div>
-    <div class="forklaring">
-      <span><i class="prikk betjent"></i>Betjent</span>
-      <span><i class="prikk selvbetjent"></i>Selvbetjent</span>
-      <span><i class="prikk stengt"></i>Stengt</span>
-    </div>
-    <div class="idag" id="idag"></div>
   </header>
 
-  <main class="kartflate" id="kartflate" aria-live="polite">
-    <p class="laster">Henter åpningstider …</p>
-  </main>
-
-  <div class="oppdatert" id="oppdatert"></div>
+  <nav class="valg" aria-label="Sider">
+    <a class="kort" href="betjente.html">
+      <h2>Betjente hytter</h2>
+      <p>Betjent, selvbetjent eller stengt i dag, og når det endrer seg.</p>
+    </a>
+    <a class="kort" href="selvbetjente.html">
+      <h2>Selvbetjente hytter</h2>
+      <p>Åpne og stengte selvbetjente hytter per fjellområde.</p>
+    </a>
+  </nav>
 </div>
-
-  <script src="assets/app.js?v=6"></script>
 </body>
 </html>
