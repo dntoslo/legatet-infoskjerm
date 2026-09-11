@@ -435,25 +435,18 @@
     return beste;
   }
 
-  // Nærmeste punkt på kanten av polygonene, ikke bare nærmeste hjørne.
-  function naermestPaaKant(start, ringer) {
-    let beste = null;
-    for (const r of ringer) {
-      for (let i = 0; i < r.length; i++) {
-        const p = r[i], q = r[(i + 1) % r.length];
-        const ex = q.x - p.x, ey = q.y - p.y, l2 = ex * ex + ey * ey;
-        const u = l2 ? Math.max(0, Math.min(1, ((start.x - p.x) * ex + (start.y - p.y) * ey) / l2)) : 0;
-        const x = p.x + u * ex, y = p.y + u * ey, d = Math.hypot(x - start.x, y - start.y);
-        if (!beste || d < beste.d) beste = { x, y, d };
-      }
-    }
-    return beste;
-  }
+  // Områder der streken rettes mot midten av området i stedet for til
+  // nærmeste hjørne, som klassenavn. Nærmeste hjørne gir korte streker som
+  // holder seg unna naboområdene, og ble foretrukket for alle andre områder
+  // ved sammenligning på skjermen 11. september 2026. For Femundsmarka er
+  // nærmeste hjørne det som deles med Østerdalsfjella og riksgrensa, så
+  // streken ble tvetydig der.
+  const MOT_MIDTEN = new Set(["Femundsmarka"].map(omradeKlasse));
 
-  // Strek fra hvert kort til kanten av området sitt, rettet mot midten av
-  // området, eller til nærmeste hytte når området ikke er tegnet. Tegnes i et
-  // SVG-lag over hele flaten i skjermpiksler, og på nytt når flaten endrer
-  // størrelse.
+  // Strek fra hvert kort til nærmeste hjørne av området sitt (eller mot
+  // midten, se MOT_MIDTEN), eller til nærmeste hytte når området ikke er
+  // tegnet. Tegnes i et SVG-lag over hele flaten i skjermpiksler, og på nytt
+  // når flaten endrer størrelse.
   function tegnStreker(flate) {
     let lag = flate.querySelector(".streker");
     if (!lag) {
@@ -484,24 +477,32 @@
         y: h2Rect.top + h2Rect.height / 2 - origo.top,
       };
 
-      let slutt = null;
-      const maal = kartSvg.querySelectorAll(`.omrade.${klasse}`);
-      if (maal.length) {
-        // Streken peker mot midten av området og stopper på kanten, så den
-        // tydelig hører til dette området og ikke ender i et hjørne som deles
-        // med naboen. Treffer strålen ikke kanten (bukt eller gap mellom
-        // delområder), brukes nærmeste punkt på kanten.
-        const ringer = [...maal].map(e => (e.__punkter || []).map(tilSkjerm)).filter(r => r.length >= 3);
-        slutt = motMidten(start, ringer) || naermestPaaKant(start, ringer);
-      } else {
-        // Uten polygon: nærmeste hytteprikk, og stopp like utenfor prikken.
-        for (const element of kartSvg.querySelectorAll(`.hyttepunkt.${klasse}`)) {
+      // Nærmeste hjørne eller hytteprikk blant elementenes punkter.
+      const naermeste = elementer => {
+        let beste = null;
+        for (const element of elementer) {
           for (const pkt of element.__punkter || []) {
             const s = tilSkjerm(pkt);
             const d = Math.hypot(s.x - start.x, s.y - start.y);
-            if (!slutt || d < slutt.d) slutt = { ...s, d };
+            if (!beste || d < beste.d) beste = { ...s, d };
           }
         }
+        return beste;
+      };
+
+      let slutt = null;
+      const maal = kartSvg.querySelectorAll(`.omrade.${klasse}`);
+      if (maal.length) {
+        if (MOT_MIDTEN.has(klasse)) {
+          // Rettet mot tyngdepunktet, stopper der strålen krysser kanten.
+          // Treffer strålen ikke kanten, brukes nærmeste hjørne som ellers.
+          const ringer = [...maal].map(e => (e.__punkter || []).map(tilSkjerm)).filter(r => r.length >= 3);
+          slutt = motMidten(start, ringer);
+        }
+        if (!slutt) slutt = naermeste(maal);
+      } else {
+        // Uten polygon: nærmeste hytteprikk, og stopp like utenfor prikken.
+        slutt = naermeste(kartSvg.querySelectorAll(`.hyttepunkt.${klasse}`));
         if (slutt) {
           const prikkR = 0.9 * enhet;
           slutt.x -= (slutt.x - start.x) / slutt.d * prikkR;
