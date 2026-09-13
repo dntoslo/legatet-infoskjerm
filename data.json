@@ -1,5 +1,5 @@
 {
- "hentet": "2026-09-13T12:29:46+02:00",
+ "hentet": "2026-09-13T15:57:17+02:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -65,7 +65,7 @@
    "lat": 61.3752,
    "serviceLevel": "STAFFED",
    "senger": 100,
-   "oppdatertUtno": "2026-09-11T16:46:48.534Z",
+   "oppdatertUtno": "2026-09-13T11:26:53.234Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -121,7 +121,7 @@
    "lat": 61.4514,
    "serviceLevel": "STAFFED",
    "senger": 119,
-   "oppdatertUtno": "2026-09-13T10:25:36.978Z",
+   "oppdatertUtno": "2026-09-13T10:33:16.887Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -184,7 +184,7 @@
    "lat": 61.4941,
    "serviceLevel": "STAFFED",
    "senger": 185,
-   "oppdatertUtno": "2026-09-12T12:53:51.538Z",
+   "oppdatertUtno": "2026-09-13T12:09:13.544Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -611,7 +611,7 @@
    "lat": 60.0936,
    "serviceLevel": "STAFFED",
    "senger": 52,
-   "oppdatertUtno": "2026-09-11T15:25:37.648Z",
+   "oppdatertUtno": "2026-09-13T12:47:23.437Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -681,7 +681,7 @@
    "lat": 60.1839,
    "serviceLevel": "STAFFED",
    "senger": 80,
-   "oppdatertUtno": "2026-09-10T06:31:08.780Z",
+   "oppdatertUtno": "2026-09-13T12:47:23.667Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -842,7 +842,7 @@
    "lat": 60.8102,
    "serviceLevel": "STAFFED",
    "senger": 52,
-   "oppdatertUtno": "2026-09-13T09:10:45.543Z",
+   "oppdatertUtno": "2026-09-13T13:23:02.728Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -1003,7 +1003,7 @@
    "lat": 61.8788,
    "serviceLevel": "STAFFED",
    "senger": 128,
-   "oppdatertUtno": "2026-09-13T09:55:39.588Z",
+   "oppdatertUtno": "2026-09-13T13:43:48.481Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -1542,7 +1542,7 @@
    "lat": 60.0361,
    "serviceLevel": "STAFFED",
    "senger": 54,
-   "oppdatertUtno": "2026-09-12T17:12:20.112Z",
+   "oppdatertUtno": "2026-09-13T13:52:29.729Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -2746,7 +2746,7 @@
    "lat": 61.6685,
    "serviceLevel": "SELF_SERVICE",
    "senger": 15,
-   "oppdatertUtno": "2026-08-31T19:44:05.088Z",
+   "oppdatertUtno": "2026-09-13T10:48:00.011Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
