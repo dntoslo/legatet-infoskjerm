@@ -31,7 +31,12 @@ Oslomarka (KART["oslomarka"]):
   til sammen) caches i <temp>/legatet-kart, så en ny kjøring ikke laster ned
   igjen.
 - Byer: Kartverkets stedsnavn-API, filtrert på By/Tettsted innenfor utsnittet.
-- Delområdene: «polygon» under «delomrader» i området i hytter.json.
+- Delområdene: «polygon» under «delomrader» i området i hytter.json. ut.no-
+  polygonene deler ikke grense, så det ligger striper uten område mellom
+  naboer (Hakadal mellom Nordmarka og Romeriksåsene). Naboer som ligger
+  nærmere hverandre enn 2 × «tett_m» vokser inn i glipa til de møtes på
+  midten, så kartet blir et lappeteppe med den tynne hvite streken fra
+  style.css som skille. Ytterkanter uten nabo røres ikke.
 - «hav»: true i fila, så app.js fyller alt som ikke er land med vannfarge og
   fjorden blir blå. På Sør-Norge-kartet er sjøen bakgrunnsfargen.
 
@@ -107,6 +112,7 @@ KART = {
         "fylker": ["03_Oslo", "32_Akershus", "33_Buskerud", "31_Ostfold", "34_Innlandet", "39_Vestfold"],
         "byer": ["Oslo", "Drammen", "Sandvika", "Asker", "Lillestrøm", "Ski", "Hønefoss", "Jessheim", "Drøbak"],
         "omrade": "Oslomarka og Oslofjorden",   # tegn «polygon» fra «delomrader» under dette området
+        "tett_m": 1500,                     # meter, lukk gliper mellom delområder nærmere enn det dobbelte
         "hav": True,                        # fyll alt som ikke er land med vannfarge, så fjorden blir blå
     },
 }
@@ -334,16 +340,43 @@ def byer_kartverket(kart):
 
 # ---------- DNT-områdene fra ut.no (begge kartene) ----------
 
+def tett_gliper(geoms, avstand_m, steg_m=100):
+    """Lukker glipene mellom områder som ligger nærmere hverandre enn
+    2 × avstand_m. Bare det som ligger innenfor avstand_m fra minst to områder
+    regnes som glipe, så ytterkanter uten nabo beholder ut.no-formen. Områdene
+    vokser inn i glipa i små steg etter tur, så de møtes omtrent på midten.
+    Geometrien må være i meter (UTM)."""
+    navn = list(geoms)
+    buffere = {n: g.buffer(avstand_m) for n, g in geoms.items()}
+    glipe = None
+    for i, a in enumerate(navn):
+        for b in navn[i + 1:]:
+            felles = buffere[a].intersection(buffere[b])
+            if not felles.is_empty:
+                glipe = felles if glipe is None else glipe.union(felles)
+    if glipe is None:
+        return geoms
+    glipe = glipe.difference(unary_union(list(geoms.values())))
+    ut = dict(geoms)
+    for _ in range(max(1, round(avstand_m / steg_m))):
+        for n in navn:
+            andre = unary_union([ut[m] for m in navn if m != n])
+            vekst = ut[n].buffer(steg_m).intersection(glipe).difference(andre)
+            ut[n] = ut[n].union(vekst).buffer(0)
+    return ut
+
+
 def omrader(deler, landflate, kart, klipp):
     """{kortnavn: [ringer]} fra DNT-områdene på ut.no, klippet mot landflaten.
     «deler» er «omrader» fra hytter.json, eller «delomrader» under ett område.
-    Kort uten «polygon» hoppes over og får ingen nøkkel."""
-    ut = {}
+    Kort uten «polygon» hoppes over og får ingen nøkkel. Har kartet «tett_m»,
+    lukkes glipene mellom naboområdene først, se tett_gliper."""
+    geoms = {}
     for kort, regler in deler.items():
         ider = regler.get("polygon") or []
         if not ider:
             continue
-        ringer = []
+        geoms[kort] = []
         for omrade_id in ider:
             print(f"Henter ut.no-område {omrade_id} ({kort}) ...", file=sys.stderr)
             a = gql("query($id: Int!) { area(id: $id) { name areaType geojson } }", {"id": omrade_id})["area"]
@@ -352,7 +385,30 @@ def omrader(deler, landflate, kart, klipp):
                 continue
             if a.get("areaType") != "DNT_AREA":
                 print(f"ADVARSEL: {a.get('name')} er {a.get('areaType')}, ikke DNT_AREA", file=sys.stderr)
-            geom = klipp_og_forenkle(shape(a["geojson"]).buffer(0), klipp, kart["toleranse_detalj"])
+            geoms[kort].append(klipp_og_forenkle(shape(a["geojson"]).buffer(0), klipp, kart["toleranse_detalj"]))
+
+    if kart.get("tett_m"):
+        from pyproj import Transformer
+        til_utm = Transformer.from_crs("EPSG:4326", "EPSG:25833", always_xy=True).transform
+        til_lonlat = Transformer.from_crs("EPSG:25833", "EPSG:4326", always_xy=True).transform
+        print(f"Lukker gliper under {2 * kart['tett_m']} m mellom delområdene ...", file=sys.stderr)
+        i_utm = {kort: transform(til_utm, unary_union(biter)) for kort, biter in geoms.items() if biter}
+        tette = tett_gliper(i_utm, kart["tett_m"])
+
+        def rens(g):
+            # Lett forenkling etterpå, veksten gir mange små hjørner. Under
+            # strekbredden i style.css, så naboene fortsatt ser ut som om de
+            # deler grense. Fliser under 0,05 km² fra veksten droppes.
+            g = g.simplify(40, preserve_topology=True)
+            deler = [p for p in polygoner_i(g) if isinstance(p, Polygon) and p.area >= 50_000]
+            return transform(til_lonlat, MultiPolygon(deler)).buffer(0)
+
+        geoms = {kort: [rens(g)] for kort, g in tette.items()}
+
+    ut = {}
+    for kort, biter in geoms.items():
+        ringer = []
+        for geom in biter:
             ringer.extend(ringer_av(geom.intersection(landflate), kart["desimaler"]))
         ut[kort] = ringer
     return ut

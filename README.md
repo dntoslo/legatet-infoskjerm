@@ -40,7 +40,7 @@ Oslomarka:
 
 - Kyst med øyer, innsjøer over 1 km² og de bredeste elveflatene fra Kartverkets N250 Kartdata (CC BY 4.0), lest som GML per fylke fra Geonorge. Land lages som utsnittet minus sjøflaten, det er det som gir øyene i Oslofjorden. Sjøen fylles i samme blå som innsjøene (`hav` i kartfila) og kystlinja tegnes ikke som strek, fargen skiller land fra vann. På Sør-Norge-kartet er sjøen bakgrunnsfargen, og der tegnes grensa som strek. Natural Earth er for grov så tett inn, og Kartverkets kommunegrenser går ut i sjøen og har ingen kystlinje. Zip-filene, ca. 70 MB til sammen, caches i mappa `legatet-kart` under systemets temp-mappe.
 - Byer og tettsteder fra Kartverkets stedsnavn-API.
-- Delområdene, hentet som DNT-områder fra ut.no etter `polygon` under `delomrader` i `hytter.json`. Hadeland og Akershus Øst tegnes ikke, de er store og strekker seg langt utenfor utsnittet, så de to Vikkeli-hyttene og Evjenhytta får prikk like utenfor fargeflaten.
+- Delområdene, hentet som DNT-områder fra ut.no etter `polygon` under `delomrader` i `hytter.json`. ut.no-polygonene deler ikke grense, så naboer nærmere hverandre enn 3 km (`tett_m` i scriptet) vokser inn i glipa til de møtes på midten, og kartet blir et lappeteppe med den tynne hvite streken som skille. Hadeland og Akershus Øst tegnes ikke, de er store og strekker seg langt utenfor utsnittet, så de to Vikkeli-hyttene og Evjenhytta får prikk like utenfor fargeflaten.
 
 Filene lages med
 
