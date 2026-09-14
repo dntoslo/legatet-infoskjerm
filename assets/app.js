@@ -456,10 +456,15 @@
     svg.appendChild(vann);
 
     // Grenselinja tegnes én gang til, uten fyll, så den ligger over områdene
-    // og vannet der de går helt ut til kysten eller riksgrensa.
-    const grense = svgEl("g", { class: "grense" });
-    for (const ring of kart.ringer) grense.appendChild(svgEl("path", { d: sti(projiser(proj, ring), true) }));
-    svg.appendChild(grense);
+    // og vannet der de går helt ut til kysten eller riksgrensa. Bare på kart
+    // uten hav: der sjøen er blå, skiller fargen land fra vann selv, og en
+    // strek langs kysten ble bare en grå kant (valgt bort på skjermen
+    // 14. september 2026).
+    if (!kart.hav) {
+      const grense = svgEl("g", { class: "grense" });
+      for (const ring of kart.ringer) grense.appendChild(svgEl("path", { d: sti(projiser(proj, ring), true) }));
+      svg.appendChild(grense);
+    }
 
     // Byer med navn, over grensa så den hvite kanten rundt bokstavene
     // dekker kystlinja der byen ligger ved sjøen.

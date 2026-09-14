@@ -282,9 +282,10 @@ body {
   font-size: 2.4rem;
 }
 
-/* Tegnet uttrykk: hvit landflate med tynn mørk strek mot den beige bakgrunnen.
-   Lagene tegnes i denne rekkefølgen: hav (bare kart med «hav» i kartfila, som
-   Oslomarka), land, områder, vann, grense, byer, hytter. */
+/* Tegnet uttrykk: hvit landflate mot beige bakgrunn med tynn mørk strek langs
+   kysten (Sør-Norge), eller mot blå sjø uten strek (Oslomarka). Lagene tegnes
+   i denne rekkefølgen: hav (bare kart med «hav» i kartfila), land, områder,
+   vann, grense (bare kart uten hav), byer, hytter. */
 .hav {
   fill: var(--vann);
   stroke: none;
