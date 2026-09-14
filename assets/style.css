@@ -482,8 +482,9 @@ body[data-side="oslomarka"] .kort.liste .navn {
   font-weight: 400;
 }
 
-/* Nøkkelikonene, strektegnet i samme grå som teksten. Symbolene ligger i
-   oslomarka.html, og legenden i toppen bruker samme klasse. */
+/* Låsikonene for nøkkeltype (lukket hengelås for egen nøkkel, åpen for ulåst),
+   strektegnet i samme grå som teksten. Symbolene ligger i oslomarka.html, og
+   legenden i toppen bruker samme klasse. */
 .ikon {
   height: 1.7rem;
   width: 1.7rem;
