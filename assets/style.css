@@ -215,12 +215,15 @@ body {
   display: flex;
   flex-direction: column;
 }
+/* Radpolstringen er 0.3rem på alle sidene. Med 0.4rem var venstre kolonne på
+   side 1 (16 hytter i fire kort) 21 px høyere enn plassen sin ved 1920 x 1080,
+   usynlig fordi kolonnen ikke klipper, men én hytte til hadde veltet layouten. */
 .hytte {
   display: grid;
   grid-template-columns: auto auto minmax(0, 1fr);
   align-items: center;
   gap: 1.1rem;
-  padding: 0.4rem 0;
+  padding: 0.3rem 0;
   font-size: 2.05rem;
   line-height: 1.15;
 }
@@ -384,7 +387,6 @@ body {
 .kort.liste .hytte {
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 0.7rem;
-  padding: 0.3rem 0;
   font-size: 1.8rem;
   border-top: 1px solid var(--moerk-beige);
 }
