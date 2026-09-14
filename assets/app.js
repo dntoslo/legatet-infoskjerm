@@ -423,6 +423,12 @@
       "aria-label": SIDE.kartTekst,
     });
 
+    // Hav: hele flaten fylles med vannfarge under landet på kart som har
+    // «hav» i kartfila (Oslomarka, der fjorden ellers ville fått
+    // bakgrunnsfargen). Land og øyer tegnes hvitt oppå, så alt som ikke er
+    // land blir sjø. På Sør-Norge-kartet er sjøen bakgrunnsfargen.
+    if (kart.hav) svg.appendChild(svgEl("rect", { class: "hav", width: proj.W, height: proj.H }));
+
     // Land
     const land = svgEl("g", { class: "land" });
     for (const ring of kart.ringer) land.appendChild(svgEl("path", { d: sti(projiser(proj, ring), true) }));
