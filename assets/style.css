@@ -430,21 +430,71 @@ body {
   color: var(--graa);
 }
 
-/* På side 2 er selvbetjent den normale åpne tilstanden, ikke et redusert
-   tilbud slik det er ved en betjent hytte på side 1. Åpne hytter får derfor
-   samme grønne som betjent, og oransje brukes bare på side 1. */
-body[data-side="selvbetjente"] .prikk.selvbetjent {
+/* På side 2 og 3 er selvbetjent og ubetjent den normale åpne tilstanden, ikke
+   et redusert tilbud slik det er ved en betjent hytte på side 1. Åpne hytter
+   får derfor samme grønne som betjent, og oransje brukes bare på side 1. */
+body[data-side="selvbetjente"] .prikk.selvbetjent,
+body[data-side="oslomarka"] .prikk.selvbetjent {
   background: var(--moerk-groenn);
 }
-body[data-side="selvbetjente"] .hyttepunkt.selvbetjent {
+body[data-side="selvbetjente"] .hyttepunkt.selvbetjent,
+body[data-side="oslomarka"] .hyttepunkt.selvbetjent {
   fill: var(--moerk-groenn);
 }
 
-/* Mindre hytteprikker på side 2, med tynnere hvit kant som skiller prikker
-   som overlapper. r skal være lik prikkR for selvbetjente i app.js. */
-body[data-side="selvbetjente"] .hyttepunkt {
+/* Mindre hytteprikker på side 2 og 3, med tynnere hvit kant som skiller
+   prikker som overlapper. r skal være lik prikkR for disse sidene i app.js. */
+body[data-side="selvbetjente"] .hyttepunkt,
+body[data-side="oslomarka"] .hyttepunkt {
   stroke-width: 1.5;
 }
-body[data-side="selvbetjente"] .hyttepunkt.stengt {
+body[data-side="selvbetjente"] .hyttepunkt.stengt,
+body[data-side="oslomarka"] .hyttepunkt.stengt {
   r: 5.5;
+}
+
+/* ---------- Side 3: Oslomarka og Oslofjorden (oslomarka.html) ---------- */
+
+/* Navnet skal alltid vises helt. Navnekolonnen får den bredden den trenger,
+   og tilleggsteksten til høyre (sengetall, «Betjent», tidsangivelse og
+   nøkkelikon) får resten. Blir det for trangt, er det den som skal kortes. */
+body[data-side="oslomarka"] .kort.liste .hytte {
+  grid-template-columns: auto auto minmax(0, 1fr);
+}
+body[data-side="oslomarka"] .kort.liste .navn {
+  overflow: visible;
+  text-overflow: clip;
+}
+.hytte .meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--graa);
+  white-space: nowrap;
+}
+.hytte .meta .snart {
+  color: var(--dnt-roed);
+  font-weight: 400;
+}
+
+/* Nøkkelikonene, strektegnet i samme grå som teksten. Symbolene ligger i
+   oslomarka.html, og legenden i toppen bruker samme klasse. */
+.ikon {
+  height: 1.7rem;
+  width: 1.7rem;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+}
+.forklaring .ikon {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 0.8rem;
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Henter foreningens betjente og selvbetjente hytter fra ut.no og skriver data.json.
+"""Henter foreningens betjente, selvbetjente og ubetjente hytter fra ut.no og skriver data.json.
 
 Kjøres av GitHub Action to ganger om dagen, eller manuelt:
 
@@ -7,10 +7,12 @@ Kjøres av GitHub Action to ganger om dagen, eller manuelt:
 
 Utvalget er dynamisk. Én GraphQL-spørring gir alle publiserte hytter til
 eieren i hytter.json (DNT Oslo og Omegn, 156). Scriptet tar med hyttene med
-serviceLevel STAFFED og SELF_SERVICE, utelater selvbetjeningskvarter ved
-betjente hytter, og plasserer hver hytte i et visningsområde etter reglene i
-hytter.json. Visningen (betjente.html og selvbetjente.html med assets/app.js)
-filtrerer på serviceLevel per side og regner ut status for i dag selv.
+serviceLevel STAFFED, SELF_SERVICE og NO_SERVICE, utelater selvbetjeningskvarter
+ved betjente hytter, og plasserer hver hytte i et visningsområde etter reglene i
+hytter.json. Områder med «delomrader» (Oslomarka og Oslofjorden) gir hytta også
+et delområde, som side 3 grupperer kortene etter. Visningen (betjente.html,
+selvbetjente.html og oslomarka.html med assets/app.js) velger hytter per side
+og regner ut status for i dag selv.
 
 Kun standardbiblioteket. Feiler hentingen eller reglene, avsluttes scriptet
 med kode 1 uten å røre data.json, slik at forrige gyldige fil beholdes og
@@ -39,12 +41,17 @@ FORSOEK = 3
 PAUSE_SEK = 5
 
 # Servicenivåene som vises, i rekkefølgen de skrives til data.json. NO_SERVICE
-# (ubetjente hytter i marka og langs fjorden) er et eget tilbud og eventuelt
-# en egen side senere. CLOSED er varig stengte hytter, EMERGENCY_SHELTER
-# nødbuer og FOOD_SERVICE serveringssteder, ingen av dem har åpningsperioder
-# som gir mening på skjermen.
-NIVAER = ("STAFFED", "SELF_SERVICE")
-SENGEFELT = {"STAFFED": "bedsStaffed", "SELF_SERVICE": "bedsSelfService"}
+# er de ubetjente hyttene, nesten alle i Oslomarka og langs Oslofjorden
+# (side 3). De få ubetjente på fjellet kommer også med i data.json, men ingen
+# side viser dem. CLOSED er varig stengte hytter, EMERGENCY_SHELTER nødbuer og
+# FOOD_SERVICE serveringssteder, ingen av dem har åpningsperioder som gir
+# mening på skjermen.
+NIVAER = ("STAFFED", "SELF_SERVICE", "NO_SERVICE")
+SENGEFELT = {"STAFFED": "bedsStaffed", "SELF_SERVICE": "bedsSelfService", "NO_SERVICE": "bedsNoService"}
+
+# Nøkkeltypen ut.no fører på perioden («key»), ujevnt utfylt. Side 3 markerer
+# bare unntakene fra DNT-nøkkel. Ukjente verdier blir null.
+NOEKKEL = {"dnt-key": "dnt", "special key": "egen", "unlocked": "ulaast"}
 
 
 def naa_oslo():
@@ -79,9 +86,9 @@ query($eier: Int!) {
     totalCount
     pageInfo { hasNextPage }
     edges { node {
-      id name serviceLevel updatedAt geojson bedsStaffed bedsSelfService
+      id name serviceLevel updatedAt geojson bedsStaffed bedsSelfService bedsNoService
       areas { id name areaType }
-      serviceStatusAll { serviceLevel beds from to openAllYear }
+      serviceStatusAll { serviceLevel beds from to openAllYear key }
     } }
   }
 }
@@ -143,9 +150,15 @@ def heltall(verdi, hva):
 def les_konfig():
     """Leser og validerer reglene i hytter.json.
 
-    Returnerer eier, områdene i kanonisk rekkefølge, en mapping fra ut.no
-    område-ID til visningsnavn, ut.no-navnet per område-ID (for å oppdage
-    navneendringer), overstyringer per hytte-ID og utelatelsesreglene."""
+    Returnerer eier, områdene i kanonisk rekkefølge, delområdene per område
+    (for områder som har dem), mappinger fra ut.no område-ID til visningsområde
+    og delområde, ut.no-navnet per område-ID (for å oppdage navneendringer),
+    overstyringer per hytte-ID og utelatelsesreglene.
+
+    Hver ut.no-ID kan stå ett sted i fila: i «grupper» under et område, eller i
+    «grupper» under ett av områdets delområder. ID-er som bare står under
+    området selv (paraplyen Oslomarka) plasserer hytta i området uten å si noe
+    om delområdet."""
     try:
         raa = json.loads(KONFIG.read_text(encoding="utf-8"))
     except ValueError as e:
@@ -156,29 +169,53 @@ def les_konfig():
         raise KonfigFeil("«omrader» må være et objekt med minst ett område")
 
     id_til_omrade = {}
+    id_til_delomrade = {}       # ut.no-ID -> (område, delområde)
     omradenavn_utno = {}
-    for navn, regler in omrader.items():
+    delomrader = {}             # område -> [delområder i rekkefølge]
+    hvor = {}                   # ut.no-ID -> hvor i fila den står, til feilmeldinger
+
+    def les_grupper(hvem, regler, omrade, delomrade=None):
         grupper = regler.get("grupper") or {}
         if not isinstance(grupper, dict) or not grupper:
-            raise KonfigFeil(f"{navn}: «grupper» må ha minst én ut.no-område-ID")
+            raise KonfigFeil(f"{hvem}: «grupper» må ha minst én ut.no-område-ID")
         for streng, utno_navn in grupper.items():
-            omrade_id = heltall(streng, f"{navn}.grupper")
-            if omrade_id in id_til_omrade:
-                raise KonfigFeil(f"ut.no-område {omrade_id} står under både {id_til_omrade[omrade_id]} og {navn}")
-            id_til_omrade[omrade_id] = navn
+            omrade_id = heltall(streng, f"{hvem}.grupper")
+            if omrade_id in hvor:
+                raise KonfigFeil(f"ut.no-område {omrade_id} står under både {hvor[omrade_id]} og {hvem}")
+            hvor[omrade_id] = hvem
+            id_til_omrade[omrade_id] = omrade
+            if delomrade:
+                id_til_delomrade[omrade_id] = (omrade, delomrade)
             omradenavn_utno[omrade_id] = utno_navn
-        for omrade_id in regler.get("polygon") or []:
-            if id_til_omrade.get(heltall(omrade_id, f"{navn}.polygon")) != navn:
-                raise KonfigFeil(f"{navn}: polygon {omrade_id} står ikke i «grupper» for samme område")
+        for streng in regler.get("polygon") or []:
+            omrade_id = heltall(streng, f"{hvem}.polygon")
+            if str(omrade_id) not in grupper:
+                raise KonfigFeil(f"{hvem}: polygon {omrade_id} står ikke i «grupper» for samme område")
+
+    for navn, regler in omrader.items():
+        les_grupper(navn, regler, navn)
+        deler = regler.get("delomrader") or {}
+        if not isinstance(deler, dict):
+            raise KonfigFeil(f"{navn}: «delomrader» må være et objekt")
+        for delnavn, delregler in deler.items():
+            les_grupper(f"{navn} / {delnavn}", delregler, navn, delnavn)
+        if deler:
+            delomrader[navn] = list(deler)
 
     overstyr = {}
     for streng, regel in (raa.get("overstyr") or {}).items():
         hytte_id = heltall(streng, "overstyr")
-        ukjent = set(regel) - {"navn", "navnUtno", "omrade"}
+        ukjent = set(regel) - {"navn", "navnUtno", "omrade", "delomrade"}
         if ukjent:
             raise KonfigFeil(f"overstyr {hytte_id}: ukjente felt {sorted(ukjent)}")
         if "omrade" in regel and regel["omrade"] not in omrader:
             raise KonfigFeil(f"overstyr {hytte_id}: området «{regel['omrade']}» finnes ikke i «omrader»")
+        if "delomrade" in regel:
+            under = [o for o, deler in delomrader.items() if regel["delomrade"] in deler]
+            if not under:
+                raise KonfigFeil(f"overstyr {hytte_id}: delområdet «{regel['delomrade']}» finnes ikke under noe område")
+            if "omrade" in regel and regel["omrade"] not in under:
+                raise KonfigFeil(f"overstyr {hytte_id}: delområdet «{regel['delomrade']}» ligger ikke under «{regel['omrade']}»")
         overstyr[hytte_id] = regel
 
     utelat = raa.get("utelat") or {}
@@ -192,7 +229,9 @@ def les_konfig():
     return {
         "eier": heltall(raa.get("eier"), "eier"),
         "omrader": list(omrader),
+        "delomrader": delomrader,
         "id_til_omrade": id_til_omrade,
+        "id_til_delomrade": id_til_delomrade,
         "omradenavn_utno": omradenavn_utno,
         "overstyr": overstyr,
         "utelat_monster": monster,
@@ -268,6 +307,39 @@ def bestem_omrade(cabin, konfig):
                      f"Sett «overstyr» for {cabin['id']} med «omrade»")
 
 
+def bestem_delomrade(cabin, omrade, konfig):
+    """Delområdet for en hytte i et område med «delomrader» (side 3 grupperer
+    kortene etter det), ellers None. Overstyring hvis den finnes, ellers det
+    ene delområdet DNT-områdene på ut.no mapper til. ID-er som bare står under
+    området selv (paraplyen Oslomarka) teller ikke. Null eller flere treff er
+    en regelfeil, som for området."""
+    deler = konfig["delomrader"].get(omrade)
+    if not deler:
+        return None
+    hvem = f"{cabin.get('name')} ({cabin['id']})"
+    regel = konfig["overstyr"].get(cabin["id"], {})
+    if regel.get("delomrade"):
+        if regel["delomrade"] not in deler:
+            raise KonfigFeil(f"{hvem}: overstyrt delområde «{regel['delomrade']}» ligger ikke under {omrade}")
+        return regel["delomrade"]
+
+    dnt = [a for a in cabin.get("areas") or [] if a.get("areaType") == "DNT_AREA"]
+    treff = {}
+    for a in dnt:
+        plass = konfig["id_til_delomrade"].get(a.get("id"))
+        if plass and plass[0] == omrade:
+            treff.setdefault(plass[1], []).append(a)
+
+    beskriv = ", ".join(f"{a.get('name')} ({a.get('id')})" for a in dnt) or "ingen DNT-områder på ut.no"
+    if len(treff) == 1:
+        return next(iter(treff))
+    if not treff:
+        raise KonfigFeil(f"{hvem}: ligger i {omrade}, men ikke i noe delområde der ({beskriv}). "
+                         f"Legg ID-en i «grupper» under riktig delområde, eller sett «overstyr» for {cabin['id']} med «delomrade»")
+    raise KonfigFeil(f"{hvem}: ligger i både {' og '.join(treff)} ({beskriv}). "
+                     f"Sett «overstyr» for {cabin['id']} med «delomrade»")
+
+
 def visningsnavn(cabin, konfig):
     """Overstyrt navn eller ut.no-navnet. «navnUtno» i overstyringen sier hva
     ut.no kalte hytta da overstyringen ble lagt inn, og gir varsel hvis ut.no
@@ -289,7 +361,7 @@ def koordinater(cabin):
         return None, None
 
 
-def normaliser(cabin, navn, omrade):
+def normaliser(cabin, navn, omrade, delomrade):
     lon, lat = koordinater(cabin)
     niva = cabin.get("serviceLevel")
     perioder = []
@@ -301,6 +373,7 @@ def normaliser(cabin, navn, omrade):
                 "fra": dato(p.get("from")),
                 "til": dato(p.get("to")),
                 "heleAaret": bool(p.get("openAllYear")),
+                "noekkel": NOEKKEL.get(p.get("key")),
             }
         )
     perioder.sort(key=lambda p: (p["fra"] or "", p["til"] or "", p["niva"]))
@@ -309,6 +382,7 @@ def normaliser(cabin, navn, omrade):
         "navn": navn,
         "navnUtno": cabin.get("name"),
         "omrade": omrade,
+        "delomrade": delomrade,
         "utnoUrl": f"https://ut.no/hytte/{cabin['id']}",
         "lon": lon,
         "lat": lat,
@@ -373,11 +447,12 @@ def main():
             continue
         try:
             omrade = bestem_omrade(cabin, konfig)
+            delomrade = bestem_delomrade(cabin, omrade, konfig)
         except KonfigFeil as e:
             feil.append(str(e))
             print(f"FEIL  {e}", file=sys.stderr)
             continue
-        hytter_ut.append(normaliser(cabin, visningsnavn(cabin, konfig), omrade))
+        hytter_ut.append(normaliser(cabin, visningsnavn(cabin, konfig), omrade, delomrade))
 
     for hytte_id in sorted(set(konfig["overstyr"]) - sett):
         advarsel(f"overstyr {hytte_id} gjelder en hytte ut.no ikke lenger fører på eieren")
@@ -397,6 +472,10 @@ def main():
         print(f"{niva}: {len(gruppe)} hytter ({per_omrade})")
         for h in gruppe:
             print(f"OK    {h['navn']}: {len(h['perioder'])} perioder")
+    # Antall per delområde på tvers av nivåer, det er kortene på side 3.
+    for omrade, deler in konfig["delomrader"].items():
+        i_omradet = [h for h in hytter_ut if h["omrade"] == omrade]
+        print(f"Delområder i {omrade}: " + ", ".join(f"{d} {sum(1 for h in i_omradet if h['delomrade'] == d)}" for d in deler))
 
     # Har selve hyttedataene endret seg siden sist? Tidsstempelet «hentet»
     # endres alltid, så det holdes utenfor sammenligningen. GitHub Action
@@ -408,7 +487,9 @@ def main():
         try:
             forrige = json.loads(UTFIL.read_text(encoding="utf-8"))
             forrige_hytter = forrige.get("hytter") or []
-            endret = forrige_hytter != hytter_ut or forrige.get("omrader") != konfig["omrader"]
+            endret = (forrige_hytter != hytter_ut
+                      or forrige.get("omrader") != konfig["omrader"]
+                      or forrige.get("delomrader") != konfig["delomrader"])
         except ValueError:
             endret = True
     varsle_endringer(forrige_hytter, hytter_ut)
@@ -418,9 +499,11 @@ def main():
         "hentet": naa.isoformat(),
         "kilde": "https://ut.no",
         "omrader": konfig["omrader"],
+        "delomrader": konfig["delomrader"],
         "hytter": hytter_ut,
     }
-    UTFIL.write_text(json.dumps(ut, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    # newline="\n" så fila får LF også når scriptet kjøres på Windows, som i repoet.
+    UTFIL.write_text(json.dumps(ut, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     print(f"\nSkrev {UTFIL.name} med {len(hytter_ut)} hytter, hentet {naa.isoformat()}")
     print("Hyttedata endret siden sist" if endret else "Hyttedata uendret siden sist")
 
