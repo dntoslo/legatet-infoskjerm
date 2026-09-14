@@ -283,7 +283,12 @@ body {
 }
 
 /* Tegnet uttrykk: hvit landflate med tynn mørk strek mot den beige bakgrunnen.
-   Lagene tegnes i denne rekkefølgen: land, områder, vann, grense, byer, hytter. */
+   Lagene tegnes i denne rekkefølgen: hav (bare kart med «hav» i kartfila, som
+   Oslomarka), land, områder, vann, grense, byer, hytter. */
+.hav {
+  fill: var(--vann);
+  stroke: none;
+}
 .land path {
   fill: var(--hvit);
   stroke: none;
@@ -482,8 +487,9 @@ body[data-side="oslomarka"] .kort.liste .navn {
   font-weight: 400;
 }
 
-/* Nøkkelikonene, strektegnet i samme grå som teksten. Symbolene ligger i
-   oslomarka.html, og legenden i toppen bruker samme klasse. */
+/* Låsikonene for nøkkeltype (lukket hengelås for egen nøkkel, åpen for ulåst),
+   strektegnet i samme grå som teksten. Symbolene ligger i oslomarka.html, og
+   legenden i toppen bruker samme klasse. */
 .ikon {
   height: 1.7rem;
   width: 1.7rem;

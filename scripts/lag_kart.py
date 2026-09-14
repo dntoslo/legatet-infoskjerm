@@ -32,6 +32,8 @@ Oslomarka (KART["oslomarka"]):
   igjen.
 - Byer: Kartverkets stedsnavn-API, filtrert på By/Tettsted innenfor utsnittet.
 - Delområdene: «polygon» under «delomrader» i området i hytter.json.
+- «hav»: true i fila, så app.js fyller alt som ikke er land med vannfarge og
+  fjorden blir blå. På Sør-Norge-kartet er sjøen bakgrunnsfargen.
 
 Alt klippes til utsnittet, forenkles så det ser tegnet ut, og skrives som
 ringer og linjer i lon/lat.
@@ -105,6 +107,7 @@ KART = {
         "fylker": ["03_Oslo", "32_Akershus", "33_Buskerud", "31_Ostfold", "34_Innlandet", "39_Vestfold"],
         "byer": ["Oslo", "Drammen", "Sandvika", "Asker", "Lillestrøm", "Ski", "Hønefoss", "Jessheim", "Drøbak"],
         "omrade": "Oslomarka og Oslofjorden",   # tegn «polygon» fra «delomrader» under dette området
+        "hav": True,                        # fyll alt som ikke er land med vannfarge, så fjorden blir blå
     },
 }
 
@@ -395,6 +398,7 @@ def main():
         "kilder": kilder,
         "laget": date.today().isoformat(),
         "bbox": list(kart["bbox"]),
+        "hav": bool(kart.get("hav")),
         "ringer": ringer_av(landflate, kart["desimaler"]),
         "omrader": omrader(deler, landflate, kart, klipp),
         "innsjoer": innsjoer,
