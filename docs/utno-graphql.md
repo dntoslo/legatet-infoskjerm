@@ -13,15 +13,15 @@ query($eier: Int!) {
     totalCount
     pageInfo { hasNextPage }
     edges { node {
-      id name serviceLevel updatedAt geojson bedsStaffed bedsSelfService
+      id name serviceLevel updatedAt geojson bedsStaffed bedsSelfService bedsNoService
       areas { id name areaType }
-      serviceStatusAll { serviceLevel beds from to openAllYear }
+      serviceStatusAll { serviceLevel beds from to openAllYear key }
     } }
   }
 }
 ```
 
-`paging`, `filter` og `sorting` er alle påkrevd på `cabins`, men `sorting: []` er lov. `serviceLevel: {eq: SELF_SERVICE}` og `serviceLevel: {in: [STAFFED, SELF_SERVICE]}` fungerer som serverside-filter (62 og 87 treff for eier 156), men scriptet henter alt og deler i Python siden det trenger begge nivåene og vil logge hva som utelates.
+`paging`, `filter` og `sorting` er alle påkrevd på `cabins`, men `sorting: []` er lov. `serviceLevel: {eq: SELF_SERVICE}` og `serviceLevel: {in: [STAFFED, SELF_SERVICE]}` fungerer som serverside-filter (62 og 87 treff for eier 156), men scriptet henter alt og deler i Python siden det trenger tre nivåer og vil logge hva som utelates.
 
 ## Nyttige oppslag
 
@@ -50,7 +50,7 @@ Hentet av scriptet:
 | `id`, `name`, `status` | ID brukes i URL `https://ut.no/hytte/<id>`. Status er `PUBLIC` for publiserte hytter. |
 | `serviceLevel` | Hovednivå, se enum under. |
 | `serviceStatusToday` | Perioden som gjelder i dag: `serviceLevel`, `beds` (Float), `from`, `to`, `openAllYear`. |
-| `serviceStatusAll` | Alle registrerte perioder, samme form. Datoer er UTC midnatt, bruk bare datodelen. Typen `CabinServiceStatus` har også `key` (String: «dnt-key», «special key», «unlocked» eller null), ujevnt utfylt og ikke brukt. |
+| `serviceStatusAll` | Alle registrerte perioder, samme form. Datoer er UTC midnatt, bruk bare datodelen. `key` (String: «dnt-key», «special key», «unlocked» eller null) er nøkkeltypen, brukt på side 3 som `noekkel` («dnt», «egen», «ulaast» eller null). Ujevnt utfylt: per 14. september 2026 har 43 av de 50 ubetjente i Oslomarka og langs Oslofjorden «dnt-key», 5 «special key» (i praksis hyttene som bare kan bookes), 1 «unlocked» (Gapahuken på Sæteren) og Sandbekkhytta mangler verdi. Babord på Gressholmen står med «dnt-key» mens Styrbord har «special key», så feil rettes på ut.no. |
 | `bedsStaffed`, `bedsSelfService`, `bedsNoService`, `bedsWinter`, `bedsExtra` | Sengetall per nivå. |
 | `geojson` | GeoJSON Point, `coordinates` er `[lon, lat, høyde]`. |
 | `elevationCustom` | Manuelt satt høyde, som regel null. |
@@ -125,7 +125,7 @@ I tillegg står én nødbu i «Jotunheimen villreinområde» (124470), som er `D
 
 ## Tall per 10. september 2026
 
-Eier 156 (DNT Oslo og Omegn) hadde 147 publiserte hytter: 25 betjente, 62 selvbetjente, 54 ubetjente, 3 nødbuer, 2 stengte og 1 serveringssted. Samme tall som 7. september. Av de 62 selvbetjente er 11 selvbetjeningskvarter ved betjente hytter, egne oppføringer med «Selvbetjent» eller «selvbetjening» i navnet, som scriptet utelater. Perioder for betjente og selvbetjente bruker bare nivåene STAFFED, SELF_SERVICE og CLOSED.
+Eier 156 (DNT Oslo og Omegn) hadde 147 publiserte hytter: 25 betjente, 62 selvbetjente, 54 ubetjente, 3 nødbuer, 2 stengte og 1 serveringssted. Samme tall som 7. september. Av de 62 selvbetjente er 11 selvbetjeningskvarter ved betjente hytter, egne oppføringer med «Selvbetjent» eller «selvbetjening» i navnet, som scriptet utelater. Perioder for betjente og selvbetjente bruker bare nivåene STAFFED, SELF_SERVICE og CLOSED, perioder for ubetjente bare NO_SERVICE og CLOSED. Av de 54 ubetjente ligger 50 i Oslomarka og langs Oslofjorden (side 3) og 4 på fjellet (Demmevasshytta, Stølsmaradalen, Sæter/Knøttebu, Tungestølen Leir). 49 av de 50 er åpne hele året, bare Langøyene har perioder med vinterstengt.
 
 ## Undersøke skjemaet på nytt
 

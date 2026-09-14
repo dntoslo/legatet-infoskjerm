@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hyttene i DNT Oslo og Omegn</title>
   <link rel="icon" href="assets/dnt-logo.png">
-  <!-- Hovedsiden er bare navigasjon til de to infoskjermsidene. TV-en peker
-       rett på betjente.html og selvbetjente.html og bruker ikke denne sida.
+  <!-- Hovedsiden er bare navigasjon til de tre infoskjermsidene. TV-en peker
+       rett på betjente.html, selvbetjente.html og oslomarka.html og bruker
+       ikke denne sida.
        Sida bruker ikke assets/style.css med hensikt: det stilarket låser alt
        til en fast 16:9-flate med rem som 1 % av flatehøyden, som gir uleselig
        liten tekst på en telefon. Denne sida åpnes i vanlige nettlesere og har
@@ -73,10 +74,10 @@
       font-size: 1.15rem;
     }
 
-    /* To lenkekort ved siden av hverandre, under hverandre i smale vinduer. */
+    /* Tre lenkekort ved siden av hverandre, under hverandre i smale vinduer. */
     .valg {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.5rem;
     }
     @media (max-width: 44rem) {
@@ -132,6 +133,10 @@
     <a class="kort" href="selvbetjente.html">
       <h2>Selvbetjente hytter</h2>
       <p>Åpne og stengte selvbetjente hytter per fjellområde.</p>
+    </a>
+    <a class="kort" href="oslomarka.html">
+      <h2>Oslomarka og Oslofjorden</h2>
+      <p>Ubetjente og betjente hytter i marka og langs fjorden, med sengetall.</p>
     </a>
   </nav>
 </div>

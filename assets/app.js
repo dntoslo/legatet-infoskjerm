@@ -1,12 +1,14 @@
-/* Infoskjerm for hyttene i DNT Oslo og Omegn. Ett skript for begge sidene:
-   betjente.html (betjente hytter) og selvbetjente.html (selvbetjente hytter).
-   index.html er bare navigasjon til de to og bruker ikke dette skriptet.
+/* Infoskjerm for hyttene i DNT Oslo og Omegn. Ett skript for alle tre sidene:
+   betjente.html (betjente hytter), selvbetjente.html (selvbetjente hytter) og
+   oslomarka.html (alle hyttene i Oslomarka og langs Oslofjorden).
+   index.html er bare navigasjon til de tre og bruker ikke dette skriptet.
    Leser data.json (generert av scripts/hent_data.py), plukker hyttene som
    hører til sida, regner ut status for dagens dato i norsk tid og tegner ett
-   kort per fjellområde i to kolonner rundt et kart av Sør-Norge.
-   Kartgrunnlaget ligger i assets/sor-norge.json (laget av
-   scripts/lag_kart.py): landomriss, DNT-områdene fra ut.no, innsjøer, elver
-   og byer, alt i lon/lat. Det projiseres her sammen med hyttene.
+   kort per område i to kolonner rundt et kart.
+   Kartgrunnlaget ligger i assets/sor-norge.json og assets/oslomarka.json
+   (laget av scripts/lag_kart.py): landomriss, DNT-områdene fra ut.no,
+   innsjøer, elver og byer, alt i lon/lat. Det projiseres her sammen med
+   hyttene.
 
    Skjermen kjører Tizen 7.0 med Chromium 94. Bruk ikke JS nyere enn det
    (replaceChildren er det nyeste her). */
@@ -15,25 +17,37 @@
   "use strict";
 
   const DATAFIL = "data.json";
-  const KARTFIL = "assets/sor-norge.json";
   const RELOAD_MS = 30 * 60 * 1000;       // sikkerhetsnett i tillegg til TV-ens refresh
   const GAMMEL_ETTER_TIMER = 36;          // varsle hvis Action ikke har levert nye data
   const SNART_DAGER = 14;                 // vis «om N dager» innen dette
 
   // Én konfigurasjon per side, valgt med data-side på <body>.
   //   velg: hvilke hytter i data.json som hører til sida.
+  //   gruppe: feltet på hytta som gir kort og fargeflate, «omrade» eller
+  //     «delomrade» (side 3 deler Oslomarka og Oslofjorden i åtte kort).
   //   kort: hvordan kortene tegnes, se tegnKort. «detalj» er én statuslinje
   //     per hytte, «liste» er alle navn i to spalter med prikk.
+  //   meta: i listevarianten, tilleggstekst bak navnet med sengetall,
+  //     «Betjent» og nøkkelikon (side 3), se meta().
+  //   kart: kartgrunnlaget, laget av scripts/lag_kart.py, og kartTekst til
+  //     aria-label.
   //   kolonner: hvilken kolonne hvert område står i. Vest til venstre, øst til
   //     høyre, nord øverst. Områder som ikke står her, havner nederst til høyre.
-  //   prikkR: hytteprikk på kartet i viewBox-enheter (1 enhet er ca. 0,6 km).
-  // Side 2 har dobbelt så mange hytter, derfor mindre prikker, og Langsua står
-  // til høyre fordi venstre kolonne med 30 hytter er nesten full. Rekkefølgen
-  // i en kolonne må følge nord til sør, ellers krysser strekene hverandre.
+  //   prikkR: hytteprikk på kartet i viewBox-enheter. Kartene er 1000 enheter
+  //     høye, så en enhet er ca. 0,6 km på Sør-Norge og 0,09 km på Oslomarka.
+  // Side 2 har dobbelt så mange hytter som side 1, derfor mindre prikker, og
+  // Langsua står til høyre fordi venstre kolonne med 30 hytter er nesten full.
+  // Rekkefølgen i en kolonne må følge nord til sør, ellers krysser strekene
+  // hverandre.
+  const SOR_NORGE = "assets/sor-norge.json";
+  const SOR_NORGE_TEKST = "Kart over Sør-Norge med fjellområdene og hyttene markert";
   const SIDER = {
     betjente: {
       velg: h => h.serviceLevel === "STAFFED",
+      gruppe: "omrade",
       kort: "detalj",
+      kart: SOR_NORGE,
+      kartTekst: SOR_NORGE_TEKST,
       kolonner: {
         venstre: ["Breheimen", "Jotunheimen", "Skarvheimen", "Hardangervidda"],
         hoyre: ["Rondane og Dovrefjell", "Femundsmarka", "Langsua", "Oslomarka og Oslofjorden"],
@@ -42,12 +56,32 @@
     },
     selvbetjente: {
       velg: h => h.serviceLevel === "SELF_SERVICE",
+      gruppe: "omrade",
       kort: "liste",
+      kart: SOR_NORGE,
+      kartTekst: SOR_NORGE_TEKST,
       kolonner: {
         venstre: ["Breheimen", "Jotunheimen", "Skarvheimen", "Hardangervidda"],
         hoyre: ["Rondane og Dovrefjell", "Femundsmarka", "Østerdalsfjella", "Langsua"],
       },
-      prikkR: 5.5,              // samme tall som r på .hyttepunkt.stengt for side 2 i style.css
+      prikkR: 5.5,              // samme tall som r på .hyttepunkt.stengt for side 2 og 3 i style.css
+    },
+    oslomarka: {
+      velg: h => h.omrade === "Oslomarka og Oslofjorden",     // ubetjente og betjente sammen
+      gruppe: "delomrade",
+      kort: "liste",
+      meta: true,
+      kart: "assets/oslomarka.json",
+      kartTekst: "Kart over Oslomarka og indre Oslofjord med delområdene og hyttene markert",
+      // Nordmarka øverst til venstre: nordspissen ligger nord for Krokskogen,
+      // med motsatt rekkefølge krysser de to strekene hverandre. Oslofjorden
+      // over Østmarka til høyre: da går streken til Gressholmen nord for
+      // Østmarka, nederst ville den gått tvers gjennom Østmarka til Breivoll.
+      kolonner: {
+        venstre: ["Nordmarka", "Krokskogen", "Bærumsmarka", "Vestmarka og Kjekstadmarka"],
+        hoyre: ["Romeriksåsene og Hadeland", "Lillomarka og Gjelleråsen", "Oslofjorden", "Østmarka"],
+      },
+      prikkR: 5.5,
     },
   };
   const SIDE = SIDER[document.body.dataset.side] || SIDER.betjente;
@@ -55,10 +89,13 @@
   // Farge per område, brukt både på kortet og som fyll på kartet. Dempede
   // DNT-toner, med hensikt ulike statusfargene grønn, oransje og rød, så
   // prikkene leses tydelig oppå. Områder som ikke står her (Oslomarka og
-  // Oslofjorden), tegnes ikke på kartet, og streken går til hyttene i stedet.
-  // Naboområder må ha farger som skiller seg klart: Breheimen, Jotunheimen,
-  // Skarvheimen og Hardangervidda ligger etter hverandre nord til sør.
+  // Oslofjorden på side 1, Oslofjorden på side 3), tegnes ikke på kartet, og
+  // streken går til hyttene i stedet. Naboområder må ha farger som skiller
+  // seg klart: Breheimen, Jotunheimen, Skarvheimen og Hardangervidda ligger
+  // etter hverandre nord til sør, og på Oslomarka-kartet ligger Krokskogen,
+  // Nordmarka, Lillomarka og Romeriksåsene tett.
   const FARGER = {
+    // Sør-Norge, side 1 og 2
     "Jotunheimen": "#C5DCEA",            // blå
     "Hardangervidda": "#FFF097",         // gul
     "Skarvheimen": "#FFC8C3",            // lys rød
@@ -67,11 +104,19 @@
     "Langsua": "#F5DDB0",                // beige, litt dypere enn DNT mørk beige for å synes mot hvitt
     "Femundsmarka": "#C9E9E4",           // lys turkis
     "Østerdalsfjella": "#F2CFDF",        // lys rosa, ulik naboene Femundsmarka og Rondane
+    // Oslomarka, side 3, samme toner brukt om igjen
+    "Nordmarka": "#C5DCEA",                  // blå
+    "Krokskogen": "#DDD3EA",                 // lilla
+    "Bærumsmarka": "#FFF097",                // gul
+    "Vestmarka og Kjekstadmarka": "#E9F2D9", // lys grønn
+    "Lillomarka og Gjelleråsen": "#C9E9E4",  // lys turkis
+    "Romeriksåsene og Hadeland": "#F5DDB0",  // beige
+    "Østmarka": "#FFC8C3",                   // lys rød
   };
 
-  const BY_R = 6;               // byprikk, i viewBox-enheter (1 enhet er ca. 0,6 km)
-  const COS_LAT = Math.cos(61 * Math.PI / 180);
+  const BY_R = 6;               // byprikk, i viewBox-enheter
   const SVG_NS = "http://www.w3.org/2000/svg";
+  const NOEKKELIKON = { egen: "ikon-noekkel", ulaast: "ikon-ulaast" };   // <symbol>-id-er i oslomarka.html
 
   const MAANEDER = ["januar", "februar", "mars", "april", "mai", "juni",
     "juli", "august", "september", "oktober", "november", "desember"];
@@ -252,14 +297,48 @@
     return null;
   }
 
-  // Én rad i listevarianten: prikk, navn og eventuelt kort tidsangivelse.
+  // Et ikon fra <symbol> i HTML-fila, med tekst for skjermlesere.
+  function ikon(id, tekst) {
+    const svg = svgEl("svg", { class: "ikon", role: "img" });
+    svg.appendChild(svgEl("title")).textContent = tekst;
+    svg.appendChild(svgEl("use", { href: `#${id}` }));
+    return svg;
+  }
+
+  // Tilleggsteksten bak navnet på side 3: tidsangivelsen når den finnes,
+  // ellers «Betjent» for betjente hytter, ellers sengetallet for åpne hytter.
+  // Deretter et nøkkelikon for ubetjente hytter som ikke åpnes med
+  // DNT-nøkkel, fra gjeldende periode. Navnet skal alltid vises helt, så det
+  // er denne teksten som må være kort («Betjent · 54 senger» får ikke plass).
+  function meta(rad, iDag) {
+    const { hytte: h, s } = rad;
+    const span = el("span", "meta");
+    const n = kortNaar(rad, iDag);
+    if (n) span.appendChild(el("span", n.klasse, n.tekst));
+    else if (s.klasse === "betjent") span.appendChild(el("span", "detalj", "Betjent"));
+    else if (s.klasse !== "stengt" && h.senger > 0) span.appendChild(el("span", "detalj", `${h.senger} senger`));
+    if (s.klasse !== "betjent") {
+      const naa = gjeldende(h.perioder || [], iDag);
+      if (naa && NOEKKELIKON[naa.noekkel]) {
+        span.appendChild(ikon(NOEKKELIKON[naa.noekkel], naa.noekkel === "egen" ? "egen nøkkel" : "ulåst"));
+      }
+    }
+    return span;
+  }
+
+  // Én rad i listevarianten: prikk, navn og eventuelt kort tidsangivelse,
+  // eller tilleggsteksten fra meta() på sider med SIDE.meta.
   function radListe(rad, iDag) {
     const { hytte: h, s } = rad;
     const li = el("li", `hytte ${s.klasse}`);
     li.appendChild(el("i", `prikk ${s.klasse}`));
     li.appendChild(el("span", "navn", h.navn));
-    const n = kortNaar(rad, iDag);
-    if (n) li.appendChild(el("span", `naar ${n.klasse}`, n.tekst));
+    if (SIDE.meta) {
+      li.appendChild(meta(rad, iDag));
+    } else {
+      const n = kortNaar(rad, iDag);
+      if (n) li.appendChild(el("span", `naar ${n.klasse}`, n.tekst));
+    }
     return li;
   }
 
@@ -302,11 +381,11 @@
   /* ---------- Kart ---------- */
 
   // Hentes én gang per sidelasting, uten cache, så et nytt kartgrunnlag når
-  // TV-en uten at ?v= må bumpes. Fila er 20 kB, det tåles hver halvtime.
+  // TV-en uten at ?v= må bumpes. Filene er 20 til 60 kB, det tåles hver halvtime.
   let kartLovnad = null;
   function hentKart() {
     if (!kartLovnad) {
-      kartLovnad = fetch(`${KARTFIL}?v=${Date.now()}`, { cache: "no-store" }).then(r => {
+      kartLovnad = fetch(`${SIDE.kart}?v=${Date.now()}`, { cache: "no-store" }).then(r => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
       });
@@ -314,18 +393,20 @@
     return kartLovnad;
   }
 
-  // Enkel projeksjon: lengdegrad skalert med cos(61°), nord opp. Godt nok
-  // for Sør-Norge, og én funksjon for alle lag.
+  // Enkel projeksjon: lengdegrad skalert med cos av breddegraden midt i
+  // utsnittet, nord opp. Godt nok for begge kartene, og én funksjon for alle
+  // lag. Kartet er alltid 1000 enheter høyt, bredden følger utsnittet.
   function lagProjeksjon(bbox) {
     const [lon0, lat0, lon1, lat1] = bbox;
-    const bredde = (lon1 - lon0) * COS_LAT;
+    const cosLat = Math.cos((lat0 + lat1) / 2 * Math.PI / 180);
+    const bredde = (lon1 - lon0) * cosLat;
     const hoyde = lat1 - lat0;
     const H = 1000;
     const W = Math.round(H * bredde / hoyde);
     return {
       W, H,
       p(lon, lat) {
-        return [((lon - lon0) * COS_LAT / bredde) * W, ((lat1 - lat) / hoyde) * H];
+        return [((lon - lon0) * cosLat / bredde) * W, ((lat1 - lat) / hoyde) * H];
       },
     };
   }
@@ -339,7 +420,7 @@
       viewBox: `0 0 ${proj.W} ${proj.H}`,
       preserveAspectRatio: "xMidYMid meet",
       role: "img",
-      "aria-label": "Kart over Sør-Norge med fjellområdene og hyttene markert",
+      "aria-label": SIDE.kartTekst,
     });
 
     // Land
@@ -392,7 +473,7 @@
       if (h.lon == null || h.lat == null) continue;
       const [x, y] = proj.p(h.lon, h.lat);
       const s = status(h, iDag);
-      const c = svgEl("circle", { class: `hyttepunkt ${s.klasse} ${omradeKlasse(h.omrade)}`, cx: tall(x), cy: tall(y), r: SIDE.prikkR });
+      const c = svgEl("circle", { class: `hyttepunkt ${s.klasse} ${omradeKlasse(h[SIDE.gruppe])}`, cx: tall(x), cy: tall(y), r: SIDE.prikkR });
       c.__punkter = [[x, y]];
       c.appendChild(svgEl("title")).textContent = `${h.navn}: ${s.niva}, ${s.detalj}`;
       prikker.appendChild(c);
@@ -538,10 +619,15 @@
     }
     const visning = { ...data, hytter };
 
-    // Områdene i kanonisk rekkefølge fra data.omrader, med påfyll av områder
-    // som bare finnes på hyttene, og bare de som har hytter på denne sida.
-    const omrader = [...new Set([...(data.omrader || []), ...hytter.map(h => h.omrade)])]
-      .filter(o => hytter.some(h => h.omrade === o));
+    // Områdene (eller delområdene, etter SIDE.gruppe) i kanonisk rekkefølge
+    // fra data.json, med påfyll av det som bare finnes på hyttene, og bare de
+    // som har hytter på denne sida. Rekkefølgen er tegnerekkefølgen på kartet.
+    const felt = SIDE.gruppe;
+    const kanon = felt === "omrade"
+      ? (data.omrader || [])
+      : Object.keys(data.delomrader || {}).reduce((alle, o) => alle.concat(data.delomrader[o]), []);
+    const omrader = [...new Set([...kanon, ...hytter.map(h => h[felt])])]
+      .filter(o => o && hytter.some(h => h[felt] === o));
 
     const venstre = el("div", "kolonne venstre");
     const hoyre = el("div", "kolonne hoyre");
@@ -552,7 +638,7 @@
     const kolonner = SIDE.kolonner;
     const plasser = (navn, kolonne) => {
       if (!omrader.includes(navn)) return;
-      kolonne.appendChild(tegnKort(navn, hytter.filter(h => h.omrade === navn), iDag));
+      kolonne.appendChild(tegnKort(navn, hytter.filter(h => h[felt] === navn), iDag));
     };
     kolonner.venstre.forEach(n => plasser(n, venstre));
     kolonner.hoyre.forEach(n => plasser(n, hoyre));

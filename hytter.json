@@ -35,10 +35,40 @@
     },
     "Oslomarka og Oslofjorden": {
       "polygon": [],
-      "grupper": {
-        "1223": "Oslomarka", "1279": "Oslofjorden", "1271": "Nordmarka", "12165": "Bærumsmarka",
-        "12166": "Krokskogen", "12163": "Kjekstadmarka", "12168": "Lillomarka og Gjelleråsen",
-        "12167": "Romeriksåsene", "1272": "Vestmarka", "1273": "Østmarka"
+      "grupper": { "1223": "Oslomarka" },
+      "delomrader": {
+        "Krokskogen": {
+          "polygon": [12166],
+          "grupper": { "12166": "Krokskogen" }
+        },
+        "Nordmarka": {
+          "polygon": [1271],
+          "grupper": { "1271": "Nordmarka" }
+        },
+        "Bærumsmarka": {
+          "polygon": [12165],
+          "grupper": { "12165": "Bærumsmarka" }
+        },
+        "Vestmarka og Kjekstadmarka": {
+          "polygon": [1272, 12163],
+          "grupper": { "1272": "Vestmarka", "12163": "Kjekstadmarka" }
+        },
+        "Romeriksåsene og Hadeland": {
+          "polygon": [12167],
+          "grupper": { "12167": "Romeriksåsene", "1219": "Hadeland" }
+        },
+        "Lillomarka og Gjelleråsen": {
+          "polygon": [12168],
+          "grupper": { "12168": "Lillomarka og Gjelleråsen" }
+        },
+        "Østmarka": {
+          "polygon": [1273],
+          "grupper": { "1273": "Østmarka", "1280": "Akershus Øst" }
+        },
+        "Oslofjorden": {
+          "polygon": [],
+          "grupper": { "1279": "Oslofjorden" }
+        }
       }
     }
   },
@@ -48,7 +78,23 @@
     "101380": { "navn": "Sæteren Gård",  "navnUtno": "Sæteren Gård - Hovedhus+Sovehus" },
     "10929":  { "omrade": "Hardangervidda" },
     "10831":  { "omrade": "Femundsmarka" },
-    "10722":  { "omrade": "Femundsmarka" }
+    "10722":  { "omrade": "Femundsmarka" },
+
+    "10775":     { "delomrade": "Lillomarka og Gjelleråsen" },
+    "10785":     { "delomrade": "Lillomarka og Gjelleråsen" },
+    "10595":     { "delomrade": "Lillomarka og Gjelleråsen" },
+    "101114465": { "delomrade": "Lillomarka og Gjelleråsen" },
+    "10788":     { "delomrade": "Krokskogen" },
+
+    "101282092": { "navn": "Uglebu",        "navnUtno": "Uglebu - Sæteren Gård" },
+    "101170965": { "navn": "Knoll",         "navnUtno": "Knoll - Sæteren Gård" },
+    "101171182": { "navn": "Gapahuk",       "navnUtno": "Gapahuk - Sæteren Gård" },
+    "101170964": { "navn": "Spettehytta",   "navnUtno": "Spettehytta - Sæteren Gård" },
+    "101170962": { "navn": "Eventyrhytta",  "navnUtno": "Eventyrhytta - Sæteren Gård" },
+    "101317685": { "navn": "Elgstua",       "navnUtno": "Elgstua - Sæteren Gård" },
+    "101024831": { "navn": "Gressholmen Styrbord", "navnUtno": "Styrbord - Gressholmen" },
+    "101022071": { "navn": "Gressholmen Babord",   "navnUtno": "Babord - Gressholmen" },
+    "101039692": { "navn": "Sjåførboligen", "navnUtno": "Sjåførboligen på Elnestangen" }
   },
   "utelat": {
     "navnMonster": "selvbetjen(t|ing)",
