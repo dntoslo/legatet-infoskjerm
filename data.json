@@ -1,5 +1,5 @@
 {
- "hentet": "2026-09-18T15:56:26+02:00",
+ "hentet": "2026-09-19T10:53:10+02:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -83,7 +83,7 @@
    "lat": 61.3752,
    "serviceLevel": "STAFFED",
    "senger": 100,
-   "oppdatertUtno": "2026-09-18T07:45:12.533Z",
+   "oppdatertUtno": "2026-09-19T05:42:09.276Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -217,7 +217,7 @@
    "lat": 61.4941,
    "serviceLevel": "STAFFED",
    "senger": 185,
-   "oppdatertUtno": "2026-09-17T13:28:40.840Z",
+   "oppdatertUtno": "2026-09-18T16:28:02.337Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -896,7 +896,7 @@
    "lat": 60.7009,
    "serviceLevel": "STAFFED",
    "senger": 88,
-   "oppdatertUtno": "2026-09-18T06:08:41.334Z",
+   "oppdatertUtno": "2026-09-18T21:15:21.408Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -942,7 +942,7 @@
      "niva": "CLOSED",
      "senger": 0,
      "fra": "2026-09-13",
-     "til": "2026-12-31",
+     "til": "2027-02-26",
      "heleAaret": false,
      "noekkel": null
     },
@@ -2260,7 +2260,7 @@
    "lat": 60.4267,
    "serviceLevel": "SELF_SERVICE",
    "senger": 48,
-   "oppdatertUtno": "2026-09-11T15:11:47.965Z",
+   "oppdatertUtno": "2026-09-19T00:08:03.025Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -3965,7 +3965,7 @@
    "lat": 61.2768,
    "serviceLevel": "SELF_SERVICE",
    "senger": 19,
-   "oppdatertUtno": "2026-09-18T12:27:38.517Z",
+   "oppdatertUtno": "2026-09-19T06:28:10.506Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -5012,7 +5012,7 @@
    "lat": 59.872,
    "serviceLevel": "NO_SERVICE",
    "senger": 4,
-   "oppdatertUtno": "2026-09-12T18:08:25.633Z",
+   "oppdatertUtno": "2026-09-19T08:50:01.817Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -5879,7 +5879,7 @@
    "lat": 59.8717,
    "serviceLevel": "NO_SERVICE",
    "senger": 8,
-   "oppdatertUtno": "2026-09-12T18:08:40.877Z",
+   "oppdatertUtno": "2026-09-19T08:50:00.791Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
