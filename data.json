@@ -1,5 +1,5 @@
 {
- "hentet": "2026-09-21T12:58:18+02:00",
+ "hentet": "2026-09-21T18:03:09+02:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -1337,7 +1337,7 @@
    "lat": 61.8092,
    "serviceLevel": "STAFFED",
    "senger": 86,
-   "oppdatertUtno": "2026-09-21T07:15:36.800Z",
+   "oppdatertUtno": "2026-09-21T12:50:32.495Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -1607,7 +1607,87 @@
      "niva": "CLOSED",
      "senger": 0,
      "fra": "2026-09-13",
-     "til": "2026-12-31",
+     "til": "2027-02-26",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 86,
+     "fra": "2027-02-26",
+     "til": "2027-02-28",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-03-01",
+     "til": "2027-03-05",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 86,
+     "fra": "2027-03-05",
+     "til": "2027-03-07",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-03-08",
+     "til": "2027-03-12",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 86,
+     "fra": "2027-03-12",
+     "til": "2027-03-14",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-03-15",
+     "til": "2027-03-19",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 86,
+     "fra": "2027-03-19",
+     "til": "2027-03-29",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-03-29",
+     "til": "2027-05-28",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 86,
+     "fra": "2027-05-28",
+     "til": "2027-09-05",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-09-05",
+     "til": "2027-12-31",
      "heleAaret": false,
      "noekkel": null
     }
