@@ -1,5 +1,5 @@
 {
- "hentet": "2026-10-13T14:00:10+02:00",
+ "hentet": "2026-10-13T14:52:31+02:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -725,7 +725,7 @@
    "lat": 60.5979,
    "serviceLevel": "STAFFED",
    "senger": 174,
-   "oppdatertUtno": "2026-10-08T19:35:47.397Z",
+   "oppdatertUtno": "2026-10-13T12:18:15.199Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -779,6 +779,22 @@
      "niva": "STAFFED",
      "senger": 174,
      "fra": "2027-02-12",
+     "til": "2027-02-26",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-02-26",
+     "til": "2027-03-07",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 174,
+     "fra": "2027-03-07",
      "til": "2027-05-10",
      "heleAaret": false,
      "noekkel": null
@@ -827,7 +843,7 @@
      "niva": "STAFFED",
      "senger": 174,
      "fra": "2027-06-25",
-     "til": "2027-10-03",
+     "til": "2027-10-01",
      "heleAaret": false,
      "noekkel": null
     },
@@ -1682,7 +1698,7 @@
    "lat": 61.6427,
    "serviceLevel": "STAFFED",
    "senger": 42,
-   "oppdatertUtno": "2026-10-04T20:14:15.524Z",
+   "oppdatertUtno": "2026-10-13T12:07:50.489Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -1739,6 +1755,46 @@
      "til": "2027-02-15",
      "heleAaret": false,
      "noekkel": null
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2027-02-15",
+     "til": "2027-03-18",
+     "heleAaret": false,
+     "noekkel": "dnt"
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 42,
+     "fra": "2027-03-18",
+     "til": "2027-03-28",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2027-03-28",
+     "til": "2027-06-25",
+     "heleAaret": false,
+     "noekkel": "dnt"
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 42,
+     "fra": "2027-06-25",
+     "til": "2027-08-15",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2027-08-15",
+     "til": "2027-10-15",
+     "heleAaret": false,
+     "noekkel": "dnt"
     }
    ]
   },
