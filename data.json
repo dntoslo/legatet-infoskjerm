@@ -1,5 +1,5 @@
 {
- "hentet": "2026-10-19T12:06:43+02:00",
+ "hentet": "2026-10-19T18:44:05+02:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -36,7 +36,7 @@
    "lat": 61.5161,
    "serviceLevel": "STAFFED",
    "senger": 34,
-   "oppdatertUtno": "2026-09-27T18:12:01.429Z",
+   "oppdatertUtno": "2026-10-19T12:30:34.158Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -66,7 +66,23 @@
      "niva": "CLOSED",
      "senger": 0,
      "fra": "2026-08-30",
-     "til": "2026-12-31",
+     "til": "2027-06-25",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "STAFFED",
+     "senger": 34,
+     "fra": "2027-06-25",
+     "til": "2027-08-29",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-08-29",
+     "til": "2028-06-23",
      "heleAaret": false,
      "noekkel": null
     }
@@ -2624,7 +2640,7 @@
    "lat": 61.3835,
    "serviceLevel": "SELF_SERVICE",
    "senger": 9,
-   "oppdatertUtno": "2026-09-29T10:07:56.915Z",
+   "oppdatertUtno": "2026-10-19T13:44:05.889Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -2667,14 +2683,6 @@
      "noekkel": null
     },
     {
-     "niva": "CLOSED",
-     "senger": 0,
-     "fra": "2026-10-15",
-     "til": "2028-02-15",
-     "heleAaret": false,
-     "noekkel": null
-    },
-    {
      "niva": "SELF_SERVICE",
      "senger": 9,
      "fra": "2027-02-15",
@@ -2697,6 +2705,14 @@
      "til": "2027-10-15",
      "heleAaret": false,
      "noekkel": "dnt"
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-10-15",
+     "til": "2028-02-15",
+     "heleAaret": false,
+     "noekkel": null
     }
    ]
   },
@@ -2813,7 +2829,7 @@
    "lat": 59.9829,
    "serviceLevel": "SELF_SERVICE",
    "senger": 24,
-   "oppdatertUtno": "2026-10-14T06:13:23.867Z",
+   "oppdatertUtno": "2026-10-19T12:21:49.767Z",
    "perioder": [
     {
      "niva": "CLOSED",
