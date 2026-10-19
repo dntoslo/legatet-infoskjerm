@@ -1,5 +1,5 @@
 {
- "hentet": "2026-10-18T16:19:51+02:00",
+ "hentet": "2026-10-19T12:06:43+02:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -1564,7 +1564,7 @@
    "lat": 61.8788,
    "serviceLevel": "STAFFED",
    "senger": 128,
-   "oppdatertUtno": "2026-10-16T13:14:30.300Z",
+   "oppdatertUtno": "2026-10-19T07:56:56.879Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -1594,14 +1594,14 @@
      "niva": "CLOSED",
      "senger": 0,
      "fra": "2026-09-13",
-     "til": "2027-02-26",
+     "til": "2027-02-19",
      "heleAaret": false,
      "noekkel": "dnt"
     },
     {
      "niva": "STAFFED",
      "senger": 128,
-     "fra": "2027-02-26",
+     "fra": "2027-02-19",
      "til": "2027-03-29",
      "heleAaret": false,
      "noekkel": null
@@ -2287,7 +2287,7 @@
    "lat": 62.2215,
    "serviceLevel": "STAFFED",
    "senger": 45,
-   "oppdatertUtno": "2026-10-06T07:13:43.292Z",
+   "oppdatertUtno": "2026-10-19T09:24:09.946Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -4918,7 +4918,7 @@
    "lat": 62.3506,
    "serviceLevel": "SELF_SERVICE",
    "senger": 21,
-   "oppdatertUtno": "2026-09-28T10:27:05.881Z",
+   "oppdatertUtno": "2026-10-19T09:24:09.561Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -5359,7 +5359,7 @@
    "lat": 61.5414,
    "serviceLevel": "NO_SERVICE",
    "senger": 2,
-   "oppdatertUtno": "2026-09-28T07:24:37.913Z",
+   "oppdatertUtno": "2026-10-18T14:24:59.037Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6082,7 +6082,7 @@
    "lat": 60.0245,
    "serviceLevel": "NO_SERVICE",
    "senger": 2,
-   "oppdatertUtno": "2026-10-18T10:48:15.834Z",
+   "oppdatertUtno": "2026-10-18T14:25:02.153Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6220,7 +6220,7 @@
    "lat": 60.0041,
    "serviceLevel": "NO_SERVICE",
    "senger": 7,
-   "oppdatertUtno": "2026-10-17T09:52:01.778Z",
+   "oppdatertUtno": "2026-10-18T15:23:47.926Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6519,7 +6519,7 @@
    "lat": 60.2998,
    "serviceLevel": "NO_SERVICE",
    "senger": 9,
-   "oppdatertUtno": "2026-10-17T10:50:01.894Z",
+   "oppdatertUtno": "2026-10-18T18:15:23.903Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6542,7 +6542,7 @@
    "lat": 60.2997,
    "serviceLevel": "NO_SERVICE",
    "senger": 4,
-   "oppdatertUtno": "2026-10-17T10:50:01.892Z",
+   "oppdatertUtno": "2026-10-18T18:15:23.636Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6588,7 +6588,7 @@
    "lat": 59.7985,
    "serviceLevel": "NO_SERVICE",
    "senger": 8,
-   "oppdatertUtno": "2026-10-18T11:42:39.127Z",
+   "oppdatertUtno": "2026-10-19T08:02:57.284Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
