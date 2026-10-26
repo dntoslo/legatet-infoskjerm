@@ -1,5 +1,5 @@
 {
- "hentet": "2026-10-26T11:21:18+01:00",
+ "hentet": "2026-10-26T17:20:40+01:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -5675,7 +5675,7 @@
    "lat": 59.8153,
    "serviceLevel": "NO_SERVICE",
    "senger": 17,
-   "oppdatertUtno": "2026-10-18T12:29:00.182Z",
+   "oppdatertUtno": "2026-10-26T13:57:27.248Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6765,7 +6765,7 @@
    "lat": 59.8094,
    "serviceLevel": "NO_SERVICE",
    "senger": 4,
-   "oppdatertUtno": "2026-10-09T14:23:18.590Z",
+   "oppdatertUtno": "2026-10-26T15:22:36.170Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
