@@ -1,5 +1,5 @@
 {
- "hentet": "2026-10-27T11:47:09+01:00",
+ "hentet": "2026-10-27T16:34:58+01:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -3752,7 +3752,7 @@
    "lat": 61.7561,
    "serviceLevel": "SELF_SERVICE",
    "senger": 20,
-   "oppdatertUtno": "2026-10-04T14:51:44.853Z",
+   "oppdatertUtno": "2026-10-27T14:20:42.517Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -3774,7 +3774,23 @@
      "niva": "SELF_SERVICE",
      "senger": 20,
      "fra": "2026-06-18",
-     "til": "2027-04-01",
+     "til": "2027-04-10",
+     "heleAaret": false,
+     "noekkel": "dnt"
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-04-11",
+     "til": "2027-06-17",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 20,
+     "fra": "2027-06-18",
+     "til": "2028-04-17",
      "heleAaret": false,
      "noekkel": "dnt"
     }
@@ -3791,7 +3807,7 @@
    "lat": 61.5857,
    "serviceLevel": "SELF_SERVICE",
    "senger": 14,
-   "oppdatertUtno": "2026-10-10T15:10:01.626Z",
+   "oppdatertUtno": "2026-10-27T14:47:59.902Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -3821,7 +3837,23 @@
      "niva": "SELF_SERVICE",
      "senger": 14,
      "fra": "2026-06-18",
-     "til": "2027-05-01",
+     "til": "2027-04-10",
+     "heleAaret": false,
+     "noekkel": "dnt"
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-04-11",
+     "til": "2027-06-17",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 14,
+     "fra": "2027-06-18",
+     "til": "2028-04-17",
      "heleAaret": false,
      "noekkel": "dnt"
     }
@@ -3838,7 +3870,7 @@
    "lat": 62.3415,
    "serviceLevel": "SELF_SERVICE",
    "senger": 34,
-   "oppdatertUtno": "2026-09-29T08:36:41.570Z",
+   "oppdatertUtno": "2026-10-27T14:25:10.497Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -3852,7 +3884,39 @@
      "niva": "CLOSED",
      "senger": 0,
      "fra": "2026-08-23",
-     "til": "2027-03-01",
+     "til": "2027-02-28",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 34,
+     "fra": "2027-03-01",
+     "til": "2027-03-31",
+     "heleAaret": false,
+     "noekkel": "dnt"
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-04-01",
+     "til": "2027-06-24",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 34,
+     "fra": "2027-06-25",
+     "til": "2027-08-22",
+     "heleAaret": false,
+     "noekkel": "dnt"
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-08-23",
+     "til": "2028-02-28",
      "heleAaret": false,
      "noekkel": null
     }
@@ -4570,7 +4634,7 @@
    "lat": 61.2452,
    "serviceLevel": "SELF_SERVICE",
    "senger": 10,
-   "oppdatertUtno": "2026-10-27T09:31:04.655Z",
+   "oppdatertUtno": "2026-10-27T14:13:44.327Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -4608,14 +4672,14 @@
      "niva": "CLOSED",
      "senger": 0,
      "fra": "2026-05-15",
-     "til": "2026-11-01",
+     "til": "2026-11-02",
      "heleAaret": false,
      "noekkel": null
     },
     {
      "niva": "SELF_SERVICE",
      "senger": 10,
-     "fra": "2026-11-01",
+     "fra": "2026-11-02",
      "til": "2027-03-12",
      "heleAaret": false,
      "noekkel": "dnt"
@@ -4640,14 +4704,14 @@
      "niva": "CLOSED",
      "senger": 0,
      "fra": "2027-05-15",
-     "til": "2027-11-02",
+     "til": "2027-11-01",
      "heleAaret": false,
      "noekkel": null
     },
     {
      "niva": "SELF_SERVICE",
      "senger": 10,
-     "fra": "2027-11-02",
+     "fra": "2027-11-01",
      "til": "2027-12-31",
      "heleAaret": false,
      "noekkel": "dnt"
