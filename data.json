@@ -1,5 +1,5 @@
 {
- "hentet": "2026-10-31T11:29:43+01:00",
+ "hentet": "2026-10-31T12:03:16+01:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -4668,7 +4668,7 @@
    "lat": 61.7384,
    "serviceLevel": "SELF_SERVICE",
    "senger": 12,
-   "oppdatertUtno": "2026-09-28T07:23:22.275Z",
+   "oppdatertUtno": "2026-10-31T11:00:59.890Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -4738,6 +4738,22 @@
      "niva": "SELF_SERVICE",
      "senger": 12,
      "fra": "2027-02-15",
+     "til": "2027-04-30",
+     "heleAaret": false,
+     "noekkel": "dnt"
+    },
+    {
+     "niva": "CLOSED",
+     "senger": 0,
+     "fra": "2027-04-30",
+     "til": "2027-06-01",
+     "heleAaret": false,
+     "noekkel": null
+    },
+    {
+     "niva": "SELF_SERVICE",
+     "senger": 12,
+     "fra": "2027-06-01",
      "til": "2027-10-15",
      "heleAaret": false,
      "noekkel": "dnt"
@@ -5342,7 +5358,7 @@
    "lat": 62.3506,
    "serviceLevel": "SELF_SERVICE",
    "senger": 21,
-   "oppdatertUtno": "2026-10-30T07:50:34.620Z",
+   "oppdatertUtno": "2026-10-31T10:56:58.384Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -5396,14 +5412,14 @@
      "niva": "SELF_SERVICE",
      "senger": 21,
      "fra": "2027-02-15",
-     "til": "2027-04-10",
+     "til": "2027-05-01",
      "heleAaret": false,
      "noekkel": "dnt"
     },
     {
      "niva": "CLOSED",
      "senger": 0,
-     "fra": "2027-04-10",
+     "fra": "2027-05-01",
      "til": "2027-06-10",
      "heleAaret": false,
      "noekkel": null
@@ -5516,7 +5532,7 @@
    "lat": 61.9746,
    "serviceLevel": "SELF_SERVICE",
    "senger": 18,
-   "oppdatertUtno": "2026-10-30T07:54:00.093Z",
+   "oppdatertUtno": "2026-10-31T10:57:45.228Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -5562,14 +5578,14 @@
      "niva": "SELF_SERVICE",
      "senger": 18,
      "fra": "2027-02-15",
-     "til": "2027-04-10",
+     "til": "2027-05-01",
      "heleAaret": false,
      "noekkel": "dnt"
     },
     {
      "niva": "CLOSED",
      "senger": 0,
-     "fra": "2027-04-10",
+     "fra": "2027-05-01",
      "til": "2027-06-10",
      "heleAaret": false,
      "noekkel": null
@@ -6770,7 +6786,7 @@
    "lat": 59.7862,
    "serviceLevel": "NO_SERVICE",
    "senger": 4,
-   "oppdatertUtno": "2026-10-27T10:06:44.492Z",
+   "oppdatertUtno": "2026-10-31T10:49:16.126Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
