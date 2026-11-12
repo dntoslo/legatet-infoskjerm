@@ -1,5 +1,5 @@
 {
- "hentet": "2026-11-12T14:01:29+01:00",
+ "hentet": "2026-11-12T14:55:16+01:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -3313,7 +3313,7 @@
    "lat": 60.5342,
    "serviceLevel": "SELF_SERVICE",
    "senger": 16,
-   "oppdatertUtno": "2026-10-29T18:36:10.499Z",
+   "oppdatertUtno": "2026-11-12T13:15:24.641Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -3376,7 +3376,7 @@
    "lat": 60.0602,
    "serviceLevel": "SELF_SERVICE",
    "senger": 12,
-   "oppdatertUtno": "2026-11-12T12:26:27.794Z",
+   "oppdatertUtno": "2026-11-12T13:32:33.826Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -6164,7 +6164,7 @@
    "lat": 60.0247,
    "serviceLevel": "NO_SERVICE",
    "senger": 14,
-   "oppdatertUtno": "2026-11-06T15:41:25.639Z",
+   "oppdatertUtno": "2026-11-12T13:03:45.625Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6472,7 +6472,7 @@
    "lat": 60.0513,
    "serviceLevel": "NO_SERVICE",
    "senger": 4,
-   "oppdatertUtno": "2026-11-04T14:36:50.962Z",
+   "oppdatertUtno": "2026-11-12T13:06:27.398Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6495,7 +6495,7 @@
    "lat": 59.9721,
    "serviceLevel": "NO_SERVICE",
    "senger": 30,
-   "oppdatertUtno": "2026-11-08T13:26:31.266Z",
+   "oppdatertUtno": "2026-11-12T13:33:21.019Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6932,7 +6932,7 @@
    "lat": 59.9194,
    "serviceLevel": "NO_SERVICE",
    "senger": 4,
-   "oppdatertUtno": "2026-10-23T10:45:01.397Z",
+   "oppdatertUtno": "2026-11-12T13:21:58.405Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6955,7 +6955,7 @@
    "lat": 59.9193,
    "serviceLevel": "NO_SERVICE",
    "senger": 8,
-   "oppdatertUtno": "2026-10-23T10:44:59.852Z",
+   "oppdatertUtno": "2026-11-12T13:21:58.823Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6978,7 +6978,7 @@
    "lat": 59.9195,
    "serviceLevel": "NO_SERVICE",
    "senger": 3,
-   "oppdatertUtno": "2026-10-23T10:45:02.252Z",
+   "oppdatertUtno": "2026-11-12T13:21:57.969Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
