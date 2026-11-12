@@ -1,5 +1,5 @@
 {
- "hentet": "2026-11-12T14:55:16+01:00",
+ "hentet": "2026-11-12T18:46:36+01:00",
  "kilde": "https://ut.no",
  "omrader": [
   "Jotunheimen",
@@ -36,7 +36,7 @@
    "lat": 61.5161,
    "serviceLevel": "STAFFED",
    "senger": 34,
-   "oppdatertUtno": "2026-11-09T16:15:03.429Z",
+   "oppdatertUtno": "2026-11-12T15:40:39.366Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -99,7 +99,7 @@
    "lat": 61.3752,
    "serviceLevel": "STAFFED",
    "senger": 100,
-   "oppdatertUtno": "2026-11-07T09:14:00.479Z",
+   "oppdatertUtno": "2026-11-12T15:38:49.983Z",
    "perioder": [
     {
      "niva": "STAFFED",
@@ -194,7 +194,7 @@
    "lat": 61.4514,
    "serviceLevel": "STAFFED",
    "senger": 119,
-   "oppdatertUtno": "2026-11-06T01:18:40.559Z",
+   "oppdatertUtno": "2026-11-12T15:34:11.742Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -567,7 +567,7 @@
    "lat": 61.5488,
    "serviceLevel": "STAFFED",
    "senger": 189,
-   "oppdatertUtno": "2026-10-22T08:21:24.556Z",
+   "oppdatertUtno": "2026-11-12T14:15:48.478Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -2642,7 +2642,7 @@
    "lat": 61.2355,
    "serviceLevel": "SELF_SERVICE",
    "senger": 14,
-   "oppdatertUtno": "2026-10-09T10:46:01.466Z",
+   "oppdatertUtno": "2026-11-12T15:04:52.896Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -2705,7 +2705,7 @@
    "lat": 61.3562,
    "serviceLevel": "SELF_SERVICE",
    "senger": 42,
-   "oppdatertUtno": "2026-09-21T07:12:46.025Z",
+   "oppdatertUtno": "2026-11-12T15:41:34.711Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -2855,7 +2855,7 @@
    "lat": 61.3094,
    "serviceLevel": "SELF_SERVICE",
    "senger": 18,
-   "oppdatertUtno": "2026-10-23T05:47:58.544Z",
+   "oppdatertUtno": "2026-11-12T15:02:53.034Z",
    "perioder": [
     {
      "niva": "SELF_SERVICE",
@@ -2918,7 +2918,7 @@
    "lat": 59.9289,
    "serviceLevel": "SELF_SERVICE",
    "senger": 14,
-   "oppdatertUtno": "2026-10-29T18:18:39.641Z",
+   "oppdatertUtno": "2026-11-12T16:20:14.480Z",
    "perioder": [
     {
      "niva": "CLOSED",
@@ -5745,7 +5745,7 @@
    "lat": 61.4013,
    "serviceLevel": "NO_SERVICE",
    "senger": 7,
-   "oppdatertUtno": "2026-10-20T13:56:24.069Z",
+   "oppdatertUtno": "2026-11-12T14:29:56.359Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -6909,7 +6909,7 @@
    "lat": 60.0513,
    "serviceLevel": "NO_SERVICE",
    "senger": 8,
-   "oppdatertUtno": "2026-11-12T12:41:35.856Z",
+   "oppdatertUtno": "2026-11-12T14:03:38.723Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -7047,7 +7047,7 @@
    "lat": 60.2998,
    "serviceLevel": "NO_SERVICE",
    "senger": 9,
-   "oppdatertUtno": "2026-11-12T12:51:27.429Z",
+   "oppdatertUtno": "2026-11-12T14:05:23.637Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
@@ -7070,7 +7070,7 @@
    "lat": 60.2997,
    "serviceLevel": "NO_SERVICE",
    "senger": 4,
-   "oppdatertUtno": "2026-10-27T10:29:15.857Z",
+   "oppdatertUtno": "2026-11-12T14:06:35.384Z",
    "perioder": [
     {
      "niva": "NO_SERVICE",
